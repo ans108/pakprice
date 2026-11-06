@@ -1,0 +1,131 @@
+{
+  "timestamp": "2026-10-30T15:08:30.761Z",
+  "allPassed": true,
+  "results": [
+    {
+      "name": "Huawei Band 9",
+      "slug": "huawei-huawei-band-9",
+      "phase": "Increment 6R",
+      "renderedTitle": "Huawei band 9",
+      "offersFound": [
+        {
+          "store": "priceoye",
+          "expectedPrice": "7,699",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        },
+        {
+          "store": "shophive",
+          "expectedPrice": "12,399",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Anker Soundcore Liberty 5",
+      "slug": "anker-anker-soundcore-liberty-5-noise-reduction-wireless-earbuds",
+      "phase": "Increment 6R",
+      "renderedTitle": "Anker Soundcore Liberty 5 Noise Reduction Wireless Earbuds",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "20,499",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        },
+        {
+          "store": "telemart",
+          "expectedPrice": "19,499",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Xiaomi Redmi Buds 8",
+      "slug": "xiaomi-xiaomi-redmi-buds-8",
+      "phase": "Increment 6R",
+      "renderedTitle": "Xiaomi Redmi Buds 8",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "13,799",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        },
+        {
+          "store": "telemart",
+          "expectedPrice": "12,299",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Infinix XW3P Smart Watch",
+      "slug": "unknown-infinix-xw3p-smart-watch",
+      "phase": "Increment 6R",
+      "renderedTitle": "Infinix XW3P Smart Watch",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "5,999",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        },
+        {
+          "store": "priceoye",
+          "expectedPrice": "4,299",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Audionic Spark Pro S-200 Powerbank",
+      "slug": "unknown-audionic-spark-pro-s-200-powerbank-20000-mah",
+      "phase": "Regression (6R Fix)",
+      "renderedTitle": "Audionic Spark Pro S-200 powerbank 20000 mAh",
+      "offersFound": [
+        {
+          "store": "telemart",
+          "expectedPrice": "4,499",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        },
+        {
+          "store": "priceoye",
+          "expectedPrice": "4,799",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 0,
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+[
+  {
+    "id": "6a003dd8-207f-4341-bac4-f06e2e444e3e",
+    "name": "Samsung Galaxy Watch Ultra SM-L705F",
+    "slug": "samsung-samsung-galaxy-watch-ultra-sm-l705f",
+    "brand": "Samsung",
+    "category": "Smart Watches",
+    "categorySlug": "smart-watches",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "3f35b126-c86a-4266-a775-c8e0706d3184",
+        "name": "Default",
+        "ram": null,
+        "storage": null,
+        "color": null,
+        "model": "TM-SM-L705F-SL",
+        "telemartPrice": 92499,
+        "url": "https://www.telemart.pk/products/samsung-galaxy-watch-ultra-sm-l705f"
+      }
+    ]
+  },
+  {
+    "id": "62f6052f-d083-4d55-9550-1d1fb2337526",
+    "name": "Samsung Galaxy Watch 9 40mm Smartwatch",
+    "slug": "samsung-samsung-galaxy-watch-9-40mm-smartwatch",
+    "brand": "Samsung",
+    "category": "Smart Watches",
+    "categorySlug": "smart-watches",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "f3451313-bb66-4fe8-bf4c-4c854a05f968",
+        "name": "Default",
+        "ram": null,
+        "storage": null,
+        "color": null,
+        "model": "TM-GW940",
+        "telemartPrice": 92999,
+        "url": "https://www.telemart.pk/products/samsung-galaxy-watch-9-44mm"
+      }
+    ]
+  },
+  {
+    "id": "fecb2495-22c1-4e6a-9ce9-b97677e8b14b",
+    "name": "Samsung Galaxy Watch 7 44mm (R-L310)",
+    "slug": "samsung-samsung-galaxy-watch-7-44mm-r-l310",
+    "brand": "Samsung",
+    "category": "Smart Watches",
+    "categorySlug": "smart-watches",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "ceb52bcc-8db3-4d4b-9b75-7ed289015aba",
+        "name": "Default",
+        "ram": null,
+        "storage": null,
+        "color": null,
+        "model": "TM-R-L310-GRN",
+        "telemartPrice": 49999,
+        "url": "https://www.telemart.pk/products/samsung-galaxy-watch-7-44mm-r-l310"
+      }
+    ]
+  },
+  {
+    "id": "a31f7244-387b-4ea4-aad3-052bcdb3360d",
+    "name": "Apple MacBook Neo 13 Inch 8GB 256GB",
+    "slug": "apple-apple-macbook-neo-13-inch-8gb-256gb",
+    "brand": "Apple",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "3968c703-b6a4-4810-92fd-b01e4922fb7d",
+        "name": "8GB / 256GB",
+        "ram": 8,
+        "storage": 256,
+        "color": null,
+        "model": "TM-ZCI7AH-MHFH4-PNK",
+        "telemartPrice": 239999,
+        "url": "https://www.telemart.pk/products/apple-macbook-neo-13-inch-8gb-256gb"
+      }
+    ]
+  },
+  {
+    "id": "8ae7564a-d6e1-4794-b294-1aedc283b108",
+    "name": "Apple MacBook Neo 13 Inch 8GB 512GB Touch",
+    "slug": "apple-apple-macbook-neo-13-inch-8gb-512gb-touch",
+    "brand": "Apple",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "42caff2d-1770-46a1-baa0-913e2b6a899e",
+        "name": "8GB / 512GB",
+        "ram": 8,
+        "storage": 512,
+        "color": null,
+        "model": "TM-MHFH4-BL",
+        "telemartPrice": 274999,
+        "url": "https://www.telemart.pk/products/apple-macbook-neo-13-inch-8gb-512gb-touch"
+      }
+    ]
+  },
+  {
+    "id": "8988c02f-aefb-4c97-a36a-cb3c3b73e310",
+    "name": "HP ProBook 450 G9 Intel Core i5 12th Gen 8GB RAM 256GB SSD DOS Laptop",
+    "slug": "hp-hp-probook-450-g9-intel-core-i5-12th-gen-8gb-ram-256gb-ssd-dos-laptop",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "4c3bf5fc-44e3-4037-a6c3-29ed1b5dbc6f",
+        "name": "8GB / 256GB",
+        "ram": 8,
+        "storage": 256,
+        "color": null,
+        "model": "TM-HP450G9-I5-8-256",
+        "telemartPrice": 251999,
+        "url": "https://www.telemart.pk/products/hp-probook-450-g9-intel-core-i5-12th-gen-8gb-ram-256gb-ssd-dos-laptop"
+      }
+    ]
+  },
+  {
+    "id": "ecf5bac7-4cc5-460e-9520-6c76ca8a5144",
+    "name": "HP 15s Celeron 4GB RAM 500GB HDD Windows 10 Laptop",
+    "slug": "hp-hp-15s-celeron-4gb-ram-500gb-hdd-windows-10-laptop",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "78323ed9-1dc5-4bd4-8b4b-6b778393bdb3",
+        "name": "4GB",
+        "ram": 4,
+        "storage": null,
+        "color": null,
+        "model": "TM-HP15S-CEL-4-500",
+        "telemartPrice": 79999,
+        "url": "https://www.telemart.pk/products/hp-15s-celeron-4gb-ram-500gb-hdd-windows-10-laptop"
+      }
+    ]
+  },
+  {
+    "id": "53028735-9453-433e-8b9a-e524c7bbbf35",
+    "name": "HP 15-FQ5099TU Intel Core i7-1255U 8GB RAM 512GB SSD Windows 11 Laptop 1 Year Warranty",
+    "slug": "hp-hp-15-fq5099tu-intel-core-i7-1255u-8gb-ram-512gb-ssd-windows-11-laptop-1-year-warranty",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "787dfbef-9c36-4771-982b-a994965d9020",
+        "name": "8GB / 512GB",
+        "ram": 8,
+        "storage": 512,
+        "color": null,
+        "model": "TM-HP15-FQ5099TU",
+        "telemartPrice": 217999,
+        "url": "https://www.telemart.pk/products/hp-15-fq5099tu-intel-core-i7-1255u-8gb-ram-512gb-ssd-windows-11-laptop-1-year-warranty"
+      }
+    ]
+  },
+  {
+    "id": "7815a42b-4c3b-4491-afd6-cad6ed2b3b30",
+    "name": "HP 15s-FQ2653TU Intel Core i7-1165G7 8GB RAM 512GB SSD Windows 10 Laptop With 1 Year Warranty",
+    "slug": "hp-hp-15s-fq2653tu-intel-core-i7-1165g7-8gb-ram-512gb-ssd-windows-10-laptop-with-1-year-warranty",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "0fb16aac-67de-48a9-861b-3d8705b4959a",
+        "name": "8GB / 512GB",
+        "ram": 8,
+        "storage": 512,
+        "color": null,
+        "model": "TM-HP15S-FQ2653TU",
+        "telemartPrice": 171999,
+        "url": "https://www.telemart.pk/products/hp-15s-fq2653tu-intel-core-i7-1165g7-8gb-ram-512gb-ssd-windows-10-laptop-with-1-year-warranty"
+      }
+    ]
+  },
+  {
+    "id": "a636916e-6280-4140-9ab3-979074386a53",
+    "name": "HP Omen Max 16-AH0097NR Intel Core Ultra 9 32GB 1TB SSD 16\" WQXGA Display NVIDIA RTX 5080 16GB Graphics Win11 Gaming Laptop",
+    "slug": "hp-hp-omen-max-16-ah0097nr-intel-core-ultra-9-32gb-1tb-ssd-16-wqxga-display-nvidia-rtx-5080-16gb-graphics-win11-gaming-laptop",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "c36244cc-4acb-439a-99e0-3d98794670d5",
+        "name": "1TB",
+        "ram": null,
+        "storage": 1024,
+        "color": null,
+        "model": "TM-16AH0097NR-SDBK",
+        "telemartPrice": 949999,
+        "url": "https://www.telemart.pk/products/hp-omen-max-16-ah0097nr-intel-core-ultra-9-32gb-1tb-ssd-16-wqxga-display-nvidia-rtx-5080-16gb-graphics-win11-gaming-laptop"
+      }
+    ]
+  },
+  {
+    "id": "b9640cc2-d93f-44e6-bea7-4b53d467d055",
+    "name": "Lenovo ThinkPad T14s Gen 6 Intel Core Ultra 7 255U 16GB D5 512GB SSD 14\" WUXGA Display Backlit KB Fingerprint Reader Win11",
+    "slug": "lenovo-lenovo-thinkpad-t14s-gen-6-intel-core-ultra-7-255u-16gb-d5-512gb-ssd-14-wuxga-display-backlit-kb-fingerprint-reader-win11",
+    "brand": "Lenovo",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "098c3aff-2256-4b24-9c2c-c6f92fbc8b18",
+        "name": "512GB",
+        "ram": null,
+        "storage": 512,
+        "color": null,
+        "model": null,
+        "telemartPrice": 389999,
+        "url": "https://www.telemart.pk/products/lenovo-thinkpad-t14s-gen-6-intel-core-ultra-7-255u-16gb-d5-512gb-ssd-14-wuxga-display-backlit-kb-fingerprint-reader-win11"
+      }
+    ]
+  },
+  {
+    "id": "4498ceca-17cc-452e-9373-0f92960aa98e",
+    "name": "Lenovo ThinkPad X9-14 Gen 1 Aura Edition Intel Core Ultra 7 268V 32GB D5 1TB SSD 14\" 2.8K Display Backlit KB Win11 Thunder Grey",
+    "slug": "lenovo-lenovo-thinkpad-x9-14-gen-1-aura-edition-intel-core-ultra-7-268v-32gb-d5-1tb-ssd-14-28k-display-backlit-kb-win11-thunder-grey",
+    "brand": "Lenovo",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "e86b374f-2772-4502-baf9-3dd6dcb4985e",
+        "name": "1TB",
+        "ram": null,
+        "storage": 1024,
+        "color": null,
+        "model": "TM-X9-14-G1-THNGRY",
+        "telemartPrice": 584999,
+        "url": "https://www.telemart.pk/products/lenovo-thinkpad-x9-14-gen-1-aura-edition-intel-core-ultra-7-268v-32gb-d5-1tb-ssd-14-2-8k-display-backlit-kb-win11-thunder-grey"
+      }
+    ]
+  },
+  {
+    "id": "39786765-d075-4aad-b804-2d1285d5e236",
+    "name": "Asus Vivobook X1404VAP Intel Core 5 120U 8GB 256GB SSD 14.0\" FHD Display Backlit KB Win11 Home",
+    "slug": "asus-asus-vivobook-x1404vap-intel-core-5-120u-8gb-256gb-ssd-140-fhd-display-backlit-kb-win11-home",
+    "brand": "Asus",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "a0294061-2723-4216-90d8-c8c8c9bd4641",
+        "name": "8GB / 256GB",
+        "ram": 8,
+        "storage": 256,
+        "color": null,
+        "model": "TM-X1404VAP-QBL",
+        "telemartPrice": 153999,
+        "url": "https://www.telemart.pk/products/asus-vivobook-x1404vap-intel-core-5-120u-8gb-256gb-ssd-14-0-fhd-display-backlit-kb-win11-home"
+      }
+    ]
+  },
+  {
+    "id": "ba3a9c43-6d01-407a-b66b-befbf3a9a51e",
+    "name": "HP Laptop 15-FD0532NIA Intel Core i3 13th Gen 4GB 256GB SSD 15.6\" FHD Display Dos",
+    "slug": "hp-hp-laptop-15-fd0532nia-intel-core-i3-13th-gen-4gb-256gb-ssd-156-fhd-display-dos",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "39f42961-3d58-49c8-b8b1-e25baeb330a2",
+        "name": "4GB / 256GB",
+        "ram": 4,
+        "storage": 256,
+        "color": null,
+        "model": "TM-15FD0532NIA-SL",
+        "telemartPrice": 122499,
+        "url": "https://www.telemart.pk/products/hp-laptop-15-fd0532nia-intel-core-i3-13th-gen-4gb-256gb-ssd-15-6-fhd-display-dos"
+      }
+    ]
+  },
+  {
+    "id": "6475b071-f3d2-47e2-8b03-158f0f4338d5",
+    "name": "HP Laptop 15-FD0531NIA Intel Core i3 13th Gen 4GB 256GB SSD 15.6\" FHD Display Dos",
+    "slug": "hp-hp-laptop-15-fd0531nia-intel-core-i3-13th-gen-4gb-256gb-ssd-156-fhd-display-dos",
+    "brand": "HP",
+    "category": "Laptops",
+    "categorySlug": "laptops",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "a3b81201-416e-44f9-9a63-2c62f5ef439e",
+        "name": "4GB / 256GB",
+        "ram": 4,
+        "storage": 256,
+        "color": null,
+        "model": "TM-15FD0531NIA-SL",
+        "telemartPrice": 122499,
+        "url": "https://www.telemart.pk/products/hp-laptop-15-fd0531nia-intel-core-i3-13th-gen-4gb-256gb-ssd-15-6-fhd-display-dos"
+      }
+    ]
+  },
+  {
+    "id": "b5b28ca5-d60c-43c9-8b3f-5af3e484e24b",
+    "name": "Asus Vivobook S 15 K5507QA-MA048W Snapdragon X Plus X1P 42 100 16GB D5 1TB SSD 15.6\" 3K OLED Win11",
+    "slug": "asus-asus-vivobook-s-15-k5507qa-ma048w-snapdragon-x-plus-x1p-42-100-16gb-d5-1tb-ssd-156-3k-oled-win11",
+    "brand": "Asus",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "9fc01d80-54cd-4376-8356-fb148a659a17",
+        "name": "1TB",
+        "ram": null,
+        "storage": 1024,
+        "color": null,
+        "model": "TM-K5507QA-MA048W-SL",
+        "telemartPrice": 353999,
+        "url": "https://www.telemart.pk/products/asus-vivobook-s-15-k5507qa-ma048w-snapdragon-x-plus-x1p-42-100-16gb-d5-1tb-ssd-15-6-3k-oled-win11"
+      }
+    ]
+  },
+  {
+    "id": "07961906-dfc0-42c8-aa37-0c046890b37e",
+    "name": "Asus Vivobook S 14 K5406SA-PP075W Intel Core Ultra 7 256V 16GB D5 1TB SSD 14.0\" 3K OLED Backlit KB Win11",
+    "slug": "asus-asus-vivobook-s-14-k5406sa-pp075w-intel-core-ultra-7-256v-16gb-d5-1tb-ssd-140-3k-oled-backlit-kb-win11",
+    "brand": "Asus",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "4cfbd06d-0235-4903-b833-46c853e13e24",
+        "name": "1TB",
+        "ram": null,
+        "storage": 1024,
+        "color": null,
+        "model": "TM-K5406SA-PP075W-BL",
+        "telemartPrice": 348999,
+        "url": "https://www.telemart.pk/products/asus-vivobook-s-14-k5406sa-pp075w-intel-core-ultra-7-256v-16gb-d5-1tb-ssd-14-0-3k-oled-backlit-kb-win11"
+      }
+    ]
+  },
+  {
+    "id": "6f4161ec-25ff-4a34-b9e7-4a29b58ab514",
+    "name": "ZTE Nubia Focus Pro 5G (8GB256GB) Dual Sim With Official Warranty",
+    "slug": "zte-zte-nubia-focus-pro-5g-8gb256gb-dual-sim-with-official-warranty",
+    "brand": "ZTE",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "b111dd08-fd2c-4b51-96ad-d7154a356cdf",
+        "name": "Default",
+        "ram": null,
+        "storage": null,
+        "color": null,
+        "model": "TM-FOCUSP-8/256-BK",
+        "telemartPrice": 57499,
+        "url": "https://www.telemart.pk/products/zte-nubia-focus-pro-5g-8gb256gb-dual-sim-with-official-warranty"
+      }
+    ]
+  },
+  {
+    "id": "99cb7e0c-fd8d-4423-995b-550acd026d2a",
+    "name": "ZTE Blade A35e Dual Sim With Official Warranty",
+    "slug": "zte-zte-blade-a35e-dual-sim-with-official-warranty",
+    "brand": "ZTE",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "e89e28df-690d-44bb-bbe0-2df845dd8dec",
+        "name": "Default",
+        "ram": null,
+        "storage": null,
+        "color": null,
+        "model": "TM-ZTEA35E-2/64-GRN",
+        "telemartPrice": 22749,
+        "url": "https://www.telemart.pk/products/zte-blade-a35e-dual-sim-with-official-warranty"
+      }
+    ]
+  },
+  {
+    "id": "2e8f91f6-f36d-49bb-b784-161f6dd0a954",
+    "name": "Lenovo Yoga 7 2-in-1 16IML9 Intel Core Ultra 7 155U 16GB 1TB SSD 16\" WUXGA X360 Touch screen Display Backlit KB Win11 Fingerprint Reader Storm Grey",
+    "slug": "lenovo-lenovo-yoga-7-2-in-1-16iml9-intel-core-ultra-7-155u-16gb-1tb-ssd-16-wuxga-x360-touch-screen-display-backlit-kb-win11-fingerprint-reader-storm-grey",
+    "brand": "Lenovo",
+    "variantCount": 1,
+    "variants": [
+      {
+        "id": "b1790b2e-8aeb-4b52-a37c-c0a9fcab509b",
+        "name": "1TB",
+        "ram": null,
+        "storage": 1024,
+        "color": null,
+        "model": "TM-16IML9-SGRY",
+        "telemartPrice": 279999,
+        "url": "https://www.telemart.pk/products/lenovo-yoga-7-2-in-1-16iml9-intel-core-ultra-7-155u-16gb-1tb-ssd-16-wuxga-x360-touchscreen-display-backlit-kb-win11-fingerprint-reader-storm-grey"
+      }
+    ]
+  }
+]

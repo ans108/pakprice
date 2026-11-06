@@ -1,0 +1,39 @@
+[
+  {
+    "slug": "huawei-huawei-band-9",
+    "name": "Huawei band 9",
+    "productId": "397b598f-0efa-4d6e-8c3a-13e842b3ecb5",
+    "variantId": "f2c77cc1-d6cd-4c98-88ba-fdeeccffba75",
+    "targetStore": "priceoye",
+    "approvedPrice": 7699,
+    "candidateUrl": "https://priceoye.pk/smart-watches/huawei/huawei-band-9"
+  },
+  {
+    "slug": "anker-anker-soundcore-liberty-5-noise-reduction-wireless-earbuds",
+    "name": "Anker Soundcore Liberty 5 Noise Reduction Wireless Earbuds",
+    "productId": "4bf03a2a-5d6e-416a-9bbf-2c6a1293c557",
+    "variantId": "6f699461-a29e-4870-8cbd-ef942712705f",
+    "targetStore": "shophive",
+    "approvedPrice": 20499,
+    "candidateUrl": "https://www.shophive.com/anker-soundcore-liberty-5-noise-cancelling-wireless-earbuds/"
+  },
+  {
+    "slug": "xiaomi-xiaomi-redmi-buds-8",
+    "name": "Xiaomi Redmi Buds 8",
+    "productId": "fd7a993d-1e5d-40e3-b57d-98d9d57123b1",
+    "variantId": "f9482d08-debe-41b9-baa3-bf952bcac174",
+    "targetStore": "shophive",
+    "approvedPrice": 13799,
+    "candidateUrl": "https://www.shophive.com/redmi-buds-8/"
+  },
+  {
+    "slug": "unknown-infinix-xw3p-smart-watch",
+    "name": "Infinix XW3P Smart Watch",
+    "productId": "1cd006e7-5cf0-4b7d-8e17-2dfd01bc8f87",
+    "variantId": "583e1e46-2c56-4ce1-b57b-f88c2534b528",
+    "targetStore": "shophive",
+    "approvedPrice": 5999,
+    "candidateUrl": "https://www.shophive.com/infinix-xw3p-smart-watch/"
+  }
+]
+

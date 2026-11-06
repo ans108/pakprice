@@ -1,0 +1,569 @@
+[
+  {
+    "id": "02edf13a-5afc-4563-84af-90d148d74b69",
+    "slug": "tecno-tecno-spark-go-1",
+    "name": "Tecno Spark Go 1",
+    "brand": "Tecno",
+    "categorySlug": "unknown",
+    "variantId": "5f2ca307-7bc4-48a9-a1db-95d381679184",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 16999,
+    "currentUrl": "https://priceoye.pk/mobiles/tecno/tecno-spark-go-1",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "d271a5ce-297c-4a67-9fc9-ef095d73510d",
+    "slug": "honor-honor-x9b",
+    "name": "HONOR X9b",
+    "brand": "Honor",
+    "categorySlug": "unknown",
+    "variantId": "2703171c-52cc-49ae-8cd6-f988f9a6b6bf",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 88999,
+    "currentUrl": "https://priceoye.pk/mobiles/honor/honor-x9b",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "a9dc0228-e1ab-4fa4-a524-bbdfe5a76c1e",
+    "slug": "unknown-joyroom-mini-magnetic-wireless-power-bank-jr-w050-10000mah",
+    "name": "Joyroom Mini Magnetic Wireless Power Bank JR-W050 10000mAh",
+    "brand": "Joyroom",
+    "categorySlug": "computer-accessories",
+    "variantId": "bdbef898-87af-444b-ae19-84d6e3a72a1a",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 7799,
+    "currentUrl": "https://priceoye.pk/power-banks/joyroom/joyroom-mini-magnetic-wireless-power-bank-jr-w050-10000mah",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "6f26d813-40ec-46a7-ae22-fc25c31d08f7",
+    "slug": "unknown-dany-titan-t-100-power-bank-20000-mah",
+    "name": "Dany TITAN T-100 Power Bank 20000 mAh",
+    "brand": "Dany",
+    "categorySlug": "computer-accessories",
+    "variantId": "0c21cd21-4606-47b3-9adc-b72cb9c52c78",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 4899,
+    "currentUrl": "https://priceoye.pk/power-banks/dany/dany-titan-t-100-power-bank-20000-mah",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "746be787-5cd1-4e39-b1de-55f63ce8d695",
+    "slug": "unknown-anker-nano-power-bank-5000mahbuilt-in-lightning-connector",
+    "name": "Anker Nano Power Bank 5000mAh(Built-In Lightning Connector)",
+    "brand": "Anker",
+    "categorySlug": "computer-accessories",
+    "variantId": "24f23393-9657-4541-b879-bf0d819c5405",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 8249,
+    "currentUrl": "https://priceoye.pk/power-banks/anker/anker-nano-power-bank-5000mah-built-in-lightning-connector",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "1b8ced76-eb80-4062-ad6a-8dd292aa33e4",
+    "slug": "unknown-xiaomi-mi-pb100dzm-225w-10000mah-power-bank",
+    "name": "Xiaomi Mi PB100DZM 22.5W 10000mAh Power Bank",
+    "brand": "Xiaomi",
+    "categorySlug": "computer-accessories",
+    "variantId": "1b2a64fa-4598-4a94-a25a-586277314643",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 4699,
+    "currentUrl": "https://priceoye.pk/power-banks/xiaomi/xiaomi-mi-pb100dzm-22-5w-10000mah-power-bank",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "1026b49d-957f-442e-8a4f-a699ab08f9c9",
+    "slug": "unknown-apple-logo-watch-8-ultra",
+    "name": "Apple Logo Watch 8 Ultra",
+    "brand": "Apple",
+    "categorySlug": "smart-watches",
+    "variantId": "30d173fd-fc84-40d4-8b36-0d78b27af408",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 5249,
+    "currentUrl": "https://priceoye.pk/smart-watches/assorted/apple-logo-watch-8-ultra",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "1cd006e7-5cf0-4b7d-8e17-2dfd01bc8f87",
+    "slug": "unknown-infinix-xw3p-smart-watch",
+    "name": "Infinix XW3P Smart Watch",
+    "brand": "Infinix",
+    "categorySlug": "smart-watches",
+    "variantId": "583e1e46-2c56-4ce1-b57b-f88c2534b528",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 4299,
+    "currentUrl": "https://priceoye.pk/smart-watches/infinix/infinix-xw3p-smart-watch",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "20b1a621-bd3c-4060-bc68-476ae505eacd",
+    "slug": "unknown-samsung-galaxy-tab-s11-wifi",
+    "name": "Samsung Galaxy Tab S11 Wifi",
+    "brand": "Samsung",
+    "categorySlug": "tablets",
+    "variantId": "bf1d28e3-fe05-4f7b-abce-0125afa21e17",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 199999,
+    "currentUrl": "https://priceoye.pk/tablets/samsung/samsung-galaxy-tab-s11-wifi",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "b551ff0e-42d4-4f01-bcc8-39d8be442dcc",
+    "slug": "unknown-lenovo-tab-6",
+    "name": "Lenovo Tab 6",
+    "brand": "Lenovo",
+    "categorySlug": "tablets",
+    "variantId": "7abcd0ca-b3e5-4ba9-be00-0f892eecc9a7",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 32999,
+    "currentUrl": "https://priceoye.pk/tablets/lenovo/lenovo-tab-6",
+    "targetStores": [
+      "telemart",
+      "shophive"
+    ]
+  },
+  {
+    "id": "fa960569-c906-4db6-b774-88514ed122f6",
+    "slug": "lenovo-lenovo-loq-15irx10-intel-core-i7-13th-gen-16gb-d5-512gb-ssd-156-fhd-display-nvidia-geforce-rtx-5060-8gb-graphics-win11-home-luna-grey",
+    "name": "Lenovo LOQ 15IRX10 Intel Core i7 13th Gen 16GB D5 512GB SSD 15.6\" FHD Display NVIDIA GeForce RTX 5060 8GB Graphics Win11 Home Luna Grey",
+    "brand": "Lenovo",
+    "categorySlug": "unknown",
+    "variantId": "b4eea926-7815-4907-b7d0-9da61e495d8e",
+    "variantName": "512GB",
+    "sourceStore": "telemart",
+    "currentPrice": 369999,
+    "currentUrl": "https://www.telemart.pk/products/lenovo-loq-15irx10-intel-core-i7-13th-gen-16gb-d5-512gb-ssd-15-6-fhd-display-nvidia-geforce-rtx-5060-8gb-graphics-win11-home-luna-grey",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "4ce16122-d363-4a8c-9efe-e4495c7db05c",
+    "slug": "hp-hp-omnibook-ultra-flip-14-fh0033dx-intel-core-ultra-9-288v-32gb-2tb-ssd-14-3k-uwva-oled-touchscreen-x360-display-fingerprint-reader-backlit-kb-win11-eclipse-gray",
+    "name": "HP OmniBook Ultra Flip 14-FH0033DX Intel Core Ultra 9 288v 32GB 2TB SSD 14\" 3K UWVA OLED Touchscreen x360 Display Fingerprint Reader Backlit KB Win11 Eclipse Gray",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "e424b1e3-8b8f-4c75-a61f-5605613fceab",
+    "variantName": "2TB",
+    "sourceStore": "telemart",
+    "currentPrice": 499999,
+    "currentUrl": "https://www.telemart.pk/products/hp-omnibook-ultra-flip-14-fh0033dx-intel-core-ultra-9-288v-32gb-2tb-ssd-14-3k-uwva-oled-touchscreen-x360-display-fingerprint-reader-backlit-kb-win11-eclipse-gray",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "e679b01b-1299-411f-aaf3-65aeee6d748e",
+    "slug": "infinix-infinix-xe30-wireless-earbuds",
+    "name": "Infinix XE30 Wireless Earbuds",
+    "brand": "Infinix",
+    "categorySlug": "headphones-audio",
+    "variantId": "e157e211-4c6e-48bf-b353-039a42514fe6",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 3599,
+    "currentUrl": "https://www.telemart.pk/products/infinix-xe30-wireless-earbuds",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "6f65484e-ab9e-459a-80d8-221f748912a7",
+    "slug": "joyroom-joyroom-jr-db2-digital-screen-true-wireless-earbuds",
+    "name": "Joyroom JR-DB2 Digital Screen True Wireless Earbuds",
+    "brand": "Joyroom",
+    "categorySlug": "headphones-audio",
+    "variantId": "2bde27cd-e5ae-4303-b817-08e5caf05d26",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 6879,
+    "currentUrl": "https://www.telemart.pk/products/joyroom-jr-db2-digital-screen-true-wireless-earbuds",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "e1d58a51-cfad-41ec-ba47-bd90fbd0c353",
+    "slug": "huawei-huawei-freebuds-se-4-anc-earbuds",
+    "name": "Huawei Freebuds SE 4 ANC Earbuds",
+    "brand": "Huawei",
+    "categorySlug": "headphones-audio",
+    "variantId": "71aa11d2-ceb1-40dc-ad9a-f1f2ae2800ef",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 18999,
+    "currentUrl": "https://www.telemart.pk/products/huawei-freebuds-se-4-anc-earbuds",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "4bf03a2a-5d6e-416a-9bbf-2c6a1293c557",
+    "slug": "anker-anker-soundcore-liberty-5-noise-reduction-wireless-earbuds",
+    "name": "Anker Soundcore Liberty 5 Noise Reduction Wireless Earbuds",
+    "brand": "Anker",
+    "categorySlug": "headphones-audio",
+    "variantId": "6f699461-a29e-4870-8cbd-ef942712705f",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 19499,
+    "currentUrl": "https://www.telemart.pk/products/anker-soundcore-liberty-5-noise-reduction-wireless-earbuds",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "351aea41-a5bb-4631-b446-1eb3601ea2e6",
+    "slug": "samsung-samsung-galaxy-buds-pro",
+    "name": "Samsung Galaxy Buds Pro",
+    "brand": "Samsung",
+    "categorySlug": "unknown",
+    "variantId": "4a02db60-43ac-451d-bee8-7856c55b30ed",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 22999,
+    "currentUrl": "https://www.telemart.pk/products/samsung-galaxy-buds-pro",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "fb98339a-f9be-4777-ad0d-b2bb0a36c92b",
+    "slug": "dany-dany-designer-airdots-102-wireless-earbuds-with-enc-gaming-mode",
+    "name": "Dany Designer Airdots 102 Wireless Earbuds with ENC & Gaming Mode",
+    "brand": "Dany",
+    "categorySlug": "headphones-audio",
+    "variantId": "9e1e811e-f410-4dd8-aad7-3a1d1eaf7a16",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 4499,
+    "currentUrl": "https://www.telemart.pk/products/dany-designer-airdots-102-wireless-earbuds-with-enc-gaming-mode",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "0f7257d8-5b20-4a05-82d4-8407b342dad7",
+    "slug": "apple-apple-airpods-pro-3",
+    "name": "Apple Airpods Pro 3",
+    "brand": "Apple",
+    "categorySlug": "headphones-audio",
+    "variantId": "d85ff63d-a3cb-4e8f-aaf5-f54fd2c4ab44",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 65399,
+    "currentUrl": "https://www.telemart.pk/products/apple-airpods-pro-3",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "fd7a993d-1e5d-40e3-b57d-98d9d57123b1",
+    "slug": "xiaomi-xiaomi-redmi-buds-8",
+    "name": "Xiaomi Redmi Buds 8",
+    "brand": "Xiaomi",
+    "categorySlug": "unknown",
+    "variantId": "f9482d08-debe-41b9-baa3-bf952bcac174",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 12299,
+    "currentUrl": "https://www.telemart.pk/products/xiaomi-redmi-buds-8",
+    "targetStores": [
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "397b598f-0efa-4d6e-8c3a-13e842b3ecb5",
+    "slug": "huawei-huawei-band-9",
+    "name": "Huawei band 9",
+    "brand": "Huawei",
+    "categorySlug": "unknown",
+    "variantId": "f2c77cc1-d6cd-4c98-88ba-fdeeccffba75",
+    "variantName": "Default",
+    "sourceStore": "shophive",
+    "currentPrice": 12399,
+    "currentUrl": "https://www.shophive.com/huawei-band-9/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "3a314df1-8ae0-4db3-8956-ce648a6ffcba",
+    "slug": "infinix-infinix-note-edge-5g-8gb-256gb",
+    "name": "Infinix Note Edge 5G 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "343c141b-bcef-4313-bd0b-17672c841008",
+    "variantName": "8GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 93999,
+    "currentUrl": "https://www.shophive.com/infinix-note-edge-5g-8gb-256gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "4988126f-2250-4c5b-8d1e-dae87823c596",
+    "slug": "infinix-infinix-note-60-ultra-12gb-256gb",
+    "name": "Infinix Note 60 Ultra 12GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "4f0f66b2-b4c6-4cd0-a74a-b4ffbcdc6342",
+    "variantName": "12GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 239999,
+    "currentUrl": "https://www.shophive.com/infinix-note-60-ultra-12gb-256gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "1af20d1e-51c8-4b95-bd7b-5792a9a69925",
+    "slug": "infinix-infinix-note-60-pro-8gb-256gb",
+    "name": "Infinix Note 60 Pro 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "b25d6a4f-1ceb-45ac-bf60-673eb71d3672",
+    "variantName": "8GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 125999,
+    "currentUrl": "https://www.shophive.com/infinix-note-60-pro-8gb-256gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "e783f15e-431e-4259-ae75-8e726b09d5e0",
+    "slug": "infinix-infinix-note-60-8gb-256gb",
+    "name": "Infinix Note 60 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "2d25dbff-3d29-40e0-a723-06c894281bb9",
+    "variantName": "8GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 103999,
+    "currentUrl": "https://www.shophive.com/infinix-note-60-8gb-256gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "e98ef3bc-df25-4103-9202-e451b538cd97",
+    "slug": "infinix-infinix-hot-70-pro-5g-8gb-128gb",
+    "name": "Infinix Hot 70 Pro 5G 8GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "5dd3ab98-c842-461d-bbe8-330c808e575b",
+    "variantName": "8GB / 128GB",
+    "sourceStore": "shophive",
+    "currentPrice": 84499,
+    "currentUrl": "https://www.shophive.com/infinix-hot-70-pro-5g-8gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "72b49573-d8ce-4c53-bd66-6fd6541efcd0",
+    "slug": "infinix-infinix-hot-70-6gb-128gb",
+    "name": "Infinix Hot 70 6GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "ecf65586-3dc7-4606-a138-14a6655b0490",
+    "variantName": "6GB / 128GB",
+    "sourceStore": "shophive",
+    "currentPrice": 63499,
+    "currentUrl": "https://www.shophive.com/infinix-hot-70-6gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "c2f83267-6b60-4a90-b414-8196d5f3fefd",
+    "slug": "infinix-infinix-hot-60i-6gb-128gb",
+    "name": "Infinix Hot 60i 6GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "d987671e-ead0-4c39-8e80-fc13eb6f3412",
+    "variantName": "6GB / 128GB",
+    "sourceStore": "shophive",
+    "currentPrice": 57499,
+    "currentUrl": "https://www.shophive.com/infinix-hot-60i-6gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "2822b15b-0625-438c-b4cd-9cfd038908a6",
+    "slug": "google-google-pixel-watch-3-45mm",
+    "name": "Google Pixel Watch 3 45mm",
+    "brand": "Google",
+    "categorySlug": "smart-watches",
+    "variantId": "5098e339-2fbb-42a4-bfe9-fd951ce1baf0",
+    "variantName": "Default",
+    "sourceStore": "mega-pk",
+    "currentPrice": 129999,
+    "currentUrl": "https://www.mega.pk/watches_products/26388/Google-Pixel-Watch-3-45mm.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "0735bde6-9efc-4025-9b77-b238bdc20afa",
+    "slug": "hp-hp-15-fc0844au-ryzen-7-16gb-ram-512gb-ssd-dos",
+    "name": "HP 15 FC0844AU Ryzen 7 16GB RAM 512GB SSD DOS",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "fb66dc6f-7d45-4aac-8bd3-a01ae7e88c61",
+    "variantName": "16GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 229999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27115/HP-15-FC0844AU-Ryzen-7-16GB-RAM-512GB-SSD-DOS.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "07d7e9b0-9e2d-4032-a56f-6cbe16a23922",
+    "slug": "lenovo-lenovo-legion-5-15iax10-core-ultra-7-32gb-ram-512gb-ssd-8gb-rtx-5060-windows-11",
+    "name": "LENOVO Legion 5 15IAX10 Core Ultra 7 32GB RAM 512GB SSD 8GB RTX 5060 Windows 11",
+    "brand": "Lenovo",
+    "categorySlug": "unknown",
+    "variantId": "d9b87044-9089-4d6b-b1f7-d5b78d37e738",
+    "variantName": "32GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 564999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27129/LENOVO-Legion-5-15IAX10-Core-Ultra-7-32GB-RAM-512GB-SSD-8GB-RTX-5060-Windows-11.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "530254d3-6b3e-4d8e-8852-4b9dbf89b238",
+    "slug": "asus-asus-tuf-gaming-a16-fa607nuq-ryzen-7-16gb-ram-512gb-ssd-6gb-rtx-4050-windows-11",
+    "name": "ASUS TUF GAMING A16 FA607NUQ Ryzen 7 16GB RAM 512GB SSD 6GB RTX 4050 Windows 11",
+    "brand": "Asus",
+    "categorySlug": "unknown",
+    "variantId": "ab7d9696-44d7-42dd-8dac-4388d7521f2c",
+    "variantName": "16GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 319999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27131/ASUS-TUF-GAMING-A16-FA607NUQ-Ryzen-7-16GB-RAM-512GB-SSD-6GB-RTX-4050-Windows-11.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "2d1aaa59-4249-4beb-810d-0a3f6f043584",
+    "slug": "apple-apple-iphone-17-pro-max-1tb-storage-pta-approved",
+    "name": "Apple iPhone 17 Pro Max 1TB Storage PTA Approved",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "cc4197b1-9f9d-4da2-be93-3f0131cfb581",
+    "variantName": "1TB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 684999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/26829/Apple-iPhone-17-Pro-Max-1TB-Storage-PTA--Approved.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "0e693a28-9a40-444c-9f5c-0551aa794577",
+    "slug": "xiaomi-xiaomi-redmi-a5-4gb-ram-128gb-storage-pta-approved",
+    "name": "Xiaomi Redmi A5 4GB Ram 128GB Storage PTA Approved",
+    "brand": "Xiaomi",
+    "categorySlug": "unknown",
+    "variantId": "0822cfe1-4a5c-42fd-b955-3edef28845f4",
+    "variantName": "4GB / 128GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 38999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/26840/Xiaomi-Redmi-A5-4GB-Ram-128GB-Storage-PTA-Approved.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "e41c9f43-29b1-43dd-837a-ecc385027584",
+    "slug": "samsung-samsung-galaxy-z-fold-8-12gb-ram-512gb-storage-non-pta",
+    "name": "Samsung Galaxy Z Fold 8 12GB RAM 512GB Storage Non PTA",
+    "brand": "Samsung",
+    "categorySlug": "unknown",
+    "variantId": "1f12f19c-1760-418a-969a-4655872ea91d",
+    "variantName": "12GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 479999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/27076/Samsung-Galaxy-Z-Fold-8-12GB-RAM-512GB-Storage-Non-PTA.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  }
+]

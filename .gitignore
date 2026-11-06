@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment files - NEVER commit real credentials or private keys
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!*.env.example
+
+# Local scratch and test scripts
+scratch/
+scratch_*.ts
+priceoye_search.html
+scripts/screenshots/
+
+# Temporary backfill reports and audit snapshots
+scripts/backfill_report_*.json
+scripts/backfill_checkpoint_*.json
+scripts/audit_snapshot_*.json
+scripts/pilot_progress_*.json
+scripts/pilot_audit_*.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+logs/
+
+# TypeScript
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Misc
+.turbo/
+.cache/
+coverage/

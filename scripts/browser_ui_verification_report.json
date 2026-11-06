@@ -1,0 +1,139 @@
+{
+  "timestamp": "2026-10-30T13:23:53.573Z",
+  "allPassed": true,
+  "results": [
+    {
+      "name": "Audionic Spark Pro S-200",
+      "slug": "unknown-audionic-spark-pro-s-200-powerbank-20000-mah",
+      "phase": "Phase 1 (6P)",
+      "renderedTitle": "Audionic Spark Pro S-200 powerbank 20000 mAh",
+      "offersFound": [
+        {
+          "store": "telemart",
+          "expectedPrice": "4,499",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 3,
+      "success": false
+    },
+    {
+      "name": "Infinix XW3GT Smart Watch",
+      "slug": "unknown-infinix-xw3gt-smart-watch",
+      "phase": "Phase 1 (6P)",
+      "renderedTitle": "Infinix XW3GT Smart Watch",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "5,099",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 6,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Zero Ignite Smart Watch",
+      "slug": "unknown-zero-ignite-smart-watch",
+      "phase": "Phase 1 (6P)",
+      "renderedTitle": "Zero Ignite Smart Watch",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "5,999",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 6,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Zero Luna Smart Watch",
+      "slug": "unknown-zero-luna-smart-watch",
+      "phase": "Phase 1 (6P)",
+      "renderedTitle": "Zero Luna Smart Watch",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "5,999",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 6,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Zero Visionary Smartwatch",
+      "slug": "unknown-zero-visionary-smartwatch",
+      "phase": "Phase 1 (6P)",
+      "renderedTitle": "Zero Visionary Smartwatch",
+      "offersFound": [
+        {
+          "store": "shophive",
+          "expectedPrice": "13,999",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 6,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Google Pixel Watch 2",
+      "slug": "google-google-pixel-watch-2",
+      "phase": "Phase 5 (6Q)",
+      "renderedTitle": "GOOGLE PIXEL WATCH 2",
+      "offersFound": [
+        {
+          "store": "priceoye",
+          "expectedPrice": "70,449",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 4,
+      "imageErrorsCount": 0,
+      "success": true
+    },
+    {
+      "name": "Infinix Hot 60 Pro 8GB 128GB",
+      "slug": "infinix-infinix-hot-60-pro-8gb-128gb",
+      "phase": "Phase 5 (6Q)",
+      "renderedTitle": "Infinix Hot 60 Pro 8GB 128GB",
+      "offersFound": [
+        {
+          "store": "telemart",
+          "expectedPrice": "66,949",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        },
+        {
+          "store": "priceoye",
+          "expectedPrice": "66,999",
+          "hasStore": true,
+          "hasPrice": true,
+          "passed": true
+        }
+      ],
+      "outboundLinksCount": 6,
+      "imageErrorsCount": 0,
+      "success": true
+    }
+  ]
+}

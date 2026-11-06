@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "google-google-pixel-watch-2",
+    "name": "GOOGLE PIXEL WATCH 2",
+    "productId": "8e0b3685-cdf3-462d-ab91-4625b7e4bd84",
+    "variantId": "8c76abc0-69db-4a1a-b35a-82ea02883fa2",
+    "store": "priceoye",
+    "approvedPrice": 70449
+  },
+  {
+    "slug": "infinix-infinix-hot-60-pro-8gb-128gb",
+    "name": "Infinix Hot 60 Pro 8GB 128GB",
+    "productId": "acf7b09c-8608-417b-9ba4-fe3091b3eb27",
+    "variantId": "ac6a4568-1375-4971-819b-bfbac75d9057",
+    "stores": ["telemart", "priceoye"],
+    "approvedPrices": {
+      "telemart": 66949,
+      "priceoye": 66999
+    }
+  }
+]
+

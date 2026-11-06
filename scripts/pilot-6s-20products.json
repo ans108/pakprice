@@ -1,0 +1,347 @@
+[
+  {
+    "id": "02edf13a-5afc-4563-84af-90d148d74b69",
+    "slug": "tecno-tecno-spark-go-1",
+    "name": "Tecno Spark Go 1",
+    "brand": "Tecno",
+    "categorySlug": "unknown",
+    "variantId": "5f2ca307-7bc4-48a9-a1db-95d381679184",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 16999,
+    "currentUrl": "https://priceoye.pk/mobiles/tecno/tecno-spark-go-1",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "d271a5ce-297c-4a67-9fc9-ef095d73510d",
+    "slug": "honor-honor-x9b",
+    "name": "HONOR X9b",
+    "brand": "Honor",
+    "categorySlug": "unknown",
+    "variantId": "2703171c-52cc-49ae-8cd6-f988f9a6b6bf",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 88999,
+    "currentUrl": "https://priceoye.pk/mobiles/honor/honor-x9b",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "a9dc0228-e1ab-4fa4-a524-bbdfe5a76c1e",
+    "slug": "unknown-joyroom-mini-magnetic-wireless-power-bank-jr-w050-10000mah",
+    "name": "Joyroom Mini Magnetic Wireless Power Bank JR-W050 10000mAh",
+    "brand": "Joyroom",
+    "categorySlug": "computer-accessories",
+    "variantId": "bdbef898-87af-444b-ae19-84d6e3a72a1a",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 7799,
+    "currentUrl": "https://priceoye.pk/power-banks/joyroom/joyroom-mini-magnetic-wireless-power-bank-jr-w050-10000mah",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "6f26d813-40ec-46a7-ae22-fc25c31d08f7",
+    "slug": "unknown-dany-titan-t-100-power-bank-20000-mah",
+    "name": "Dany TITAN T-100 Power Bank 20000 mAh",
+    "brand": "Dany",
+    "categorySlug": "computer-accessories",
+    "variantId": "0c21cd21-4606-47b3-9adc-b72cb9c52c78",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 4899,
+    "currentUrl": "https://priceoye.pk/power-banks/dany/dany-titan-t-100-power-bank-20000-mah",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "16fbb16c-2522-49c7-8aa3-c143dc909314",
+    "slug": "unknown-joyroom-ultra-fast-charging-power-bank-jr-qp194-10000mah",
+    "name": "Joyroom Ultra-Fast Charging Power Bank JR-QP194 (10000mAh)",
+    "brand": "Joyroom",
+    "categorySlug": "computer-accessories",
+    "variantId": "a11909fe-2da5-4e1a-a135-a8d878f01f2f",
+    "variantName": "Default",
+    "sourceStore": "priceoye",
+    "currentPrice": 3899,
+    "currentUrl": "https://priceoye.pk/power-banks/joyroom/joyroom-ultra-fast-charging-power-bank-jr-qp194-10000mah",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "fa960569-c906-4db6-b774-88514ed122f6",
+    "slug": "lenovo-lenovo-loq-15irx10-intel-core-i7-13th-gen-16gb-d5-512gb-ssd-156-fhd-display-nvidia-geforce-rtx-5060-8gb-graphics-win11-home-luna-grey",
+    "name": "Lenovo LOQ 15IRX10 Intel Core i7 13th Gen 16GB D5 512GB SSD 15.6\" FHD Display NVIDIA GeForce RTX 5060 8GB Graphics Win11 Home Luna Grey",
+    "brand": "Lenovo",
+    "categorySlug": "unknown",
+    "variantId": "b4eea926-7815-4907-b7d0-9da61e495d8e",
+    "variantName": "512GB",
+    "sourceStore": "telemart",
+    "currentPrice": 369999,
+    "currentUrl": "https://www.telemart.pk/products/lenovo-loq-15irx10-intel-core-i7-13th-gen-16gb-d5-512gb-ssd-15-6-fhd-display-nvidia-geforce-rtx-5060-8gb-graphics-win11-home-luna-grey",
+    "targetStores": [
+      "priceoye",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "4ce16122-d363-4a8c-9efe-e4495c7db05c",
+    "slug": "hp-hp-omnibook-ultra-flip-14-fh0033dx-intel-core-ultra-9-288v-32gb-2tb-ssd-14-3k-uwva-oled-touchscreen-x360-display-fingerprint-reader-backlit-kb-win11-eclipse-gray",
+    "name": "HP OmniBook Ultra Flip 14-FH0033DX Intel Core Ultra 9 288v 32GB 2TB SSD 14\" 3K UWVA OLED Touchscreen x360 Display Fingerprint Reader Backlit KB Win11 Eclipse Gray",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "e424b1e3-8b8f-4c75-a61f-5605613fceab",
+    "variantName": "2TB",
+    "sourceStore": "telemart",
+    "currentPrice": 499999,
+    "currentUrl": "https://www.telemart.pk/products/hp-omnibook-ultra-flip-14-fh0033dx-intel-core-ultra-9-288v-32gb-2tb-ssd-14-3k-uwva-oled-touchscreen-x360-display-fingerprint-reader-backlit-kb-win11-eclipse-gray",
+    "targetStores": [
+      "priceoye",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "ecf5bac7-4cc5-460e-9520-6c76ca8a5144",
+    "slug": "hp-hp-15s-celeron-4gb-ram-500gb-hdd-windows-10-laptop",
+    "name": "HP 15s Celeron 4GB RAM 500GB HDD Windows 10 Laptop",
+    "brand": "HP",
+    "categorySlug": "laptops",
+    "variantId": "78323ed9-1dc5-4bd4-8b4b-6b778393bdb3",
+    "variantName": "4GB",
+    "sourceStore": "telemart",
+    "currentPrice": 79999,
+    "currentUrl": "https://www.telemart.pk/products/hp-15s-celeron-4gb-ram-500gb-hdd-windows-10-laptop",
+    "targetStores": [
+      "priceoye",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "5b0ee0f0-449f-4460-af82-d0927fe3ea1e",
+    "slug": "lenovo-lenovo-lp80-pro-gaming-earbuds",
+    "name": "Lenovo LP80 Pro Gaming Earbuds",
+    "brand": "Lenovo",
+    "categorySlug": "headphones-audio",
+    "variantId": "f34592ca-447e-420a-ba6c-cbe42221d5ba",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 3249,
+    "currentUrl": "https://www.telemart.pk/products/lenovo-lp80-pro-gaming-earbuds",
+    "targetStores": [
+      "priceoye",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "e679b01b-1299-411f-aaf3-65aeee6d748e",
+    "slug": "infinix-infinix-xe30-wireless-earbuds",
+    "name": "Infinix XE30 Wireless Earbuds",
+    "brand": "Infinix",
+    "categorySlug": "headphones-audio",
+    "variantId": "e157e211-4c6e-48bf-b353-039a42514fe6",
+    "variantName": "Default",
+    "sourceStore": "telemart",
+    "currentPrice": 3599,
+    "currentUrl": "https://www.telemart.pk/products/infinix-xe30-wireless-earbuds",
+    "targetStores": [
+      "priceoye",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "3a314df1-8ae0-4db3-8956-ce648a6ffcba",
+    "slug": "infinix-infinix-note-edge-5g-8gb-256gb",
+    "name": "Infinix Note Edge 5G 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "343c141b-bcef-4313-bd0b-17672c841008",
+    "variantName": "8GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 93999,
+    "currentUrl": "https://www.shophive.com/infinix-note-edge-5g-8gb-256gb/",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "mega"
+    ]
+  },
+  {
+    "id": "4988126f-2250-4c5b-8d1e-dae87823c596",
+    "slug": "infinix-infinix-note-60-ultra-12gb-256gb",
+    "name": "Infinix Note 60 Ultra 12GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "4f0f66b2-b4c6-4cd0-a74a-b4ffbcdc6342",
+    "variantName": "12GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 239999,
+    "currentUrl": "https://www.shophive.com/infinix-note-60-ultra-12gb-256gb/",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "mega"
+    ]
+  },
+  {
+    "id": "1af20d1e-51c8-4b95-bd7b-5792a9a69925",
+    "slug": "infinix-infinix-note-60-pro-8gb-256gb",
+    "name": "Infinix Note 60 Pro 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "b25d6a4f-1ceb-45ac-bf60-673eb71d3672",
+    "variantName": "8GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 125999,
+    "currentUrl": "https://www.shophive.com/infinix-note-60-pro-8gb-256gb/",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "mega"
+    ]
+  },
+  {
+    "id": "e783f15e-431e-4259-ae75-8e726b09d5e0",
+    "slug": "infinix-infinix-note-60-8gb-256gb",
+    "name": "Infinix Note 60 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "2d25dbff-3d29-40e0-a723-06c894281bb9",
+    "variantName": "8GB / 256GB",
+    "sourceStore": "shophive",
+    "currentPrice": 103999,
+    "currentUrl": "https://www.shophive.com/infinix-note-60-8gb-256gb/",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "mega"
+    ]
+  },
+  {
+    "id": "e98ef3bc-df25-4103-9202-e451b538cd97",
+    "slug": "infinix-infinix-hot-70-pro-5g-8gb-128gb",
+    "name": "Infinix Hot 70 Pro 5G 8GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "5dd3ab98-c842-461d-bbe8-330c808e575b",
+    "variantName": "8GB / 128GB",
+    "sourceStore": "shophive",
+    "currentPrice": 84499,
+    "currentUrl": "https://www.shophive.com/infinix-hot-70-pro-5g-8gb-128gb/",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "mega"
+    ]
+  },
+  {
+    "id": "2822b15b-0625-438c-b4cd-9cfd038908a6",
+    "slug": "google-google-pixel-watch-3-45mm",
+    "name": "Google Pixel Watch 3 45mm",
+    "brand": "Google",
+    "categorySlug": "smart-watches",
+    "variantId": "5098e339-2fbb-42a4-bfe9-fd951ce1baf0",
+    "variantName": "Default",
+    "sourceStore": "mega-pk",
+    "currentPrice": 129999,
+    "currentUrl": "https://www.mega.pk/watches_products/26388/Google-Pixel-Watch-3-45mm.html",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "0735bde6-9efc-4025-9b77-b238bdc20afa",
+    "slug": "hp-hp-15-fc0844au-ryzen-7-16gb-ram-512gb-ssd-dos",
+    "name": "HP 15 FC0844AU Ryzen 7 16GB RAM 512GB SSD DOS",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "fb66dc6f-7d45-4aac-8bd3-a01ae7e88c61",
+    "variantName": "16GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 229999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27115/HP-15-FC0844AU-Ryzen-7-16GB-RAM-512GB-SSD-DOS.html",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "70a04e1c-a4c4-41ab-a868-bdad6a4a013a",
+    "slug": "hp-hp-15-fd0127dx-core-7-16gb-ram-512gb-ssd-touch-windows-11",
+    "name": "HP 15 FD0127Dx Core 7 16GB RAM 512GB SSD Touch Windows 11",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "62e9e87a-7561-472f-9341-57d00c6968af",
+    "variantName": "16GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 234999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27116/HP-15-FD0127Dx-Core-7-16GB-RAM-512GB-SSD-Touch-Windows-11.html",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "e6292d0a-4419-4138-b96b-b6e245fa08d2",
+    "slug": "hp-hp-ai-15-fd2098tu-core-ultra-7-16gb-ram-512gb-ssd-dos",
+    "name": "HP AI 15 FD2098TU Core Ultra 7 16GB RAM 512GB SSD DOS",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "b44006a1-b665-41dc-b4d4-b3b9f9722430",
+    "variantName": "16GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 289999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27117/HP-AI-15-FD2098TU-Core-Ultra-7-16GB-RAM-512GB-SSD-DOS.html",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  },
+  {
+    "id": "bf2c0f5f-22a0-4f63-8de4-2e0820ddcf30",
+    "slug": "hp-hp-ai-15-fd2747nr-core-ultra-7-16gb-ram-512gb-ssd-touch-windows-11",
+    "name": "HP AI 15 FD2747nr Core Ultra 7 16GB RAM 512GB SSD Touch Windows 11",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "c32dc068-2fa9-44eb-8930-9af7aea1cd82",
+    "variantName": "16GB / 512GB",
+    "sourceStore": "mega-pk",
+    "currentPrice": 254999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27118/HP-AI-15-FD2747nr-Core-Ultra-7-16GB-RAM-512GB-SSD-Touch-Windows-11.html",
+    "targetStores": [
+      "priceoye",
+      "telemart",
+      "shophive",
+      "mega"
+    ]
+  }
+]

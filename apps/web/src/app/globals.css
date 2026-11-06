@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Google Fonts — Inter
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   CSS Custom Properties — Design Tokens
+   Compatible with shadcn/ui component conventions.
+   ============================================================ */
+@layer base {
+  :root {
+    /* Background & Surface */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Primary — Pakistan Green */
+    --primary: 142 71% 28%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary */
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    /* Muted */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    /* Accent */
+    --accent: 142 60% 96%;
+    --accent-foreground: 142 71% 20%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border & Input */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142 71% 28%;
+
+    /* Radius */
+    --radius: 0.625rem;
+
+    /* Hero gradient (light) */
+    --hero-gradient: linear-gradient(
+      135deg,
+      hsl(142 71% 96%) 0%,
+      hsl(142 60% 92%) 40%,
+      hsl(200 50% 95%) 100%
+    );
+
+    /* Green shades */
+    --green-50: hsl(142 76% 97%);
+    --green-100: hsl(141 84% 93%);
+    --green-500: hsl(142 71% 45%);
+    --green-600: hsl(142 71% 36%);
+    --green-700: hsl(142 71% 28%);
+    --green-800: hsl(142 71% 20%);
+  }
+
+  .dark {
+    /* Background & Surface */
+    --background: 222 47% 7%;
+    --foreground: 0 0% 97%;
+
+    /* Card */
+    --card: 222 47% 10%;
+    --card-foreground: 0 0% 97%;
+
+    /* Popover */
+    --popover: 222 47% 10%;
+    --popover-foreground: 0 0% 97%;
+
+    /* Primary — Lighter green for dark mode readability */
+    --primary: 142 64% 42%;
+    --primary-foreground: 240 5.9% 10%;
+
+    /* Secondary */
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 0 0% 97%;
+
+    /* Muted */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent */
+    --accent: 142 30% 15%;
+    --accent-foreground: 142 64% 65%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 97%;
+
+    /* Border & Input */
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 142 64% 42%;
+
+    /* Hero gradient (dark) */
+    --hero-gradient: linear-gradient(
+      135deg,
+      hsl(222 47% 9%) 0%,
+      hsl(142 30% 10%) 50%,
+      hsl(222 47% 7%) 100%
+    );
+  }
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+/* ============================================================
+   Utility Classes
+   ============================================================ */
+@layer utilities {
+  /* Green gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(142 71% 28%), hsl(142 64% 45%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .text-gradient {
+    background: linear-gradient(135deg, hsl(142 64% 55%), hsl(142 64% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass card effect */
+  .glass {
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  /* Section container */
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+}

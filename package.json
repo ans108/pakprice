@@ -1,0 +1,31 @@
+{
+  "name": "pakprice",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "build:web": "npm run build --workspace=apps/web",
+    "build:api": "npm run build --workspace=apps/api",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test:perf": "tsx scripts/performance-test.ts",
+    "test:pagination": "tsx scripts/verify-pagination.ts",
+    "test:observability": "tsx scripts/observability-test.ts",
+    "catalog:coverage": "tsx scripts/catalog-coverage-report.ts",
+    "recon:stores": "tsx scripts/recon-stores.ts",
+    "verify:ingestion": "tsx scripts/verify-store-ingestion.ts",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,css,md}\" --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

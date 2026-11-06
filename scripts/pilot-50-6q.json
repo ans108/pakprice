@@ -1,0 +1,802 @@
+[
+  {
+    "id": "5534773c-e547-48d9-9c20-4e8b6801abfa",
+    "slug": "itel-itel-a70-4gb-128gb",
+    "name": "Itel A70 4GB 128GB",
+    "brand": "Itel",
+    "categorySlug": "unknown",
+    "variantId": "4b46a237-8bca-4cae-96db-a1c9e8c0a9bf",
+    "sourceStore": "shophive",
+    "currentPrice": 21399,
+    "currentUrl": "https://www.shophive.com/itel-a70-4gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "ac6ec560-1e06-4a7e-9352-a338ade65a9e",
+    "slug": "unknown-kospet-tank-x1-smart-watch",
+    "name": "KOSPET TANK X1 Smart Watch",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "0e586c00-3ce2-4300-ae6e-01658ed5122f",
+    "sourceStore": "shophive",
+    "currentPrice": 17299,
+    "currentUrl": "https://www.shophive.com/kospet-tank-x1-smart-watch/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "ac05114b-f910-44f0-9e96-0835d03523df",
+    "slug": "unknown-dcode-cygnal-evo-4gb-128gb",
+    "name": "Dcode Cygnal Evo 4GB 128GB",
+    "brand": "Generic",
+    "categorySlug": "unknown",
+    "variantId": "51e43b45-9fd6-4d34-b31a-94a9bf813f0f",
+    "sourceStore": "shophive",
+    "currentPrice": 31499,
+    "currentUrl": "https://www.shophive.com/dcode-cygnal-evo-4gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "e40f92c1-7e6f-46cd-a2c6-a7ea73f12daf",
+    "slug": "unknown-kospet-tank-t2-special-edition-smart-watch-black-bundle-only",
+    "name": "Kospet Tank T2 Special Edition Smart Watch Black Bundle Only",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "92b387c7-5f79-4d8b-bc32-a1a711c948fc",
+    "sourceStore": "shophive",
+    "currentPrice": 21999,
+    "currentUrl": "https://www.shophive.com/kospet-tank-t2-special-edition-smart-watch-silver-bundle-only/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "4474e541-a7d1-459a-b660-2f886cd3b649",
+    "slug": "unknown-dcode-cygnal-x-4gb-64gb",
+    "name": "Dcode Cygnal X 4GB 64GB",
+    "brand": "Generic",
+    "categorySlug": "unknown",
+    "variantId": "5be1d414-0cfe-4766-8b58-a2a5ea729cf5",
+    "sourceStore": "shophive",
+    "currentPrice": 26999,
+    "currentUrl": "https://www.shophive.com/decode-cygnal-x-4-64gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "6598ee33-da1b-47b9-b72b-b236ec4a301b",
+    "slug": "unknown-kospet-tank-t2-smart-watch",
+    "name": "Kospet Tank T2 Smart Watch",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "b5bd8b7d-4e1d-45b0-863f-374d7419eca2",
+    "sourceStore": "shophive",
+    "currentPrice": 16999,
+    "currentUrl": "https://www.shophive.com/kospet-tank-t2-smart-watch/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "3a8dfd9c-d45d-4c5e-a2db-7280910dc7b7",
+    "slug": "unknown-decode-cygnal-prime-6gb-128gb",
+    "name": "Decode Cygnal Prime 6GB 128GB",
+    "brand": "Generic",
+    "categorySlug": "unknown",
+    "variantId": "d6d90397-105e-473b-a0e3-9cb1582db853",
+    "sourceStore": "shophive",
+    "currentPrice": 34999,
+    "currentUrl": "https://www.shophive.com/dcode-cygnal-prime-6gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "b1c51cb6-c86f-4ba1-993f-2fa3e19910de",
+    "slug": "unknown-redmi-watch-4",
+    "name": "Redmi Watch 4",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "05f88291-b8a2-4da5-a2bf-9a5e6ba742c6",
+    "sourceStore": "shophive",
+    "currentPrice": 21199,
+    "currentUrl": "https://www.shophive.com/redmi-watch-4/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "17d40157-bdeb-4a76-bbef-67996b1c31d9",
+    "slug": "infinix-infinix-gt-50-pro-12gb-256gb",
+    "name": "Infinix GT 50 Pro 12GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "f4ba0ff2-8a9f-4fcc-837e-510dfc21db38",
+    "sourceStore": "shophive",
+    "currentPrice": 171999,
+    "currentUrl": "https://www.shophive.com/infinix-gt-50-pro-12gb-256gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "6686b1ce-0b3b-49ea-914c-ede79014058a",
+    "slug": "unknown-kospet-tank-m3-ultra-smartwatch",
+    "name": "Kospet Tank M3 Ultra Smartwatch",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "da573c02-6b7b-4631-82e1-2c0ace709152",
+    "sourceStore": "shophive",
+    "currentPrice": 22299,
+    "currentUrl": "https://www.shophive.com/kospet-tank-m3-ultra-smartwatch/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "acf7b09c-8608-417b-9ba4-fe3091b3eb27",
+    "slug": "infinix-infinix-hot-60-pro-8gb-128gb",
+    "name": "Infinix Hot 60 Pro 8GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "ac6a4568-1375-4971-819b-bfbac75d9057",
+    "sourceStore": "shophive",
+    "currentPrice": 69999,
+    "currentUrl": "https://www.shophive.com/infinix-hot-60-pro-8gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "5e863891-65ec-4e7c-abc7-45cb3a640965",
+    "slug": "infinix-infinix-hot-60-pro-plus-8gb-256gb",
+    "name": "Infinix Hot 60 Pro Plus 8GB 256GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "15394ad4-eef7-4a9c-8698-c5d4d88da1e4",
+    "sourceStore": "shophive",
+    "currentPrice": 84999,
+    "currentUrl": "https://www.shophive.com/infinix-hot-60-pro-plus-8gb-256gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "c2f83267-6b60-4a90-b414-8196d5f3fefd",
+    "slug": "infinix-infinix-hot-60i-6gb-128gb",
+    "name": "Infinix Hot 60i 6GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "d987671e-ead0-4c39-8e80-fc13eb6f3412",
+    "sourceStore": "shophive",
+    "currentPrice": 57499,
+    "currentUrl": "https://www.shophive.com/infinix-hot-60i-6gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "72b49573-d8ce-4c53-bd66-6fd6541efcd0",
+    "slug": "infinix-infinix-hot-70-6gb-128gb",
+    "name": "Infinix Hot 70 6GB 128GB",
+    "brand": "Infinix",
+    "categorySlug": "unknown",
+    "variantId": "ecf65586-3dc7-4606-a138-14a6655b0490",
+    "sourceStore": "shophive",
+    "currentPrice": 63499,
+    "currentUrl": "https://www.shophive.com/infinix-hot-70-6gb-128gb/",
+    "targetStores": [
+      "telemart",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "f064eecf-24be-4bc8-b5c4-422f52e979e1",
+    "slug": "samsung-samsung-galaxy-a17-8gb-ram-256gb-storage-pta-approved-5g",
+    "name": "Samsung Galaxy A17 8GB RAM 256GB Storage PTA Approved 5G",
+    "brand": "Samsung",
+    "categorySlug": "mobiles",
+    "variantId": "26a6e7b3-0be2-4de6-afc0-d9fdd1679bda",
+    "sourceStore": "mega-pk",
+    "currentPrice": 98999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/27136/Samsung-Galaxy-A17-8GB-RAM-256GB-Storage-PTA-Approved-5G.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "2822b15b-0625-438c-b4cd-9cfd038908a6",
+    "slug": "google-google-pixel-watch-3-45mm",
+    "name": "Google Pixel Watch 3 45mm",
+    "brand": "Google",
+    "categorySlug": "smart-watches",
+    "variantId": "5098e339-2fbb-42a4-bfe9-fd951ce1baf0",
+    "sourceStore": "mega-pk",
+    "currentPrice": 129999,
+    "currentUrl": "https://www.mega.pk/watches_products/26388/Google-Pixel-Watch-3-45mm.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "4cd708a1-c6d7-4d38-9f0e-7a5650c074ff",
+    "slug": "apple-apple-macbook-air-13-mc6u4-m4-chip-10-core-cpu-10-core-gpu-16gb-ram-512gb-ssd-sky-blue",
+    "name": "Apple MacBook Air 13 MC6U4 M4 Chip 10 Core CPU 10 Core GPU 16GB Ram 512GB SSD Sky Blue",
+    "brand": "Apple",
+    "categorySlug": "laptops",
+    "variantId": "921adf65-0b99-4071-a538-36497e93ae09",
+    "sourceStore": "mega-pk",
+    "currentPrice": 439999,
+    "currentUrl": "https://www.mega.pk/laptop_products/26582/Apple-MacBook-Air-13-MC6U4-M4-Chip-10-Core-CPU-10-Core-GPU-16GB-Ram-512GB-SSD-Sky-Blue.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "7fae51d6-149b-41fb-97f1-04fe36c9b2e0",
+    "slug": "hp-hp-probook-460-g11-core-ultra-7-16gb-ram-512gb-ssd-dos",
+    "name": "HP PROBOOK 460 G11 Core Ultra 7 16GB RAM 512GB SSD DOS",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "60b9403b-244b-4887-93ad-8bca947321ac",
+    "sourceStore": "mega-pk",
+    "currentPrice": 304999,
+    "currentUrl": "https://www.mega.pk/laptop_products/27122/HP-PROBOOK-460-G11-Core-Ultra-7-16GB-RAM-512GB-SSD-DOS.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "298ea5af-c60e-4c49-ba8e-a5945d194238",
+    "slug": "unknown-apple-iphone-17-pro",
+    "name": "Apple Iphone 17 Pro",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "425d550b-dc71-4ecb-bab7-0f5d72c250ca",
+    "sourceStore": "mega-pk",
+    "currentPrice": 374999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/26781/Apple-iPhone-17-Pro.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "8e0b3685-cdf3-462d-ab91-4625b7e4bd84",
+    "slug": "google-google-pixel-watch-2",
+    "name": "GOOGLE PIXEL WATCH 2",
+    "brand": "Google",
+    "categorySlug": "smart-watches",
+    "variantId": "8c76abc0-69db-4a1a-b35a-82ea02883fa2",
+    "sourceStore": "mega-pk",
+    "currentPrice": 73999,
+    "currentUrl": "https://www.mega.pk/watches_products/25318/GOOGLE-PIXEL-WATCH-2.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "3e076b00-7da8-4ac8-916c-96c4df7d3cbd",
+    "slug": "unknown-apple-iphone-16",
+    "name": "Apple iPhone 16",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "2e769ec1-bf1e-4974-8308-699228dc4da9",
+    "sourceStore": "mega-pk",
+    "currentPrice": 224999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/25335/Apple-iPhone-16.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "7d3ab5a9-62df-4c93-a0c0-c157645e1f25",
+    "slug": "apple-apple-watch-series-10-46mm-jet-black-aluminum-case-sports-band",
+    "name": "Apple Watch Series 10 46mm Jet Black Aluminum Case Sports Band",
+    "brand": "Apple",
+    "categorySlug": "smart-watches",
+    "variantId": "a20bb56d-4bed-43a1-a55c-41b1a65d8baa",
+    "sourceStore": "mega-pk",
+    "currentPrice": 107999,
+    "currentUrl": "https://www.mega.pk/watches_products/25380/Apple-Watch-Series-10-46mm-Jet-Black-Aluminum-Case-Sports-Band.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "9e8d6527-ece7-4932-be7d-58c4073be7d4",
+    "slug": "apple-apple-iphone-16-plus",
+    "name": "Apple iPhone 16 Plus",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "a54326c4-ba81-4a52-858f-3fce2635e622",
+    "sourceStore": "mega-pk",
+    "currentPrice": 249999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/25336/Apple-iPhone-16-Plus.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "93b9e883-5893-4c58-9d47-6892faabd7ca",
+    "slug": "apple-apple-iphone-17-pro-max-256gb-storage-non-pta",
+    "name": "Apple iPhone 17 Pro Max 256GB Storage NON PTA",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "2900a14d-b4cb-4c69-9a3e-5f98f40414a1",
+    "sourceStore": "mega-pk",
+    "currentPrice": 411999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/26804/Apple-iPhone-17-Pro-Max-256GB-Storage-NON-PTA.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "8f953376-49aa-4da2-b7ca-88eb555de966",
+    "slug": "apple-apple-iphone-16-pro-max",
+    "name": "Apple iPhone 16 Pro Max",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "acbe4836-f1a8-495c-b6f5-35f85929331b",
+    "sourceStore": "mega-pk",
+    "currentPrice": 324999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/25334/Apple-iPhone-16-Pro-Max.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "d2a9cb20-f943-4fed-aada-9cebce275018",
+    "slug": "apple-apple-iphone-air-256gb-storage-pta-approved",
+    "name": "Apple iPhone Air 256GB Storage PTA Approved",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "d200b9a9-4859-425c-b55e-bafd5906dd82",
+    "sourceStore": "mega-pk",
+    "currentPrice": 424999,
+    "currentUrl": "https://www.mega.pk/mobiles_products/26825/Apple-iPhone-Air-256GB-Storage-PTA-Approved.html",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "priceoye"
+    ]
+  },
+  {
+    "id": "c76be29c-e4e7-495c-8413-ffe13c822cd3",
+    "slug": "unknown-120w-super-fast-charger-4-port-multi-port-wall-adapter",
+    "name": "120W Super Fast Charger (4-Port Multi-Port Wall Adapter)",
+    "brand": "Generic",
+    "categorySlug": "computer-accessories",
+    "variantId": "bcad5fe7-9e15-42f8-bdf5-75b674be4643",
+    "sourceStore": "telemart",
+    "currentPrice": 1200,
+    "currentUrl": "https://www.telemart.pk/products/120w-super-fast-charger-4-port-multi-port-wall-adapter",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "52b3891b-e3a8-4a26-816f-03e124d67bf4",
+    "slug": "unknown-sx-l01-4-in-1-magnetic-foldable-laptop-stand-mobile-phone-holder-aluminum-alloy-adjustable-phone-tablet-laptop-holder-portable-ergonomic-desk-stand-setup-for-travel-remote-work",
+    "name": "SX-L01 4-in-1 Magnetic Foldable Laptop Stand & Mobile Phone Holder | Aluminum Alloy Adjustable Phone Tablet Laptop Holder | Portable Ergonomic Desk Stand & Setup for Travel & Remote Work",
+    "brand": "Generic",
+    "categorySlug": "mobiles",
+    "variantId": "c692bb9a-f27d-49c7-a87f-993a1cb7cf22",
+    "sourceStore": "telemart",
+    "currentPrice": 2600,
+    "currentUrl": "https://www.telemart.pk/products/sx-l01-4-in-1-magnetic-foldable-laptop-stand-mobile-phone-holder-aluminum-alloy-adjustable-phone-tablet-laptop-holder-portable-ergonomic-desk-stand-setup-for-travel-remote-work",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "2ea3a6d2-4be9-4273-9df4-a6707818dc6d",
+    "slug": "unknown-adjustable-hand-gripper-5-60kg-with-bulit-in-counter",
+    "name": "Adjustable Hand Gripper 5-60KG with bulit in Counter",
+    "brand": "Generic",
+    "categorySlug": "tablets",
+    "variantId": "d9fed376-810a-45ce-aaab-17d39876583e",
+    "sourceStore": "telemart",
+    "currentPrice": 599,
+    "currentUrl": "https://www.telemart.pk/products/adjustable-hand-gripper-5-60kg-with-bulit-in-counter",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "11c02389-ba36-46f8-9782-5f6cd582a94b",
+    "slug": "unknown-xtrike-me-gw-610-gaming-mouse-wireless-and-wired-8000-dpi-rgb-7-button-optical-mouse-rechargeable-usb-c-gaming-mouse-black-for-pc-laptop",
+    "name": "Xtrike Me GW-610 Gaming Mouse Wireless and Wired 8000 DPI RGB 7 Button Optical Mouse Rechargeable USB C Gaming Mouse Black for PC Laptop",
+    "brand": "Generic",
+    "categorySlug": "laptops",
+    "variantId": "7fd592ca-7055-40a2-a146-6f4395ef1d20",
+    "sourceStore": "telemart",
+    "currentPrice": 4999,
+    "currentUrl": "https://www.telemart.pk/products/xtrike-me-gw-610-gaming-mouse-wireless-and-wired-8000-dpi-rgb-7-button-optical-mouse-rechargeable-usb-c-gaming-mouse-black-for-pc-laptop",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "86cae797-5d1c-4cb1-8bfc-f85d0a1475c3",
+    "slug": "unknown-nothing-phone-3a-dual-sim-with-official-warranty",
+    "name": "Nothing Phone 3A Dual Sim With Official Warranty",
+    "brand": "Generic",
+    "categorySlug": "unknown",
+    "variantId": "4aabeeb4-8f46-4046-99ba-df5f954661a0",
+    "sourceStore": "telemart",
+    "currentPrice": 154999,
+    "currentUrl": "https://www.telemart.pk/products/nothing-phone-3a-dual-sim-with-official-warranty",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "cc93b042-74a5-4e03-b819-927fe2313e02",
+    "slug": "unknown-x10-pro-max-smartwatch",
+    "name": "X10 Pro Max smartwatch",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "0b17a19f-0fc3-4da8-bfe2-e55a831919e7",
+    "sourceStore": "telemart",
+    "currentPrice": 1850,
+    "currentUrl": "https://www.telemart.pk/products/x10-pro-max-smartwatch",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "e732105d-50b7-4172-8b43-190125ec59fd",
+    "slug": "unknown-buds-pro-3-tws-wireless-earbuds",
+    "name": "Buds Pro 3 TWS Wireless Earbuds",
+    "brand": "Generic",
+    "categorySlug": "headphones-audio",
+    "variantId": "d7e87e8d-1507-4058-a004-1d21396ac74e",
+    "sourceStore": "telemart",
+    "currentPrice": 999,
+    "currentUrl": "https://www.telemart.pk/products/buds-pro-3-tws-wireless-earbuds",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "5cb29350-5a19-447e-8af7-d54ee830d331",
+    "slug": "unknown-awei-h45a-power-bank-10000mah",
+    "name": "AWEI H45A Power Bank | 10000mAh",
+    "brand": "Generic",
+    "categorySlug": "computer-accessories",
+    "variantId": "14be4b49-9341-4a41-8abb-5fa7c8c526a8",
+    "sourceStore": "telemart",
+    "currentPrice": 6590,
+    "currentUrl": "https://www.telemart.pk/products/awei-h45a-power-bank-10000mah",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "657a19f9-7c9b-45ea-9f9e-1ef8d26fe0ac",
+    "slug": "apple-apple-iphone-17-pro-pta-approved-with-official-warranty",
+    "name": "Apple iPhone 17 Pro PTA Approved With Official Warranty",
+    "brand": "Apple",
+    "categorySlug": "mobiles",
+    "variantId": "e7f51ae9-1305-498a-99de-de76364df40e",
+    "sourceStore": "telemart",
+    "currentPrice": 519999,
+    "currentUrl": "https://www.telemart.pk/products/apple-iphone-17-pro-pta-approved-with-official-warranty",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "b58951b9-7c42-4efb-9c54-cba7869078c0",
+    "slug": "apple-apple-ipad-air-7-11-256gb-m3-chip-wi-fi",
+    "name": "Apple iPad Air 7 11\" 256GB M3 Chip Wi-Fi",
+    "brand": "Apple",
+    "categorySlug": "tablets",
+    "variantId": "c94f0343-a20d-41a6-99c8-90e4f4e17e24",
+    "sourceStore": "telemart",
+    "currentPrice": 214999,
+    "currentUrl": "https://www.telemart.pk/products/apple-ipad-air-7-11-256gb-m3-chip-wi-fi",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "49e537a3-bd86-4f5f-88b6-da720ab1527b",
+    "slug": "lenovo-lenovo-thinkpad-x1-carbon-intel-core-i7-1255u-16gb-ram-512gb-ssd-14-wuxga-windows-11-laptop",
+    "name": "Lenovo ThinkPad X1 Carbon Intel Core i7-1255U 16GB RAM 512GB SSD 14\" WUXGA Windows 11 Laptop",
+    "brand": "Lenovo",
+    "categorySlug": "laptops",
+    "variantId": "ece7c3ac-5565-4d9a-a253-92014ce19229",
+    "sourceStore": "telemart",
+    "currentPrice": 574999,
+    "currentUrl": "https://www.telemart.pk/products/lenovo-thinkpad-x1-carbon-intel-core-i7-1255u-16gb-ram-512gb-ssd-14-wuxga-windows-11-laptop",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "0781a992-be5f-4f70-b6b3-03b0336b60b4",
+    "slug": "unknown-nothing-phone-2a-dual-sim-with-official-warranty",
+    "name": "Nothing Phone 2a Dual Sim With Official Warranty",
+    "brand": "Generic",
+    "categorySlug": "unknown",
+    "variantId": "c70c0f36-fd41-420f-b62b-941c2ee756ca",
+    "sourceStore": "telemart",
+    "currentPrice": 115499,
+    "currentUrl": "https://www.telemart.pk/products/nothing-phone-2a-dual-sim-with-official-warranty",
+    "targetStores": [
+      "shophive",
+      "priceoye",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "484db927-f70a-4be1-bd77-b12a192ab915",
+    "slug": "unknown-honor-x8d",
+    "name": "Honor X8d",
+    "brand": "Honor",
+    "categorySlug": "mobiles",
+    "variantId": "0ddd6183-ab15-4263-8888-5db3bd7b436d",
+    "sourceStore": "priceoye",
+    "currentPrice": 74999,
+    "currentUrl": "https://priceoye.pk/mobiles/honor/honor-x8d",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "94eb782f-7f2e-47b8-8c60-fccc3ddd5b75",
+    "slug": "unknown-apple-macbook-air-mrxw3-m3-chip",
+    "name": "Apple MacBook Air MRXW3 M3 Chip",
+    "brand": "Apple",
+    "categorySlug": "laptops",
+    "variantId": "1a93da93-6c5a-4619-bc12-b34702d4d577",
+    "sourceStore": "priceoye",
+    "currentPrice": 352499,
+    "currentUrl": "https://priceoye.pk/laptops/apple/apple-macbook-mrxw3-m3-chip",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "c372a49b-b017-40aa-a956-df73286159ac",
+    "slug": "unknown-tablet-fire-7-for-kids",
+    "name": "Tablet Fire 7 For Kids",
+    "brand": "Generic",
+    "categorySlug": "tablets",
+    "variantId": "10c7f2aa-73cb-44b7-aaff-6c70eb5b372b",
+    "sourceStore": "priceoye",
+    "currentPrice": 32999,
+    "currentUrl": "https://priceoye.pk/tablets/assorted/tablet-fire-7-for-kids",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "823ee628-0c75-4680-a5e8-dd94e1a064b3",
+    "slug": "unknown-hp-probook-460-g11-intel-core-ultra-5-125u-8gb-512gb",
+    "name": "HP ProBook 460 G11 Intel Core Ultra 5 125U (8GB-512GB)",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "4897177f-da80-475f-a69b-4ab90008074c",
+    "sourceStore": "priceoye",
+    "currentPrice": 238999,
+    "currentUrl": "https://priceoye.pk/laptops/hp/hp-probook-460-g11-intel-core-ultra-5-125u-8gb-512gb",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "2ee6ada1-dc99-47c6-8266-702f5cc782ee",
+    "slug": "unknown-joyroom-ultra-fast-charging-power-bank-jr-qp193-30000mah",
+    "name": "Joyroom Ultra-Fast Charging Power Bank JR-QP193 (30000mAh)",
+    "brand": "Joyroom",
+    "categorySlug": "computer-accessories",
+    "variantId": "be689cb2-c0b1-400c-87be-1d3f8fc70978",
+    "sourceStore": "priceoye",
+    "currentPrice": 7149,
+    "currentUrl": "https://priceoye.pk/power-banks/joyroom/joyroom-ultra-fast-charging-power-bank-jr-qp193-30000mah",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "a487ad99-d09a-4ce9-8bbf-6ab993c91405",
+    "slug": "unknown-login-l-115-glory-smart-watch",
+    "name": "Login L-115 Glory Smart Watch",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "c5baed25-5f0e-41e5-aa61-7367b36ec1f3",
+    "sourceStore": "priceoye",
+    "currentPrice": 15299,
+    "currentUrl": "https://priceoye.pk/smart-watches/login/login-l-115-glory-smart-watch",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "cca5b847-fbf8-4f79-837c-a16ac30400b8",
+    "slug": "unknown-me-mobile-power-bold",
+    "name": "me Mobile Power Bold",
+    "brand": "Generic",
+    "categorySlug": "mobiles",
+    "variantId": "b31929a5-bc72-4ea3-b119-e0aebe5b8fc2",
+    "sourceStore": "priceoye",
+    "currentPrice": 2299,
+    "currentUrl": "https://priceoye.pk/mobiles/me-mobile/me-mobile-power-bold",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "a7748cb9-47e8-41fd-9492-69d827d79d2f",
+    "slug": "unknown-hp-probook-460-g11-notebook-pc-intel-core-ultra-7-processor-155u-8gb-512gb",
+    "name": "HP ProBook 460 G11 Notebook PC Intel Core Ultra 7 Processor 155U (8GB-512GB)",
+    "brand": "HP",
+    "categorySlug": "laptops",
+    "variantId": "b750f498-8ab0-4e8d-8d4a-508ffd072a49",
+    "sourceStore": "priceoye",
+    "currentPrice": 289999,
+    "currentUrl": "https://priceoye.pk/laptops/hp/hp-probook-460-g11-notebook-pc-intel-core-ultra-7-processor-155u-8gb-512gb",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "6cf4a1c9-d489-4a93-b9b2-4d7efbac929b",
+    "slug": "unknown-revvl-tab-wifi-6gb-ram-128gb",
+    "name": "REVVL TAB Wifi (6GB RAM - 128GB)",
+    "brand": "REVVL",
+    "categorySlug": "tablets",
+    "variantId": "de8fc83d-4c5b-4952-816b-af0bec0ac6fd",
+    "sourceStore": "priceoye",
+    "currentPrice": 37499,
+    "currentUrl": "https://priceoye.pk/tablets/assorted/revvl-tab-wifi-6gb-ram-128gb",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "2d83fc6b-86c1-4730-bf80-47a7ddbba998",
+    "slug": "unknown-hp-probook-450-g9-156-inches-12th-gen-core-i5-dos-8gb-512gb",
+    "name": "HP ProBook 450 G9 15.6 Inches 12th Gen Core i5 DOS (8GB - 512GB)",
+    "brand": "HP",
+    "categorySlug": "unknown",
+    "variantId": "bdf46180-d038-4dee-b03c-b9370a0ea4c9",
+    "sourceStore": "priceoye",
+    "currentPrice": 199999,
+    "currentUrl": "https://priceoye.pk/laptops/hp/hp-probook-450-g9-15-6-inches-12th-gen-core-i5-dos-8gb-512gb",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "1f29d7ab-4429-4f1d-b7c6-9b65e7e8b598",
+    "slug": "unknown-bluks-bx-207-10000mah-fast-charging-power-bank",
+    "name": "Bluks BX-207 10000mAh Fast Charging Power Bank",
+    "brand": "Generic",
+    "categorySlug": "computer-accessories",
+    "variantId": "9acb40d6-27b7-4aca-8860-d2a1bcc726ab",
+    "sourceStore": "priceoye",
+    "currentPrice": 3149,
+    "currentUrl": "https://priceoye.pk/power-banks/bluks/bluks-bx-207-10000mah-fast-charging-power-bank",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  },
+  {
+    "id": "b53b422e-5a92-4a77-a84d-ff8dcce6aeb6",
+    "slug": "unknown-login-l-107-prism-smart-watch",
+    "name": "Login L-107 Prism Smart Watch",
+    "brand": "Generic",
+    "categorySlug": "smart-watches",
+    "variantId": "ae91ba93-8310-42d6-a13e-6ba71c63f38b",
+    "sourceStore": "priceoye",
+    "currentPrice": 9199,
+    "currentUrl": "https://priceoye.pk/smart-watches/login/login-l-107-prism-smart-watch",
+    "targetStores": [
+      "telemart",
+      "shophive",
+      "mega-pk"
+    ]
+  }
+]
