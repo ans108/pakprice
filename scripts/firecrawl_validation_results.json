@@ -24,18 +24,21 @@
         "image_url": "https://images.priceoye.pk/infinix-true-wireless-bluetooth-earbuds-xe30-pakistan-priceoye-xwtug-500x500.webp",
         "description": "Infinix True Wireless Bluetooth Earbuds (XE30)",
         "discovery_method": "firecrawl_search",
-        "extraction_timestamp": "2026-10-30T16:24:44.088Z"
+        "extraction_timestamp": "2026-11-06T12:51:12.887Z"
       }
     },
     "valResult": {
-      "valid": false,
-      "status": "rejected",
+      "valid": true,
+      "status": "approved",
       "canonicalProductId": "e679b01b-1299-411f-aaf3-65aeee6d748e",
+      "matchedVariantId": "e157e211-4c6e-48bf-b353-039a42514fe6",
+      "matchedVariantName": "Default",
+      "strategy": "fuzzy",
+      "confidence": 1,
       "candidateUrl": "https://priceoye.pk/wireless-earbuds/infinix/infinix-true-wireless-bluetooth-earbuds-xe30",
       "candidateTitle": "Infinix True Wireless Bluetooth Earbuds (XE30)",
       "extractedPrice": 3149,
-      "reason": "No matching product/variant found",
-      "confidence": 0
+      "reason": "Fuzzy match (confidence: 1.000, no family conflict)"
     }
   },
   {
@@ -63,18 +66,21 @@
         "image_url": "https://images.priceoye.pk/lenovo-lp80-pro-wireless-earbuds-pakistan-priceoye-ijktm-500x500.webp",
         "description": "Lenovo LP80 Pro Wireless Earbuds",
         "discovery_method": "firecrawl_search",
-        "extraction_timestamp": "2026-10-30T16:24:44.114Z"
+        "extraction_timestamp": "2026-11-06T12:51:12.894Z"
       }
     },
     "valResult": {
-      "valid": false,
-      "status": "rejected",
+      "valid": true,
+      "status": "approved",
       "canonicalProductId": "5b0ee0f0-449f-4460-af82-d0927fe3ea1e",
+      "matchedVariantId": "f34592ca-447e-420a-ba6c-cbe42221d5ba",
+      "matchedVariantName": "Default",
+      "strategy": "fuzzy",
+      "confidence": 1,
       "candidateUrl": "https://priceoye.pk/wireless-earbuds/lenovo/lenovo-lp80-pro-wireless-earbuds",
       "candidateTitle": "Lenovo LP80 Pro Wireless Earbuds",
       "extractedPrice": 3249,
-      "reason": "No matching product/variant found",
-      "confidence": 0
+      "reason": "Fuzzy match (confidence: 1.000, no family conflict)"
     }
   },
   {
@@ -102,18 +108,21 @@
         "image_url": "https://www.telex.pk/cdn/shop/files/audionic-the-sound-master-default-title-dany-titan-t-100-black-20000-mah-power-bank-35403744018588_copy_684x752.webp?v=1785056927",
         "description": null,
         "discovery_method": "firecrawl_search",
-        "extraction_timestamp": "2026-10-30T16:24:44.114Z"
+        "extraction_timestamp": "2026-11-06T12:51:12.894Z"
       }
     },
     "valResult": {
-      "valid": false,
-      "status": "rejected",
+      "valid": true,
+      "status": "approved",
       "canonicalProductId": "6f26d813-40ec-46a7-ae22-fc25c31d08f7",
+      "matchedVariantId": "0c21cd21-4606-47b3-9adc-b72cb9c52c78",
+      "matchedVariantName": "Default",
+      "strategy": "exact_specs",
+      "confidence": 0.9,
       "candidateUrl": "https://www.telemart.pk/products/dany-titan-t-100-20000mah-pd-22-5w-fast-charging-power-bank",
       "candidateTitle": "Dany Titan T-100 20000mAh PD 22.5W Fast Charging Power Bank",
       "extractedPrice": 4899,
-      "reason": "No matching product/variant found",
-      "confidence": 0
+      "reason": "Exact product name match + compatible variant specs"
     }
   }
 ]

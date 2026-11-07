@@ -5,7 +5,8 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import path from 'path';
 import { ProductMatcher } from '../apps/scraper/src/services/ProductMatcher';
-import { ScrapedProduct } from '../packages/shared/src/types';
+import { parseRam, parseStorage, extractModelNumber } from '@pakprice/shared';
+import { ScrapedProductSchemaType } from '../apps/scraper/src/types/scraperTypes';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 dotenv.config({ path: path.resolve(process.cwd(), 'apps/api/.env') });
@@ -133,20 +134,37 @@ export class FirecrawlValidator {
       };
     }
 
-    // 3. Map to ScrapedProduct for ProductMatcher
-    const scraped: ScrapedProduct = {
+    // 3. Normalize color & Map to ScrapedProductSchemaType for ProductMatcher
+    let normalizedColor: string | null = candidate.color ? candidate.color.trim() : null;
+    if (normalizedColor) {
+      if (/[,/]|\band\b/i.test(normalizedColor)) {
+        normalizedColor = null;
+      }
+    }
+    const variants = targetCanonicalProduct.product_variants || [];
+    if (variants.length <= 1) {
+      const v = variants[0];
+      if (!v || v.color === null || v.color === 'Default' || !v.color) {
+        normalizedColor = null;
+      }
+    }
+
+    const scraped: ScrapedProductSchemaType = {
+      storeSlug: candidate.store_slug,
+      sourceUrl: candidate.source_product_url,
+      sourceIdentifier: candidate.sku || candidate.source_product_url,
+      sourceIdentifierType: candidate.sku ? 'sku' : 'url_slug',
       name: candidate.source_product_title,
+      brand: candidate.brand || null,
+      modelNumber: candidate.model_number || candidate.model || extractModelNumber(candidate.source_product_title) || null,
+      sku: candidate.sku || null,
+      ramGb: parseRam(candidate.ram),
+      storageGb: parseStorage(candidate.storage),
+      color: normalizedColor,
       price: candidate.price,
-      originalPrice: candidate.original_price || undefined,
-      url: candidate.source_product_url,
-      imageUrl: candidate.image_url || undefined,
+      originalPrice: candidate.original_price || null,
       inStock: candidate.stock_status === 'in_stock',
-      brand: candidate.brand || undefined,
-      model: candidate.model || undefined,
-      ram: candidate.ram || undefined,
-      storage: candidate.storage || undefined,
-      color: candidate.color || undefined,
-      sku: candidate.sku || undefined,
+      imageUrl: candidate.image_url || null,
     };
 
     // 4. ProductMatcher evaluation

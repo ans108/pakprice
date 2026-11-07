@@ -4,17 +4,22 @@ import { ScrapedProductSchema, ScrapedProductSchemaType } from '../../types/scra
 import { scraperConfig } from '../../config/scraperConfig';
 import { StoreAccessBlockedError } from '../../utils/scraperUtils';
 
-export const logger = pino({
-  level: process.env.LOG_LEVEL || 'info',
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      colorize: true,
-      ignore: 'pid,hostname',
-      translateTime: 'SYS:standard',
-    },
+export const logger = pino(
+  {
+    level: process.env.LOG_LEVEL || (process.env.NODE_ENV === 'production' ? 'info' : 'debug'),
+    base: { service: 'pakprice-scraper' },
   },
-});
+  process.env.NODE_ENV === 'production'
+    ? undefined
+    : pino.transport({
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          ignore: 'pid,hostname',
+          translateTime: 'SYS:standard',
+        },
+      })
+);
 
 export abstract class BaseScraper {
   protected storeSlug: string;

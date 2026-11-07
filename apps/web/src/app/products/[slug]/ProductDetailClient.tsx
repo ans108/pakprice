@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Clock, Tag, Cpu, HardDrive, Palette, Hash, Barcode, Bell, Store } from 'lucide-react';
+import { Clock, Tag, Cpu, HardDrive, Palette, Hash, Barcode, Bell, Store, Monitor, Battery, Zap, Wifi, Layers } from 'lucide-react';
 import type { ProductVariantWithPrices, ProductWithRelations, StoreOffer } from '@/types';
 import ProductImage from '@/components/products/ProductImage';
 import VariantSelector from '@/components/products/VariantSelector';
@@ -56,20 +56,167 @@ export default function ProductDetailClient({ product, variants }: ProductDetail
     ? Math.min(...staleInStockPrices.map((p: any) => p.price))
     : null;
 
+  // Extract all distinct valid image URLs across product and variants
+  const galleryImages = React.useMemo(() => {
+    const urls = new Set<string>();
+    const isValid = (u?: string | null) => {
+      if (!u) return false;
+      const t = u.trim();
+      return t.startsWith('https://') && t.length > 12;
+    };
+    if (isValid(product.image_url)) urls.add(product.image_url!.trim());
+    for (const v of variants) {
+      if (isValid(v.image_url)) urls.add(v.image_url!.trim());
+    }
+    return Array.from(urls);
+  }, [product.image_url, variants]);
+
+  const [activeImageUrl, setActiveImageUrl] = useState<string | null>(null);
+
+  // When selected variant changes, reset active image if variant has its own image
+  React.useEffect(() => {
+    if (selected?.image_url) {
+      setActiveImageUrl(selected.image_url);
+    } else {
+      setActiveImageUrl(null);
+    }
+  }, [selectedId, selected?.image_url]);
+
+  const currentDisplayUrl = activeImageUrl || selected?.image_url || product.image_url;
+
+  // Rich category-aware specifications
+  const richSpecs = React.useMemo(() => {
+    const text = `${product.name} ${product.description || ''} ${selected?.name || ''}`;
+    const items: Array<{ icon: React.ReactNode; label: string; value: string }> = [];
+
+    if (product.brand?.name) {
+      items.push({ icon: <Tag className="w-3.5 h-3.5" />, label: 'Brand', value: product.brand.name });
+    }
+    if (product.category?.name) {
+      items.push({ icon: <Tag className="w-3.5 h-3.5" />, label: 'Category', value: product.category.name });
+    }
+    if (selected?.model_number) {
+      items.push({ icon: <Hash className="w-3.5 h-3.5" />, label: 'Model', value: selected.model_number });
+    }
+    if (selected?.sku) {
+      items.push({ icon: <Barcode className="w-3.5 h-3.5" />, label: 'SKU', value: selected.sku });
+    }
+
+    // RAM / Memory
+    if (selected?.ram_gb !== null && selected?.ram_gb !== undefined) {
+      items.push({ icon: <Cpu className="w-3.5 h-3.5" />, label: 'RAM', value: `${selected.ram_gb} GB` });
+    } else {
+      const ramM = text.match(/\b(\d{1,2})\s*GB\s*(?:RAM|D5|DDR\d)?\b/i);
+      if (ramM) {
+        items.push({ icon: <Cpu className="w-3.5 h-3.5" />, label: 'RAM', value: `${ramM[1]} GB` });
+      }
+    }
+
+    // Storage / SSD
+    if (selected?.storage_gb !== null && selected?.storage_gb !== undefined) {
+      const val = selected.storage_gb >= 1024 ? `${selected.storage_gb / 1024} TB` : `${selected.storage_gb} GB`;
+      items.push({ icon: <HardDrive className="w-3.5 h-3.5" />, label: 'Storage', value: val });
+    } else {
+      const ssdM = text.match(/\b(\d{1,4})\s*(GB|TB)\s*(?:SSD|Storage|ROM|eMMC|HDD)?\b/i);
+      if (ssdM) {
+        items.push({ icon: <HardDrive className="w-3.5 h-3.5" />, label: 'Storage', value: `${ssdM[1]} ${ssdM[2].toUpperCase()}` });
+      }
+    }
+
+    // Display / Size
+    const mmM = text.match(/\b(\d{2})\s*mm\b/i);
+    const inchM = text.match(/\b(\d{1,2}(?:\.\d{1,2})?)\s*(?:["”]|inch(?:es)?)\s*(AMOLED|OLED|Super AMOLED|Retina|IPS|WQXGA|WUXGA|FHD|HD\+?|2\.5K|3K|Display)?\b/i);
+    if (mmM) {
+      items.push({ icon: <Monitor className="w-3.5 h-3.5" />, label: 'Case / Size', value: `${mmM[1]} mm` });
+    } else if (inchM) {
+      items.push({ icon: <Monitor className="w-3.5 h-3.5" />, label: 'Display', value: `${inchM[1]}" ${inchM[2] || ''}`.trim() });
+    }
+
+    // Battery Capacity
+    const batM = text.match(/\b(\d{3,5})\s*mAh\b/i);
+    if (batM) {
+      items.push({ icon: <Battery className="w-3.5 h-3.5" />, label: 'Battery', value: `${batM[1]} mAh` });
+    }
+
+    // Power / Fast Charging
+    const wattM = text.match(/\b(\d{2,3}(?:\.\d)?)\s*W\b/i);
+    if (wattM) {
+      items.push({ icon: <Zap className="w-3.5 h-3.5" />, label: 'Charging', value: `${wattM[1]}W Fast Charging` });
+    }
+
+    // Processor / Chip
+    const procM = text.match(/\b(Apple\s+M\d\s+Chip|M\d\s+Chip|A\d+\s+Bionic|A\d+\s+Chip|Intel\s+Core\s+(?:i\d|Ultra\s+\d)[\w\s-]*|Ryzen\s+[3579][\w\s-]*|Snapdragon\s+[\w\s]+)\b/i);
+    if (procM) {
+      items.push({ icon: <Layers className="w-3.5 h-3.5" />, label: 'Processor', value: procM[1].trim() });
+    }
+
+    // Color
+    if (selected?.color) {
+      items.push({ icon: <Palette className="w-3.5 h-3.5" />, label: 'Color', value: selected.color });
+    }
+
+    // Connectivity
+    const conn: string[] = [];
+    if (/\b5G\b/i.test(text)) conn.push('5G');
+    else if (/\b4G(?:\s*LTE)?\b/i.test(text)) conn.push('4G LTE');
+    if (/\b(?:Bluetooth|BT)\s*(\d(?:\.\d)?)?\b/i.test(text)) {
+      const btVer = text.match(/\b(?:Bluetooth|BT)\s*(\d(?:\.\d)?)\b/i);
+      conn.push(btVer ? `Bluetooth ${btVer[1]}` : 'Bluetooth');
+    }
+    if (/\b(TWS|True\s*Wireless)\b/i.test(text)) conn.push('True Wireless (TWS)');
+    if (/\b(ANC|Active\s*Noise\s*Cancellation)\b/i.test(text)) conn.push('ANC');
+    if (/\bWi-?Fi\b/i.test(text)) conn.push('Wi-Fi');
+    if (/\bGPS\b/i.test(text)) conn.push('GPS');
+    if (conn.length > 0) {
+      items.push({ icon: <Wifi className="w-3.5 h-3.5" />, label: 'Connectivity', value: Array.from(new Set(conn)).join(', ') });
+    }
+
+    return items;
+  }, [product, selected]);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
       {/* ── Image column ──────────────────────────────────── */}
       <div className="flex flex-col gap-4">
         <div className="relative w-full aspect-square rounded-2xl border border-border overflow-hidden bg-muted/40">
           <ProductImage
-            product={product}
-            variant={selected}
+            product={{ ...product, image_url: currentDisplayUrl }}
+            variant={selected ? { ...selected, image_url: currentDisplayUrl } : null}
             fill
             priority
             className="rounded-2xl"
           />
         </div>
-        {/* Variant thumbnails (future enhancement placeholder) */}
+        {/* Interactive Thumbnail Gallery Strip */}
+        {galleryImages.length > 0 && (
+          <div className="flex items-center gap-2.5 overflow-x-auto py-1 px-0.5 scrollbar-thin">
+            {galleryImages.map((imgUrl, idx) => {
+              const isSelected = currentDisplayUrl === imgUrl;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setActiveImageUrl(imgUrl)}
+                  className={cn(
+                    "relative w-16 h-16 rounded-xl border bg-card overflow-hidden shrink-0 transition-all p-1 flex items-center justify-center cursor-pointer",
+                    isSelected
+                      ? "border-primary ring-2 ring-primary/30 scale-105 shadow-sm"
+                      : "border-border hover:border-primary/50 opacity-70 hover:opacity-100"
+                  )}
+                  title={`View image ${idx + 1}`}
+                  aria-label={`Thumbnail image ${idx + 1}`}
+                >
+                  <img
+                    src={imgUrl}
+                    alt={`${product.name} thumbnail ${idx + 1}`}
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                  />
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* ── Info column ───────────────────────────────────── */}
@@ -95,6 +242,7 @@ export default function ProductDetailClient({ product, variants }: ProductDetail
             {product.name}
           </h1>
           <div className="flex items-center gap-2 shrink-0">
+            <CompareButton product={product} variant="labeled" className="h-9 rounded-xl border border-border" />
             <Button
               variant="outline"
               size="sm"
@@ -201,31 +349,47 @@ export default function ProductDetailClient({ product, variants }: ProductDetail
 
         {/* ── Selected variant specs ────────────────────── */}
         {selected && (
-          <div className="rounded-xl border border-border bg-card p-4">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-              Specifications
-            </h2>
-            <dl className="space-y-2">
-              {selected.ram_gb !== null && (
-                <SpecRow icon={<Cpu className="w-3.5 h-3.5" />} label="RAM" value={`${selected.ram_gb}GB`} />
+          <div className="rounded-xl border border-border bg-card p-5 shadow-xs">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-primary" />
+                Product Specifications
+              </h2>
+              {product.category && (
+                <span className="text-xs text-muted-foreground font-medium">
+                  {product.category.name}
+                </span>
               )}
-              {selected.storage_gb !== null && (
-                <SpecRow
-                  icon={<HardDrive className="w-3.5 h-3.5" />}
-                  label="Storage"
-                  value={selected.storage_gb >= 1024 ? `${selected.storage_gb / 1024}TB` : `${selected.storage_gb}GB`}
-                />
-              )}
-              {selected.color && (
-                <SpecRow icon={<Palette className="w-3.5 h-3.5" />} label="Color" value={selected.color} />
-              )}
-              {selected.model_number && (
-                <SpecRow icon={<Hash className="w-3.5 h-3.5" />} label="Model" value={selected.model_number} />
-              )}
-              {selected.sku && (
-                <SpecRow icon={<Barcode className="w-3.5 h-3.5" />} label="SKU" value={selected.sku} />
-              )}
-            </dl>
+            </div>
+            {richSpecs.length > 0 ? (
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                {richSpecs.map((spec, i) => (
+                  <SpecRow key={i} icon={spec.icon} label={spec.label} value={spec.value} />
+                ))}
+              </dl>
+            ) : (
+              <dl className="space-y-2">
+                {selected.ram_gb !== null && (
+                  <SpecRow icon={<Cpu className="w-3.5 h-3.5" />} label="RAM" value={`${selected.ram_gb}GB`} />
+                )}
+                {selected.storage_gb !== null && (
+                  <SpecRow
+                    icon={<HardDrive className="w-3.5 h-3.5" />}
+                    label="Storage"
+                    value={selected.storage_gb >= 1024 ? `${selected.storage_gb / 1024}TB` : `${selected.storage_gb}GB`}
+                  />
+                )}
+                {selected.color && (
+                  <SpecRow icon={<Palette className="w-3.5 h-3.5" />} label="Color" value={selected.color} />
+                )}
+                {selected.model_number && (
+                  <SpecRow icon={<Hash className="w-3.5 h-3.5" />} label="Model" value={selected.model_number} />
+                )}
+                {selected.sku && (
+                  <SpecRow icon={<Barcode className="w-3.5 h-3.5" />} label="SKU" value={selected.sku} />
+                )}
+              </dl>
+            )}
           </div>
         )}
 

@@ -12,10 +12,21 @@ import {
   ArrowRight,
   CheckCircle2,
   Store,
+  Watch,
+  Smartphone,
+  Headphones,
+  Laptop,
+  Tablet,
+  BatteryCharging,
+  Tv,
+  Sparkles,
 } from 'lucide-react';
 import SearchBox from '@/components/common/SearchBox';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { productService } from '@/services/productService';
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'PakPrice — Search-First Price Discovery Across Pakistan',
@@ -39,6 +50,33 @@ const STORES = [
   { name: 'Carrefour', url: 'https://www.carrefour.pk', category: 'Retail' },
   { name: 'Naheed', url: 'https://www.naheed.pk', category: 'Supermarket' },
   { name: 'Al-Fatah', url: 'https://www.alfatah.com.pk', category: 'Supermarket' },
+];
+
+const CATEGORIES = [
+  { slug: 'smart-watches', name: 'Smart Watches', subtitle: '55+ Multi-Store', icon: Watch },
+  { slug: 'mobiles', name: 'Smartphones', subtitle: '5G & 4G phones', icon: Smartphone },
+  { slug: 'headphones-audio', name: 'Wireless Earbuds', subtitle: 'ANC & TWS Audio', icon: Headphones },
+  { slug: 'laptops', name: 'Laptops', subtitle: 'Ultrabooks & Gaming', icon: Laptop },
+  { slug: 'tablets', name: 'Tablets', subtitle: 'iPads & Android Tabs', icon: Tablet },
+  { slug: 'computer-accessories', name: 'Power Banks', subtitle: 'Fast charging gear', icon: BatteryCharging },
+  { slug: 'home-appliances', name: 'Appliances & TVs', subtitle: 'Smart TVs & Home', icon: Tv },
+];
+
+const POPULAR_BRANDS = [
+  { name: 'Samsung', slug: 'samsung' },
+  { name: 'Apple', slug: 'apple' },
+  { name: 'Xiaomi', slug: 'xiaomi' },
+  { name: 'Infinix', slug: 'infinix' },
+  { name: 'Tecno', slug: 'tecno' },
+  { name: 'Zero', slug: 'zero' },
+  { name: 'Audionic', slug: 'audionic' },
+  { name: 'Ronin', slug: 'ronin' },
+  { name: 'Anker', slug: 'anker' },
+  { name: 'Huawei', slug: 'huawei' },
+  { name: 'HP', slug: 'hp' },
+  { name: 'Lenovo', slug: 'lenovo' },
+  { name: 'Dell', slug: 'dell' },
+  { name: 'Sony', slug: 'sony' },
 ];
 
 /**
@@ -160,7 +198,33 @@ function StoreInitials({ name }: { name: string }) {
   );
 }
 
-export default function HomePage() {
+async function getLiveDeals(): Promise<typeof MULTI_STORE_DEALS> {
+  try {
+    const res = await productService.getProducts({
+      minStores: 2,
+      sort: 'store_count_desc',
+      limit: 8,
+    });
+    if (res?.data && res.data.length > 0) {
+      return res.data.map((p) => {
+        const storeLabel = p.store_count && p.store_count > 1 ? `${p.store_count} Stores` : 'Multi-Store';
+        return {
+          slug: p.slug,
+          name: p.name,
+          stores: [storeLabel],
+          lowestPrice: p.lowest_price || 0,
+          highestPrice: p.highest_price || p.lowest_price || 0,
+        };
+      });
+    }
+  } catch {
+    // Graceful fallback to static verified deals during build or offline
+  }
+  return MULTI_STORE_DEALS;
+}
+
+export default async function HomePage() {
+  const deals = await getLiveDeals();
   return (
     <>
       {/* ── HERO ────────────────────────────────────────────── */}
@@ -250,6 +314,80 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── BROWSE BY CATEGORY & BRANDS ──────────────────────── */}
+      <section
+        id="browse-categories"
+        className="py-12 md:py-16 bg-muted/20 border-b border-border"
+        aria-labelledby="categories-heading"
+      >
+        <div className="container-section">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                Catalog Discovery
+              </div>
+              <h2 id="categories-heading" className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                Browse by Category
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Explore real-time multi-store pricing across Pakistan&apos;s most popular electronics categories
+              </p>
+            </div>
+            <Link
+              href="/search?sort=store_count_desc"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0"
+            >
+              View all products
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3 sm:gap-4">
+            {CATEGORIES.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <Link
+                  key={cat.slug}
+                  href={`/search?category=${cat.slug}&sort=store_count_desc`}
+                  className="group flex flex-col items-center text-center p-4 rounded-2xl border border-border bg-card hover:border-primary/50 hover:shadow-md hover:shadow-primary/5 transition-all duration-200"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xs sm:text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+                    {cat.name}
+                  </h3>
+                  <p className="text-[11px] text-muted-foreground mt-1 line-clamp-1">
+                    {cat.subtitle}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* ── POPULAR BRANDS IN PAKISTAN ────────────────────── */}
+          <div className="mt-8 pt-8 border-t border-border/60">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground shrink-0">
+                Popular Brands:
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                {POPULAR_BRANDS.map((brand) => (
+                  <Link
+                    key={brand.slug}
+                    href={`/search?brand=${brand.slug}`}
+                    className="inline-flex items-center px-3 py-1.5 rounded-full border border-border bg-background hover:border-primary/50 hover:bg-primary/5 text-xs font-semibold text-foreground hover:text-primary transition-all duration-150"
+                  >
+                    {brand.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── MULTI-STORE DEALS ────────────────────────── */}
       <section
         id="multi-store-deals"
@@ -275,9 +413,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Verified multi-store deal cards — data from Phase 0 audit & 6E expansion */}
+          {/* Verified multi-store deal cards — dynamic with fallback */}
           <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide snap-x snap-mandatory">
-            {MULTI_STORE_DEALS.map((deal) => (
+            {deals.map((deal) => (
               <Link
                 key={deal.slug}
                 href={`/products/${deal.slug}`}

@@ -1,0 +1,298 @@
+{
+  "executedAt": "2026-11-07T12:03:59.218Z",
+  "catalog": {
+    "products": 822,
+    "variants": 822,
+    "duplicatePairs": 0
+  },
+  "enrichment": {
+    "totalBrands": 168,
+    "nullBrandId": 59,
+    "nullCategoryId": 0
+  },
+  "pricing": {
+    "activePrices": 920,
+    "priceHistory": 1204,
+    "freshness": {
+      "priceoye": {
+        "fresh": 64,
+        "stale": 179
+      },
+      "telemart": {
+        "fresh": 1,
+        "stale": 541
+      },
+      "paklap": {
+        "fresh": 0,
+        "stale": 1
+      },
+      "mega-pk": {
+        "fresh": 8,
+        "stale": 55
+      },
+      "daraz": {
+        "fresh": 0,
+        "stale": 1
+      },
+      "shophive": {
+        "fresh": 35,
+        "stale": 31
+      },
+      "al-fatah": {
+        "fresh": 0,
+        "stale": 3
+      },
+      "naheed": {
+        "fresh": 0,
+        "stale": 1
+      }
+    }
+  },
+  "multiStore": {
+    "total": 78,
+    "percentage": "9.49%",
+    "distribution": {
+      "1 store": 742,
+      "2 stores": 57,
+      "3 stores": 20,
+      "4+ stores": 1
+    },
+    "byCategory": {
+      "mobiles": {
+        "total": 219,
+        "multi": 13
+      },
+      "tablets": {
+        "total": 35,
+        "multi": 1
+      },
+      "laptops": {
+        "total": 89,
+        "multi": 0
+      },
+      "smart-watches": {
+        "total": 162,
+        "multi": 53
+      },
+      "home-appliances": {
+        "total": 44,
+        "multi": 0
+      },
+      "computer-accessories": {
+        "total": 44,
+        "multi": 1
+      },
+      "headphones-audio": {
+        "total": 182,
+        "multi": 10
+      },
+      "networking": {
+        "total": 2,
+        "multi": 0
+      },
+      "monitors": {
+        "total": 41,
+        "multi": 0
+      },
+      "kitchen": {
+        "total": 1,
+        "multi": 0
+      },
+      "tvs": {
+        "total": 2,
+        "multi": 0
+      },
+      "gaming-consoles": {
+        "total": 1,
+        "multi": 0
+      }
+    }
+  },
+  "sampleMultiStoreProducts": [
+    {
+      "id": "02c05584-c250-4f51-b584-8ef9feb1d4a1",
+      "name": "Docomo TAB D41-A",
+      "slug": "unknown-docomo-tab-d41-a",
+      "brand": "Docomo",
+      "category": "tablets",
+      "storesCount": 2,
+      "stores": [
+        "telemart",
+        "priceoye"
+      ]
+    },
+    {
+      "id": "c09b199c-2701-4ef7-ba24-c2b2b9638524",
+      "name": "Apple Iphone 17 Pro Max",
+      "slug": "unknown-apple-iphone-17-pro-max",
+      "brand": "Apple",
+      "category": "mobiles",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "mega-pk"
+      ]
+    },
+    {
+      "id": "054659f3-da12-4680-9040-96b8caa95020",
+      "name": "Zero Terra Fit Smart Watch",
+      "slug": "unknown-zero-terra-fit-smart-watch",
+      "brand": "Zero",
+      "category": "smart-watches",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "shophive"
+      ]
+    },
+    {
+      "id": "59185aa6-1fd3-42b6-9b34-6c6decf64609",
+      "name": "Zero Visionary Smartwatch",
+      "slug": "unknown-zero-visionary-smartwatch",
+      "brand": "Zero",
+      "category": "smart-watches",
+      "storesCount": 3,
+      "stores": [
+        "telemart",
+        "priceoye",
+        "shophive"
+      ]
+    },
+    {
+      "id": "688d4a7f-a7b5-43b9-888e-a733cc3cdd20",
+      "name": "Infinix XW3GT Smart Watch",
+      "slug": "unknown-infinix-xw3gt-smart-watch",
+      "brand": "Infinix",
+      "category": "smart-watches",
+      "storesCount": 3,
+      "stores": [
+        "priceoye",
+        "telemart",
+        "shophive"
+      ]
+    },
+    {
+      "id": "e483f97b-dd66-4b5e-ab54-fe74c41241f4",
+      "name": "I20 Ultra Smart Watch With Earbuds And 7 Straps",
+      "slug": "unknown-i20-ultra-smart-watch-with-earbuds-and-7-straps",
+      "brand": null,
+      "category": "smart-watches",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "telemart"
+      ]
+    },
+    {
+      "id": "b3867ed5-8a69-45f2-aadb-320a2c164fbe",
+      "name": "Zero Ignite Smart Watch",
+      "slug": "unknown-zero-ignite-smart-watch",
+      "brand": "Zero",
+      "category": "smart-watches",
+      "storesCount": 3,
+      "stores": [
+        "priceoye",
+        "telemart",
+        "shophive"
+      ]
+    },
+    {
+      "id": "fc289f7b-7a87-4acc-95b5-7a944248690d",
+      "name": "Samsung Watch 8 Classic 46mm",
+      "slug": "unknown-samsung-watch-8-classic-46mm",
+      "brand": "Samsung",
+      "category": "smart-watches",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "mega-pk"
+      ]
+    },
+    {
+      "id": "7f59f97f-fced-4d9f-901c-4c32dd8f988f",
+      "name": "Audionic Spark Pro S-200 powerbank 20000 mAh",
+      "slug": "unknown-audionic-spark-pro-s-200-powerbank-20000-mah",
+      "brand": "Audionic",
+      "category": "headphones-audio",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "telemart"
+      ]
+    },
+    {
+      "id": "d960d5bf-8b1b-4736-86c6-425ff62bb697",
+      "name": "Nokia G42 5G 6GB 128GB",
+      "slug": "nokia-nokia-g42-5g-6gb-128gb",
+      "brand": "Nokia",
+      "category": "mobiles",
+      "storesCount": 3,
+      "stores": [
+        "telemart",
+        "mega-pk",
+        "shophive"
+      ]
+    },
+    {
+      "id": "638ceaf5-7f2d-48f7-a1a8-27e1a611c6e2",
+      "name": "Kieslect Kr Calling Watch",
+      "slug": "unknown-kieslect-kr-calling-watch",
+      "brand": "Kieslect",
+      "category": "smart-watches",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "telemart"
+      ]
+    },
+    {
+      "id": "fb39601c-bb1f-48ef-b952-83dff2df74c9",
+      "name": "Honor X9b 12GB 256GB",
+      "slug": "honor-honor-x9b-12gb-256gb",
+      "brand": "Honor",
+      "category": "mobiles",
+      "storesCount": 3,
+      "stores": [
+        "telemart",
+        "mega-pk",
+        "shophive"
+      ]
+    },
+    {
+      "id": "6f26d813-40ec-46a7-ae22-fc25c31d08f7",
+      "name": "Dany TITAN T-100 Power Bank 20000 mAh",
+      "slug": "unknown-dany-titan-t-100-power-bank-20000-mah",
+      "brand": "Dany",
+      "category": "computer-accessories",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "telemart"
+      ]
+    },
+    {
+      "id": "7d167fce-9189-42f3-a95d-6d1563b5d3f2",
+      "name": "Infinix Smart 20",
+      "slug": "unknown-infinix-smart-20",
+      "brand": "Infinix",
+      "category": "mobiles",
+      "storesCount": 2,
+      "stores": [
+        "priceoye",
+        "shophive"
+      ]
+    },
+    {
+      "id": "8e0b3685-cdf3-462d-ab91-4625b7e4bd84",
+      "name": "GOOGLE PIXEL WATCH 2",
+      "slug": "google-google-pixel-watch-2",
+      "brand": "Google",
+      "category": "smart-watches",
+      "storesCount": 2,
+      "stores": [
+        "mega-pk",
+        "priceoye"
+      ]
+    }
+  ]
+}

@@ -50,6 +50,15 @@ const RETAIL_NOISE_PATTERNS = [
   /\bnon[\s-]pta\b/gi,
   /\b100%\s+original\b/gi,
   /\bofficial\s+brand\s+warranty\b/gi,
+  /\btrue\s+wireless\b/gi,
+  /\bbluetooth\b/gi,
+  /\btws\b/gi,
+  /\bgaming\s+(?=(?:wireless\s+)?earbuds\b)/gi,
+  /\bfast\s+charging\b/gi,
+  /\bpd\s*\d+(?:\.\d+)?\s*w\b/gi,
+  /\b\d+(?:\.\d+)?\s*w\s+fast\s+charging\b/gi,
+  /\bprice\s+in\s+pakistan\b/gi,
+  /\bpin\s+pack\b/gi,
 ];
 
 /**
@@ -75,12 +84,26 @@ export function stripRetailNoise(name: string): string {
  *   "Redmi Note 13 Pro+"                                    → "redmi note 13 pro+"
  */
 export function normalizeProductName(name: string): string {
-  const cleaned = stripRetailNoise(name);
-  return cleaned
+  // Strip parentheses and brackets around alphanumeric tokens: (XE30) -> XE30
+  let cleaned = name.replace(/[()[\]]/g, ' ');
+  cleaned = stripRetailNoise(cleaned);
+  let normalized = cleaned
     .trim()
     .toLowerCase()
     .replace(/\s+/g, ' ')
-    .replace(/\bsmart[\s-]watch\b/g, 'smartwatch');
+    .replace(/\bsmart[\s-]watch\b/g, 'smartwatch')
+    .replace(/\bpower\s*bank\b/g, 'powerbank')
+    .replace(/(\d+)\s*mah\b/g, '$1mah')
+    .replace(/\bpowerbank\s+(\d+mah)\b/g, '$1 powerbank')
+    .replace(/(?:true\s+wireless|wireless|bluetooth|gaming)\s+earbuds\b/g, 'earbuds');
+
+  // Transpose "earbuds <model>" if the model token was appended after earbuds (e.g. from "(XE30)")
+  normalized = normalized.replace(/\bearbuds\s+([a-z0-9]+(?:-[a-z0-9]+)?)\b/g, '$1 earbuds');
+
+  // Deduplicate consecutive identical words (e.g. "infinix infinix xe30" -> "infinix xe30")
+  normalized = normalized.replace(/\b(\w+)(?:\s+\1\b)+/g, '$1');
+
+  return normalized.trim().replace(/\s+/g, ' ');
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -459,6 +482,8 @@ const TIER_MODIFIERS = [
   'max', 'lite', 'mini', 'fe', 'se', 'neo', 'note',
 ] as const;
 
+const SUBSERIES_KEYWORDS = ['gtr', 'gts', 't-rex', 'bip', 'band', 'tank'];
+
 /**
  * Detect whether two normalised product names represent conflicting
  * product families. Returns true if they should NOT be merged.
@@ -468,6 +493,13 @@ export function isConflictingProductFamily(nameA: string, nameB: string): boolea
   const a = nameA.toLowerCase().trim();
   const b = nameB.toLowerCase().trim();
   if (a === b) return false;
+
+  // Check subseries keywords (e.g. Amazfit GTR vs Amazfit T-Rex)
+  for (const kw of SUBSERIES_KEYWORDS) {
+    const hasA = new RegExp(`\\b${kw.replace('-', '[\\s-]')}\\b`, 'i').test(a);
+    const hasB = new RegExp(`\\b${kw.replace('-', '[\\s-]')}\\b`, 'i').test(b);
+    if (hasA !== hasB) return true;
+  }
 
   const getTiers = (name: string): string[] => {
     const found: string[] = [];
@@ -488,7 +520,7 @@ export function isConflictingProductFamily(nameA: string, nameB: string): boolea
   if (sortedA !== sortedB) return true;
 
   const getModelNumbers = (name: string): string[] => {
-    const nums = [...name.matchAll(/\b([a-z]?\d{1,4})\b/gi)];
+    const nums = [...name.matchAll(/\b([a-z]?\d{1,4}[a-z]?)\b/gi)];
     return nums.map(m => m[1].toLowerCase());
   };
 

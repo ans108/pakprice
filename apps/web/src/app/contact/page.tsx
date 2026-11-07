@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Mail, MessageSquare } from 'lucide-react';
+import { ContactForm } from './ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact PakPrice',
@@ -39,22 +40,8 @@ export default function ContactPage() {
           </a>
         </div>
 
-        {/* Contact form placeholder */}
-        <div className="p-8 rounded-2xl border border-border bg-card">
-          <h2 className="text-xl font-bold mb-2">Send a Message</h2>
-          <p className="text-sm text-muted-foreground mb-6">
-            Contact form is coming soon. For now, please email us directly.
-          </p>
-          <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-sm text-primary">
-            <span>📧</span>
-            <span>
-              Email us at{' '}
-              <a href="mailto:hello@pakprice.pk" className="font-semibold hover:underline">
-                hello@pakprice.pk
-              </a>
-            </span>
-          </div>
-        </div>
+        {/* Interactive Contact & Price-Report Form */}
+        <ContactForm />
       </div>
     </div>
   );

@@ -68,6 +68,15 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'telemart.pk',
       },
+      // Telemart / Telex CDN & store domains
+      {
+        protocol: 'https',
+        hostname: 'www.telex.pk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'telex.pk',
+      },
       // PriceOye root domain
       {
         protocol: 'https',

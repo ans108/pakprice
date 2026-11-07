@@ -285,10 +285,17 @@ export class PriceOyeScraper extends BaseScraper {
     }
 
     // 6. Variant Specs parsing
-    const ramGb = extractRamFromTitle(nameStr);
+    let ramGb = extractRamFromTitle(nameStr);
     let storageGb = extractStorageFromTitle(nameStr);
 
     // Fallback to table specs if title extraction failed
+    if (ramGb === null) {
+      const tableRam = $('th:contains("RAM")').next('td').text().match(/(\d+)/);
+      if (tableRam) {
+        const val = parseInt(tableRam[1], 10);
+        if (val >= 1 && val <= 64) ramGb = val;
+      }
+    }
     if (storageGb === null) {
       const tableStorage = $('th:contains("Internal Storage")').next('td').text().match(/(\d+)/);
       if (tableStorage) {

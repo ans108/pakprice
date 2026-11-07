@@ -119,7 +119,7 @@ export class ProductRepository {
   async fuzzySearchProduct(normalizedName: string, brandId: string | null): Promise<Product | null> {
     // Exact match first
     let query = supabase.from('products').select('*').eq('normalized_name', normalizedName);
-    if (brandId) query = query.eq('brand_id', brandId);
+    if (brandId) query = query.or(`brand_id.eq.${brandId},brand_id.is.null`);
     
     const { data: exactMatch } = await query;
     if (exactMatch && exactMatch.length === 1) return exactMatch[0];
@@ -127,7 +127,7 @@ export class ProductRepository {
     // Fallback: search products by title words and match via normalizeProductName (handles historical DB rows)
     const words = normalizedName.split(' ').slice(0, 3).join('%');
     let ilikeQuery = supabase.from('products').select('*').ilike('name', `%${words}%`);
-    if (brandId) ilikeQuery = ilikeQuery.eq('brand_id', brandId);
+    if (brandId) ilikeQuery = ilikeQuery.or(`brand_id.eq.${brandId},brand_id.is.null`);
     const { data: candidates } = await ilikeQuery;
     if (candidates) {
       const matches = candidates.filter(c => normalizeProductName(c.name) === normalizedName);
@@ -230,17 +230,30 @@ export class ProductRepository {
   async searchProductsByNameSimilarity(
     normalizedName: string,
     brandId: string | null,
-    limit: number = 5
+    limit: number = 15
   ): Promise<Product[]> {
-    let query = supabase
-      .from('products')
-      .select('*')
-      .ilike('normalized_name', `%${normalizedName.split(' ').slice(0, 3).join('%')}%`)
-      .limit(limit);
+    const tokens = normalizedName.split(' ').filter(Boolean);
+    const first3Words = tokens.slice(0, 3).join('%');
+    const firstWord = tokens[0] || '';
     
-    if (brandId) query = query.eq('brand_id', brandId);
+    // Find alphanumeric model tokens containing digits (e.g. xe30, lp80, t-100, s-200, xw3p, band 9)
+    const modelTokens = tokens.filter(t => /\d/.test(t));
     
-    const { data } = await query;
+    let query = supabase.from('products').select('*');
+    
+    if (modelTokens.length > 0 && firstWord) {
+      const orClauses = [`normalized_name.ilike.%${first3Words}%`];
+      for (const mt of modelTokens) {
+        orClauses.push(`normalized_name.ilike.%${firstWord}%${mt}%`);
+      }
+      query = query.or(orClauses.join(','));
+    } else {
+      query = query.ilike('normalized_name', `%${first3Words}%`);
+    }
+    
+    if (brandId) query = query.or(`brand_id.eq.${brandId},brand_id.is.null`);
+    
+    const { data } = await query.limit(limit);
     return data || [];
   }
 

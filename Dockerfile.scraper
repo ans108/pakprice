@@ -1,0 +1,25 @@
+# Production Dockerfile for PakPrice Scraper & Singleton Scheduler Worker
+FROM mcr.microsoft.com/playwright:v1.46.0-jammy
+
+WORKDIR /app
+
+# Copy package manifests
+COPY package*.json ./
+COPY packages/shared/package*.json ./packages/shared/
+COPY apps/scraper/package*.json ./apps/scraper/
+
+# Install dependencies
+RUN npm ci
+
+# Copy sources
+COPY packages/shared ./packages/shared
+COPY apps/scraper ./apps/scraper
+
+# Build shared library
+RUN npm run build:shared
+
+ENV NODE_ENV=production
+ENV SCHEDULER_ACTIVATION_MODE=active
+
+CMD ["npx", "tsx", "apps/scraper/src/workers/schedulerWorker.ts"]
+

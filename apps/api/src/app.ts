@@ -11,6 +11,9 @@ import v1Routes from './routes/index';
 
 const app = express();
 
+// Enable reverse-proxy trust for load balancers (Railway, Render, Fly.io, Cloudflare)
+app.set('trust proxy', 1);
+
 // ── 1. Request ID (Correlation) ──────────────────────────────
 app.use(requestIdMiddleware);
 
