@@ -39,6 +39,7 @@ export interface FirecrawlValidationResult {
   valid: boolean;
   status: 'approved' | 'rejected' | 'collision' | 'ambiguous' | 'spec_conflict' | 'invalid_price';
   canonicalProductId: string;
+  canonicalProductName?: string;
   matchedVariantId?: string;
   matchedVariantName?: string;
   strategy?: string;
@@ -88,6 +89,15 @@ export class FirecrawlValidator {
       if (storeSlug === 'telemart' && (host.includes('telemart.pk') || host.includes('telex.pk'))) return true;
       if (storeSlug === 'shophive' && host.includes('shophive.com')) return true;
       if ((storeSlug === 'mega' || storeSlug === 'mega-pk') && host.includes('mega.pk')) return true;
+      if (storeSlug === 'daraz' && host.includes('daraz.pk')) return true;
+      if (storeSlug === 'homeshopping' && host.includes('homeshopping.pk')) return true;
+      if (storeSlug === 'naheed' && host.includes('naheed.pk')) return true;
+      if (storeSlug === 'al-fatah' && host.includes('alfatah.com.pk')) return true;
+      if (storeSlug === 'paklap' && host.includes('paklap.pk')) return true;
+      if (storeSlug === 'ishopping' && host.includes('ishopping.pk')) return true;
+      if (storeSlug === 'myshop' && host.includes('myshop.pk')) return true;
+      if (storeSlug === 'symbios' && host.includes('symbios.pk')) return true;
+      if (storeSlug === 'czone' && host.includes('czone.com.pk')) return true;
       return false;
     } catch {
       return false;
@@ -223,6 +233,7 @@ export class FirecrawlValidator {
       valid: true,
       status: 'approved',
       canonicalProductId: targetCanonicalProduct.id,
+      canonicalProductName: targetCanonicalProduct.name,
       matchedVariantId: targetVariantId,
       matchedVariantName: matchResult.variant?.name || targetCanonicalProduct.variantName,
       strategy: matchResult.method,

@@ -2,9 +2,10 @@ import { cache } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Sparkles, ArrowRight } from 'lucide-react';
 import { productService } from '@/services/productService';
 import ProductDetailClient from './ProductDetailClient';
+import ProductCard from '@/components/products/ProductCard';
 
 const getCachedProduct = cache(async (slug: string) => {
   return await productService.getProduct(slug);
@@ -28,8 +29,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   try {
     const result = await getCachedProduct(slug);
     const { product } = result.data;
-    const brandName = product.brand?.name ?? '';
-    const title = `${brandName ? `${brandName} ` : ''}${product.name} Price in Pakistan | PakPrice`;
+    const brandName = product.brand?.name?.trim() ?? '';
+    const shouldPrependBrand = brandName && !product.name.toLowerCase().startsWith(brandName.toLowerCase());
+    const title = `${shouldPrependBrand ? `${brandName} ` : ''}${product.name} Price in Pakistan`;
     const description = product.description
       ? product.description.slice(0, 160)
       : `Compare prices for ${product.name} across Pakistan's top online stores including Daraz, PriceOye, Telemart, and more.`;
@@ -47,7 +49,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     };
   } catch {
     return {
-      title: 'Product Not Found | PakPrice',
+      title: 'Product Not Found',
     };
   }
 }
@@ -67,6 +69,45 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   const { product, variants } = data.data;
+
+  // Fetch similar & recommended products (safe wrapped in try/catch so it never blocks page render)
+  let similarProducts: any[] = [];
+  try {
+    const promises: Promise<any>[] = [];
+    if (product.category?.slug) {
+      promises.push(
+        productService.getProducts({
+          category: product.category.slug,
+          sort: 'store_count_desc',
+          limit: 10,
+        })
+      );
+    }
+    if (product.brand?.slug) {
+      promises.push(
+        productService.getProducts({
+          brand: product.brand.slug,
+          sort: 'store_count_desc',
+          limit: 8,
+        })
+      );
+    }
+
+    const results = await Promise.all(promises);
+    const seenIds = new Set<string>([product.id]);
+    for (const res of results) {
+      const items = Array.isArray(res?.data) ? res.data : (res?.data?.items || res?.data?.products || []);
+      for (const item of items) {
+        if (!seenIds.has(item.id) && item.slug !== product.slug) {
+          seenIds.add(item.id);
+          similarProducts.push(item);
+        }
+      }
+    }
+    similarProducts = similarProducts.slice(0, 8);
+  } catch {
+    similarProducts = [];
+  }
 
   return (
     <div className="container-section py-8">
@@ -102,8 +143,59 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* ── Product detail ─────────────────────────────────── */}
       <ProductDetailClient product={product} variants={variants as any} />
 
-      {/* ── Related navigation ─────────────────────────────── */}
-      {product.brand && (
+      {/* ── Similar & Recommended Products Section ────────── */}
+      {similarProducts.length > 0 && (
+        <section className="mt-16 pt-10 border-t border-border" aria-label="Similar Products">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                Recommended Matches
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                Similar {product.category?.name || 'Products'} You May Like
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Top multi-store deals and popular alternatives in {product.category?.name || 'this category'}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 text-xs font-semibold shrink-0">
+              {product.category && (
+                <Link
+                  href={`/search?category=${product.category.slug}`}
+                  className="text-primary hover:underline flex items-center gap-1"
+                >
+                  View all {product.category.name}
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              )}
+              {product.brand && (
+                <Link
+                  href={`/search?brand=${product.brand.slug}`}
+                  className="text-muted-foreground hover:text-foreground flex items-center gap-1"
+                >
+                  More from {product.brand.name}
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {similarProducts.map((item) => (
+              <ProductCard
+                key={item.id}
+                product={item}
+                variantCount={item.variant_count ?? item.variants?.length ?? 1}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── Brand Explore Fallback ─────────────────────────── */}
+      {product.brand && similarProducts.length === 0 && (
         <div className="mt-12 pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground">
             Browse more{' '}

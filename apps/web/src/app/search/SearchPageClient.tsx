@@ -58,6 +58,8 @@ export default function SearchPageClient({
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [recommendedProducts, setRecommendedProducts] = useState<ProductWithRelations[]>([]);
+  const [recommendedCategory, setRecommendedCategory] = useState<string>('');
   const lastRecordedQueryRef = useRef<string>('');
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -131,6 +133,30 @@ export default function SearchPageClient({
       }
     };
   }, [fetchProducts]);
+
+  // Fetch scroll-down recommended products based on current search category
+  useEffect(() => {
+    const topCatSlug = category || products[0]?.category?.slug;
+    const topCatName = products[0]?.category?.name || 'Category';
+    if (!topCatSlug || products.length === 0) {
+      setRecommendedProducts([]);
+      return;
+    }
+
+    setRecommendedCategory(topCatName);
+    const displayedIds = new Set(products.map((p) => p.id));
+
+    productService
+      .getProducts({ category: topCatSlug, sort: 'store_count_desc', limit: 24 })
+      .then((res) => {
+        const items = Array.isArray(res.data) ? res.data : [];
+        const filtered = items.filter((p) => !displayedIds.has(p.id));
+        setRecommendedProducts((filtered.length >= 4 ? filtered : items).slice(0, 8));
+      })
+      .catch(() => {
+        setRecommendedProducts([]);
+      });
+  }, [category, products]);
 
   // ── URL update helpers ───────────────────────────────────────
   const updateURL = useCallback(
@@ -472,6 +498,29 @@ export default function SearchPageClient({
               <p className="text-center text-xs text-muted-foreground mt-3">
                 Showing {(page - 1) * 12 + 1}–{Math.min(page * 12, total)} of {total}
               </p>
+
+              {/* Scroll-Down Similar & Recommended Products Section */}
+              {recommendedProducts.length > 0 && (
+                <div className="mt-14 pt-8 border-t border-border">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-base sm:text-lg font-bold text-foreground flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-primary" />
+                        Recommended in {recommendedCategory} (Multi-Store Verified)
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        Popular products with verified store comparisons in this category
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                    {recommendedProducts.map((p) => (
+                      <ProductCard key={p.id} product={p} variantCount={p.variant_count ?? 1} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </>
           )}
         </div>

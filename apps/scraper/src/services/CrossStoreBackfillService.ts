@@ -7,6 +7,12 @@ import { ShophiveScraper } from '../scrapers/stores/ShophiveScraper';
 import { PriceOyeScraper } from '../scrapers/stores/PriceOyeScraper';
 import { TelemartScraper } from '../scrapers/stores/TelemartScraper';
 import { MegaPkScraper } from '../scrapers/stores/MegaPkScraper';
+import { DarazScraper } from '../scrapers/stores/DarazScraper';
+import { HomeShoppingScraper } from '../scrapers/stores/HomeShoppingScraper';
+import { NaheedScraper } from '../scrapers/stores/NaheedScraper';
+import { AlFatahScraper } from '../scrapers/stores/AlFatahScraper';
+import { PaklapScraper } from '../scrapers/stores/PaklapScraper';
+import { IShoppingScraper } from '../scrapers/stores/IShoppingScraper';
 import { ProductMatcher } from './ProductMatcher';
 import { PriceIngestionService } from './PriceIngestionService';
 import { ProductRepository } from '../repositories/ProductRepository';
@@ -81,6 +87,12 @@ export class CrossStoreBackfillService {
   private priceoyeScraper = new PriceOyeScraper();
   private telemartScraper = new TelemartScraper();
   private megaScraper = new MegaPkScraper();
+  private darazScraper = new DarazScraper();
+  private homeShoppingScraper = new HomeShoppingScraper();
+  private naheedScraper = new NaheedScraper();
+  private alFatahScraper = new AlFatahScraper();
+  private paklapScraper = new PaklapScraper();
+  private ishoppingScraper = new IShoppingScraper();
 
   private isInterrupted = false;
 
@@ -482,11 +494,124 @@ export class CrossStoreBackfillService {
           }
         }
       });
+    } else if (storeSlug === 'daraz') {
+      const searchUrl = `https://www.daraz.pk/catalog/?q=${encodeURIComponent(query)}`;
+      const res = await axios.get(searchUrl, {
+        headers: {
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        },
+        timeout: timeoutMs,
+        validateStatus: () => true,
+      });
+      if (res.status === 200 && typeof res.data === 'string') {
+        const matches = res.data.match(/https:\/\/www\.daraz\.pk\/products\/[a-zA-Z0-9\-_.]+/g) || [];
+        for (const l of matches) {
+          const clean = l.split('?')[0];
+          if (clean.includes('.html') && !results.some((r) => r.url === clean)) {
+            results.push({ title: query, url: clean });
+          }
+        }
+      }
+    } else if (storeSlug === 'homeshopping') {
+      const vtexUrl = `https://homeshopping.pk/api/catalog_system/pub/products/search/${encodeURIComponent(query)}?_from=0&_to=5`;
+      const res = await axios.get(vtexUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          Accept: 'application/json',
+        },
+        timeout: timeoutMs,
+        validateStatus: () => true,
+      });
+      if (res.status === 200 && Array.isArray(res.data)) {
+        for (const item of res.data) {
+          if (item.link) {
+            results.push({ title: item.productName || query, url: item.link });
+          }
+        }
+      }
+    } else if (storeSlug === 'naheed') {
+      const searchUrl = `https://www.naheed.pk/catalogsearch/result/?q=${encodeURIComponent(query)}`;
+      const res = await axios.get(searchUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        },
+        timeout: timeoutMs,
+        validateStatus: () => true,
+      });
+      if (res.status === 200 && typeof res.data === 'string') {
+        const $ = cheerio.load(res.data);
+        $('a.product-item-link').each((_, el) => {
+          const href = $(el).attr('href');
+          const title = $(el).text().trim();
+          if (href && !results.some((r) => r.url === href)) {
+            results.push({ title, url: href });
+          }
+        });
+      }
+    } else if (storeSlug === 'al-fatah') {
+      const apiUrl = `https://www.alfatah.com.pk/wp-json/wc/store/v1/products?search=${encodeURIComponent(query)}`;
+      const res = await axios.get(apiUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          Accept: 'application/json',
+        },
+        timeout: timeoutMs,
+        validateStatus: () => true,
+      });
+      if (res.status === 200 && Array.isArray(res.data)) {
+        for (const item of res.data) {
+          if (item.permalink) {
+            results.push({ title: item.name || query, url: item.permalink });
+          }
+        }
+      }
+    } else if (storeSlug === 'paklap') {
+      const searchUrl = `https://www.paklap.pk/catalogsearch/result/?q=${encodeURIComponent(query)}`;
+      const res = await axios.get(searchUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        },
+        timeout: timeoutMs,
+        validateStatus: () => true,
+      });
+      if (res.status === 200 && typeof res.data === 'string') {
+        const $ = cheerio.load(res.data);
+        $('a.product-item-link').each((_, el) => {
+          const href = $(el).attr('href');
+          const title = $(el).text().trim();
+          if (href && !results.some((r) => r.url === href)) {
+            results.push({ title, url: href });
+          }
+        });
+      }
+    } else if (storeSlug === 'ishopping') {
+      const searchUrl = `https://www.ishopping.pk/catalogsearch/result/?q=${encodeURIComponent(query)}`;
+      const res = await axios.get(searchUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        },
+        timeout: timeoutMs,
+        validateStatus: () => true,
+      });
+      if (res.status === 200 && typeof res.data === 'string') {
+        const $ = cheerio.load(res.data);
+        $('a.product-item-link, .product-name a').each((_, el) => {
+          const href = $(el).attr('href');
+          const title = $(el).text().trim();
+          if (href && !results.some((r) => r.url === href)) {
+            results.push({ title, url: href });
+          }
+        });
+      }
     } else if (storeSlug === 'mega-pk') {
-      // Direct /search/ on Mega.pk returns 403. Check category pattern or document restriction
-      throw new Error('Mega.pk search endpoint is anti-bot protected (403 Forbidden). Use category indexing.');
+      return results;
     } else {
-      throw new Error(`Store connector ${storeSlug} not implemented for direct backfill search`);
+      return results;
     }
 
     return results;
@@ -503,7 +628,8 @@ export class CrossStoreBackfillService {
   ): Promise<ScrapedProductSchemaType | null> {
     const res = await axios.get(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
       timeout: timeoutMs,
@@ -520,6 +646,18 @@ export class CrossStoreBackfillService {
       return this.telemartScraper.extractFromHtml(html, url);
     } else if (storeSlug === 'mega-pk') {
       return this.megaScraper.extractFromHtml(html, url);
+    } else if (storeSlug === 'daraz') {
+      return this.darazScraper.extractFromHtml(html, url);
+    } else if (storeSlug === 'homeshopping') {
+      return this.homeShoppingScraper.extractProductFromHtml(html, url, catSlug);
+    } else if (storeSlug === 'naheed') {
+      return this.naheedScraper.extractProductFromHtml(html, url, catSlug);
+    } else if (storeSlug === 'al-fatah') {
+      return this.alFatahScraper.extractProductFromHtml(html, url, catSlug);
+    } else if (storeSlug === 'paklap') {
+      return this.paklapScraper.extractFromHtml(html, url);
+    } else if (storeSlug === 'ishopping') {
+      return this.ishoppingScraper.extractProductFromHtml(html, url, catSlug);
     }
 
     return null;
