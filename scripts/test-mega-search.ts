@@ -1,34 +1,29 @@
-import { chromium } from 'playwright';
+import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-async function testSearch() {
-  const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage();
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
-  const queries = ['ThinkPad', 'Samsung Galaxy', 'MacBook Air', 'Infinix', 'T900'];
-  for (const q of queries) {
-    const url = 'https://www.mega.pk/search/?q=' + encodeURIComponent(q);
-    try {
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-      const html = await page.content();
-      const $ = cheerio.load(html);
-      const links: { title: string; href: string }[] = [];
-      $('a').each((_, el) => {
-        const href = $(el).attr('href');
-        if (href && (href.includes('_products/') || href.includes('-price-pakistan.html')) && !href.includes('/category/')) {
-          const t = $(el).text().trim() || $(el).attr('title') || '';
-          if (t && !links.find(l => l.href === href)) {
-            links.push({ title: t, href });
-          }
-        }
-      });
-      console.log('Query:', q, '-> Found links:', links.length);
-      links.slice(0, 3).forEach(l => console.log('  *', l.title, '->', l.href));
-    } catch (e: any) {
-      console.error('Error on query', q, e.message);
-    }
+async function testMegaSearch() {
+  const query = 'Samsung Galaxy A07';
+  const url = `https://www.mega.pk/search/?q=${encodeURIComponent(query)}`;
+  const res = await axios.get(url, {
+    headers: { 'User-Agent': USER_AGENT, Accept: 'text/html' },
+    timeout: 8000,
+    validateStatus: () => true
+  });
+  console.log('Mega search status:', res.status);
+  if (res.status === 200 && typeof res.data === 'string') {
+    const $ = cheerio.load(res.data);
+    const items: any[] = [];
+    $('a[href*="_products/"], a[href*="-price-pakistan.html"]').each((_, el) => {
+      const href = $(el).attr('href');
+      const title = $(el).text().trim() || $(el).attr('title') || '';
+      if (href && title && !items.some(it => it.href === href)) {
+        items.push({ title, href });
+      }
+    });
+    console.log(`Found ${items.length} items on Mega.pk:`, items.slice(0, 3));
   }
-  await browser.close();
 }
 
-testSearch().catch(console.error);
+testMegaSearch();

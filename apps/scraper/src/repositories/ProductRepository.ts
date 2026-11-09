@@ -177,12 +177,29 @@ export class ProductRepository {
     
     if (!data || data.length === 0) return null;
 
+    // Pass 1: Strict match on all 4 (ram, storage, color, model)
     for (const v of data) {
       const ramOk = specsCompatible(ramGb, v.ram_gb);
       const storageOk = specsCompatible(storageGb, v.storage_gb);
       const colorOk = specsCompatible(color, v.color);
       const modelOk = specsCompatible(modelNumber, v.model_number);
       if (ramOk && storageOk && colorOk && modelOk) return v;
+    }
+
+    // Pass 2: Strict match on ram & storage + model (color relaxed if differing/unknown)
+    for (const v of data) {
+      const ramOk = specsCompatible(ramGb, v.ram_gb);
+      const storageOk = specsCompatible(storageGb, v.storage_gb);
+      const modelOk = specsCompatible(modelNumber, v.model_number);
+      if (ramOk && storageOk && modelOk) return v;
+    }
+
+    // Pass 3: Fall back to matching ramOk && storageOk (since ram_gb and storage_gb define
+    // the pricing tier in Pakistan, whereas color and store-specific model_number/SKU vary across retailers)
+    for (const v of data) {
+      const ramOk = specsCompatible(ramGb, v.ram_gb);
+      const storageOk = specsCompatible(storageGb, v.storage_gb);
+      if (ramOk && storageOk) return v;
     }
 
     return null;

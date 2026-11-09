@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-11-09T14:49:57.779Z",
+  "finalProdCount": 822,
+  "finalVarCount": 822,
+  "dupes": 0,
+  "addedOffers": 102,
+  "finalStats": {
+    "totalProducts": 803,
+    "oneStore": 677,
+    "twoStores": 67,
+    "threeStores": 47,
+    "fourPlusStores": 12,
+    "totalMulti": 126,
+    "threePlus": 59
+  }
+}

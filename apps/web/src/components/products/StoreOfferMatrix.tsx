@@ -3,10 +3,8 @@ import {
   Store,
   CheckCircle2,
   Clock,
-  XCircle,
-  SearchX,
   ExternalLink,
-  Layers,
+  Search,
 } from 'lucide-react';
 import { StoreOfferCard } from './StoreOfferCard';
 import { cn } from '@/utils/cn';
@@ -20,12 +18,58 @@ export const ALL_CONFIGURED_STORES = CONFIGURED_STORES;
 
 interface StoreOfferMatrixProps {
   selectedVariant: any;
+  productName?: string;
   categorySlug?: string;
   lowestPrice: number | null;
 }
 
+/**
+ * Generates direct search link for each of the 12 monitored stores
+ */
+export function getStoreSearchUrl(storeSlug: string, productName: string): string {
+  const cleaned = (productName || '')
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/\[[^\]]*\]/g, ' ')
+    .replace(/\b(Dual\s*Sim|Official\s*Warranty|Pin\s*Pack|PTA\s*Approved|Non\s*PTA|Global\s*Version|Box\s*Pack|1\s*Year\s*Warranty)\b/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const q = encodeURIComponent(cleaned || productName);
+
+  switch (storeSlug) {
+    case 'daraz':
+      return `https://www.daraz.pk/catalog/?q=${q}`;
+    case 'priceoye':
+      return `https://priceoye.pk/search?q=${q}`;
+    case 'telemart':
+      return `https://www.telemart.pk/search?q=${q}`;
+    case 'mega-pk':
+    case 'mega':
+      return `https://www.mega.pk/search/?q=${q}`;
+    case 'shophive':
+      return `https://www.shophive.com/catalogsearch/result/?q=${q}`;
+    case 'homeshopping':
+      return `https://homeshopping.pk/search.php?search_query=${q}`;
+    case 'paklap':
+      return `https://www.paklap.pk/catalogsearch/result/?q=${q}`;
+    case 'ishopping':
+      return `https://www.ishopping.pk/catalogsearch/result/?q=${q}`;
+    case 'naheed':
+      return `https://www.naheed.pk/catalogsearch/result/?q=${q}`;
+    case 'al-fatah':
+    case 'alfatah':
+      return `https://alfatah.com.pk/search?q=${q}`;
+    case 'metro':
+      return `https://www.metro-online.pk/search/${q}`;
+    case 'carrefour':
+      return `https://www.carrefour.pk/mafpak/en/search?keyword=${q}`;
+    default:
+      return `https://www.google.com/search?q=${encodeURIComponent(`${storeSlug} ${cleaned}`)}`;
+  }
+}
+
 export function StoreOfferMatrix({
   selectedVariant,
+  productName = '',
   categorySlug = '',
   lowestPrice,
 }: StoreOfferMatrixProps) {
@@ -33,7 +77,6 @@ export function StoreOfferMatrix({
   const normCategory = (categorySlug || '').toLowerCase();
   const isLaptopCategory = normCategory.includes('laptop') || normCategory.includes('computer');
   const isSmartwatchCategory = normCategory.includes('watch');
-  const isMobileCategory = normCategory.includes('mobile') || normCategory.includes('phone');
 
   // Match all 12 configured stores to price rows cleanly
   const storeStatuses = CONFIGURED_STORES.map((store) => {
@@ -58,6 +101,7 @@ export function StoreOfferMatrix({
           subtext: `Rs. ${priceRow.price.toLocaleString()}`,
           priceRow,
           isStale: false,
+          searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
         };
       } else if (priceRow.in_stock && isStale) {
         return {
@@ -67,6 +111,7 @@ export function StoreOfferMatrix({
           subtext: `Rs. ${priceRow.price.toLocaleString()}`,
           priceRow,
           isStale: true,
+          searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
         };
       } else {
         return {
@@ -76,19 +121,21 @@ export function StoreOfferMatrix({
           subtext: 'Currently unavailable',
           priceRow,
           isStale,
+          searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
         };
       }
     }
 
-    // Category specialization checks
+    // Category specialization note
     if (store.slug === 'paklap' && !isLaptopCategory) {
       return {
         store,
         status: 'specialist' as const,
         statusLabel: 'Laptops Specialist',
-        subtext: 'Computing only',
+        subtext: 'Search computing catalog',
         priceRow: null,
         isStale: false,
+        searchUrl: getStoreSearchUrl(store.slug, productName),
       };
     }
 
@@ -97,20 +144,22 @@ export function StoreOfferMatrix({
         store,
         status: 'specialist' as const,
         statusLabel: 'Hypermarket',
-        subtext: 'Groceries & Home',
+        subtext: 'Search general catalog',
         priceRow: null,
         isStale: false,
+        searchUrl: getStoreSearchUrl(store.slug, productName),
       };
     }
 
-    // Default neutral status: no listing found for this specific model
+    // Default: live search link on this store
     return {
       store,
-      status: 'no_offer' as const,
-      statusLabel: 'No offer for this model',
-      subtext: 'Not currently listed',
+      status: 'live_link' as const,
+      statusLabel: 'Check Live',
+      subtext: 'Search live catalog',
       priceRow: null,
       isStale: false,
+      searchUrl: getStoreSearchUrl(store.slug, productName),
     };
   });
 
@@ -118,7 +167,7 @@ export function StoreOfferMatrix({
   const activeOffers = storeStatuses
     .filter((s) => s.priceRow !== null)
     .sort((a, b) => {
-      const order = { verified: 0, stale: 1, out_of_stock: 2, no_offer: 3, specialist: 4 };
+      const order = { verified: 0, stale: 1, out_of_stock: 2, live_link: 3, specialist: 4 };
       const diff = order[a.status] - order[b.status];
       if (diff !== 0) return diff;
       return (a.priceRow?.price || 0) - (b.priceRow?.price || 0);
@@ -194,81 +243,84 @@ export function StoreOfferMatrix({
               12 Monitored Stores Coverage Status
             </h3>
           </div>
-          <span className="text-[11px] text-muted-foreground font-medium">
-            {verifiedCount} of 12 stores verified
+          <span className="text-[11px] text-muted-foreground font-semibold">
+            {verifiedCount} Direct Prices · All 12 Stores Linked
           </span>
         </div>
 
-        {/* Clean 3-column / 2-column responsive status pills */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-          {storeStatuses.map(({ store, status, statusLabel, priceRow }) => {
-            const hasLink = Boolean(priceRow?.product_url);
-            const CardWrapper = hasLink ? 'a' : 'div';
-            const wrapperProps = hasLink
-              ? {
-                  href: priceRow!.product_url,
-                  target: '_blank',
-                  rel: 'noopener noreferrer nofollow',
-                  title: `View on ${store.name}`,
-                }
-              : {};
-
+        {/* 2-Column Spacious Grid — Zero Name Truncation */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {storeStatuses.map(({ store, status, statusLabel, subtext, priceRow, searchUrl }) => {
             const isVerified = status === 'verified';
             const isStale = status === 'stale';
+            const hasDirectOffer = Boolean(priceRow && priceRow.price > 0);
 
             return (
-              <CardWrapper
+              <a
                 key={store.slug}
-                {...(wrapperProps as any)}
+                href={searchUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                title={hasDirectOffer ? `View offer on ${store.name}` : `Check live search on ${store.name}`}
                 className={cn(
-                  'flex items-center justify-between p-2.5 rounded-xl border transition-all text-xs',
+                  'group flex items-center justify-between p-3 rounded-xl border transition-all text-xs cursor-pointer',
                   isVerified
-                    ? 'border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/60'
+                    ? 'border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/60 hover:bg-emerald-500/10'
                     : isStale
-                      ? 'border-amber-500/30 bg-amber-500/5 hover:border-amber-500/50'
-                      : 'border-border/60 bg-background/50 hover:bg-muted/30 text-muted-foreground',
-                  hasLink && 'cursor-pointer group'
+                      ? 'border-amber-500/30 bg-amber-500/5 hover:border-amber-500/50 hover:bg-amber-500/10'
+                      : 'border-border/60 bg-background/50 hover:border-primary/40 hover:bg-muted/30 text-muted-foreground'
                 )}
               >
-                <div className="flex items-center gap-2 min-w-0">
+                {/* Store Name & Logo Badge */}
+                <div className="flex items-center gap-2.5 min-w-0 pr-2">
                   <div
                     className={cn(
-                      'w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold shrink-0 uppercase',
+                      'w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold shrink-0 uppercase tracking-tight',
                       isVerified
                         ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400'
                         : isStale
                           ? 'bg-amber-500/20 text-amber-700 dark:text-amber-400'
-                          : 'bg-muted text-muted-foreground'
+                          : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors'
                     )}
                   >
                     {store.name.slice(0, 2)}
                   </div>
-                  <span className={cn(
-                    'font-medium truncate',
-                    isVerified ? 'text-foreground font-semibold' : 'text-foreground/80'
-                  )}>
-                    {store.name}
-                  </span>
+                  <div className="flex flex-col min-w-0">
+                    <span className={cn(
+                      'font-semibold text-xs whitespace-nowrap',
+                      isVerified ? 'text-foreground font-bold' : 'text-foreground/90 group-hover:text-primary transition-colors'
+                    )}>
+                      {store.name}
+                    </span>
+                    <span className="text-[10px] text-muted-foreground/80 truncate">
+                      {hasDirectOffer ? 'Direct in-stock offer' : subtext}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                  {priceRow && priceRow.price > 0 ? (
-                    <span className={cn(
-                      'font-bold text-[11px]',
-                      isVerified ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600'
-                    )}>
-                      Rs. {priceRow.price.toLocaleString()}
-                    </span>
+                {/* Right Badge / Action */}
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {hasDirectOffer ? (
+                    <div className="text-right">
+                      <span className={cn(
+                        'font-bold text-xs block leading-tight',
+                        isVerified ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600'
+                      )}>
+                        Rs. {priceRow.price.toLocaleString()}
+                      </span>
+                      <span className="text-[9px] text-muted-foreground font-medium flex items-center justify-end gap-0.5">
+                        Verified Offer
+                        <ExternalLink className="w-2.5 h-2.5 text-muted-foreground/60 group-hover:text-primary transition-colors" />
+                      </span>
+                    </div>
                   ) : (
-                    <span className="text-[10px] text-muted-foreground">
-                      {statusLabel}
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-muted/60 group-hover:bg-primary/10 group-hover:text-primary text-[11px] font-medium text-foreground/75 border border-border/50 group-hover:border-primary/30 transition-all">
+                      <Search className="w-2.5 h-2.5 text-muted-foreground group-hover:text-primary shrink-0" />
+                      Check Live on {store.name} ↗
                     </span>
-                  )}
-                  {hasLink && (
-                    <ExternalLink className="w-3 h-3 text-muted-foreground/60 group-hover:text-primary transition-colors shrink-0" />
                   )}
                 </div>
-              </CardWrapper>
+              </a>
             );
           })}
         </div>

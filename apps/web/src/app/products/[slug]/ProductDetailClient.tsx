@@ -480,6 +480,7 @@ export default function ProductDetailClient({ product, variants }: ProductDetail
           {selected && (
             <StoreOfferMatrix
               selectedVariant={selected}
+              productName={product.name}
               categorySlug={(product.category as any)?.slug || ''}
               lowestPrice={lowestPrice}
             />

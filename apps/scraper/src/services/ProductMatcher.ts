@@ -79,8 +79,9 @@ export class ProductMatcher {
       if (variants.length > 0) {
         // We have product family candidates via model number.
         // Now find the variant with compatible specs within this family.
+        const familyVariants = variants.map(v => v.variant);
         for (const { variant, product } of variants) {
-          if (this.variantSpecsCompatible(scraped, variant)) {
+          if (this.variantSpecsCompatible(scraped, variant, familyVariants)) {
             logger.info({ variantId: variant.id, strategy: 'BrandModel+Specs', model: normalizedModel }, 'Product matched');
             return {
               status: 'matched',
@@ -137,7 +138,7 @@ export class ProductMatcher {
       const strongCandidates: MatchCandidate[] = [];
 
       for (const v of allVariants) {
-        if (this.variantSpecsCompatible(scraped, v)) {
+        if (this.variantSpecsCompatible(scraped, v, allVariants)) {
           const similarity = calculateStringSimilarity(normalizedName, matchedProduct.normalized_name || matchedProduct.name);
           if (similarity >= 0.90) {
             strongCandidates.push({
@@ -192,17 +193,20 @@ export class ProductMatcher {
       const candidateProduct = await this.productRepo.getProductById(c.productId);
       if (candidateProduct && !isConflictingProductFamily(normalizedName, candidateProduct.normalized_name || candidateProduct.name)) {
         const variant = await this.productRepo.getVariantById(c.variantId);
-        if (variant && this.variantSpecsCompatible(scraped, variant)) {
-          logger.info({ variantId: c.variantId, strategy: 'Fuzzy', confidence: c.confidence }, 'Product matched via fuzzy');
-          return {
-            status: 'matched',
-            method: 'fuzzy',
-            confidence: c.confidence,
-            product: candidateProduct,
-            variant,
-            candidates: fuzzyCandidates,
-            reason: `Fuzzy match (confidence: ${c.confidence.toFixed(3)}, no family conflict)`,
-          };
+        if (variant) {
+          const productVariants = await this.productRepo.getAllVariants(c.productId);
+          if (this.variantSpecsCompatible(scraped, variant, productVariants)) {
+            logger.info({ variantId: c.variantId, strategy: 'Fuzzy', confidence: c.confidence }, 'Product matched via fuzzy');
+            return {
+              status: 'matched',
+              method: 'fuzzy',
+              confidence: c.confidence,
+              product: candidateProduct,
+              variant,
+              candidates: fuzzyCandidates,
+              reason: `Fuzzy match (confidence: ${c.confidence.toFixed(3)}, no family conflict)`,
+            };
+          }
         }
       }
     }
@@ -241,11 +245,45 @@ export class ProductMatcher {
    * Check if scraped specs are compatible with an existing variant.
    * NULL on scraped side = unknown = compatible (correction #2).
    * Only explicit conflicting values constitute a mismatch.
+   *
+   * In Increment 6X:
+   * 1. Strict RAM and Storage matching is preserved.
+   * 2. Color difference alone does NOT reject a match if the product only has 1 variant
+   *    or if only 1 variant exists for that RAM+storage tier.
+   * 3. If multiple variants exist for the same RAM+storage, exact color match is prioritized.
    */
-  private variantSpecsCompatible(scraped: ScrapedProductSchemaType, variant: ProductVariant): boolean {
-    return specsCompatible(scraped.ramGb || null, variant.ram_gb)
-      && specsCompatible(scraped.storageGb || null, variant.storage_gb)
-      && specsCompatible(scraped.color || null, variant.color);
+  private variantSpecsCompatible(
+    scraped: ScrapedProductSchemaType,
+    variant: ProductVariant,
+    allProductVariants?: ProductVariant[]
+  ): boolean {
+    const ramOk = specsCompatible(scraped.ramGb || null, variant.ram_gb);
+    const storageOk = specsCompatible(scraped.storageGb || null, variant.storage_gb);
+    if (!ramOk || !storageOk) return false;
+
+    // Strict color match
+    if (specsCompatible(scraped.color || null, variant.color)) {
+      return true;
+    }
+
+    // If only 1 variant exists (or no siblings passed), allow color relaxation
+    if (!allProductVariants || allProductVariants.length <= 1) {
+      return true;
+    }
+
+    // Check variants sharing the same RAM + Storage tier
+    const sameTierVariants = allProductVariants.filter(
+      v => specsCompatible(v.ram_gb, variant.ram_gb) && specsCompatible(v.storage_gb, variant.storage_gb)
+    );
+    if (sameTierVariants.length <= 1) {
+      return true;
+    }
+
+    // If another sibling variant has an exact match for the scraped color, prefer that one
+    const exactColorMatchExists = sameTierVariants.some(
+      v => specsCompatible(scraped.color || null, v.color)
+    );
+    return !exactColorMatchExists;
   }
 
   /**
@@ -269,7 +307,7 @@ export class ProductMatcher {
 
       const variants = await this.productRepo.getAllVariants(p.id);
       for (const v of variants) {
-        if (this.variantSpecsCompatible(scraped, v)) {
+        if (this.variantSpecsCompatible(scraped, v, variants)) {
           candidates.push({
             productId: p.id,
             variantId: v.id,
