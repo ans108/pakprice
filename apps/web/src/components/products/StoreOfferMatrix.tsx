@@ -272,7 +272,7 @@ export function StoreOfferMatrix({
                 )}
               >
                 {/* Store Name & Logo Badge */}
-                <div className="flex items-center gap-2.5 min-w-0 pr-2">
+                <div className="flex items-center gap-2.5 min-w-0 flex-1 pr-2">
                   <div
                     className={cn(
                       'w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold shrink-0 uppercase tracking-tight',
@@ -287,7 +287,7 @@ export function StoreOfferMatrix({
                   </div>
                   <div className="flex flex-col min-w-0">
                     <span className={cn(
-                      'font-semibold text-xs whitespace-nowrap',
+                      'font-semibold text-xs truncate',
                       isVerified ? 'text-foreground font-bold' : 'text-foreground/90 group-hover:text-primary transition-colors'
                     )}>
                       {store.name}
@@ -299,12 +299,12 @@ export function StoreOfferMatrix({
                 </div>
 
                 {/* Right Badge / Action */}
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-1.5 shrink-0 whitespace-nowrap ml-2">
                   {hasDirectOffer ? (
                     <div className="text-right">
                       <span className={cn(
                         'font-bold text-xs block leading-tight',
-                        isVerified ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600'
+                        isVerified ? 'text-emerald-600 dark:text-emerald-400 font-extrabold' : 'text-amber-600'
                       )}>
                         Rs. {priceRow.price.toLocaleString()}
                       </span>
@@ -314,9 +314,9 @@ export function StoreOfferMatrix({
                       </span>
                     </div>
                   ) : (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-muted/60 group-hover:bg-primary/10 group-hover:text-primary text-[11px] font-medium text-foreground/75 border border-border/50 group-hover:border-primary/30 transition-all">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-muted/60 group-hover:bg-primary/10 group-hover:text-primary text-[11px] font-medium text-foreground/75 border border-border/50 group-hover:border-primary/30 transition-all shrink-0 whitespace-nowrap">
                       <Search className="w-2.5 h-2.5 text-muted-foreground group-hover:text-primary shrink-0" />
-                      Check Live on {store.name} ↗
+                      Search Store ↗
                     </span>
                   )}
                 </div>
