@@ -76,9 +76,8 @@ export function StoreOfferMatrix({
   const prices: any[] = selectedVariant?.prices || [];
   const normCategory = (categorySlug || '').toLowerCase();
   const isLaptopCategory = normCategory.includes('laptop') || normCategory.includes('computer');
-  const isSmartwatchCategory = normCategory.includes('watch');
 
-  // Match all 12 configured stores to price rows cleanly
+  // Match all 12 configured stores into one of 3 honest states
   const storeStatuses = CONFIGURED_STORES.map((store) => {
     const priceRow = prices.find(
       (p) =>
@@ -88,75 +87,98 @@ export function StoreOfferMatrix({
         (p.product_url && p.product_url.toLowerCase().includes(store.slug))
     );
 
-    if (priceRow && typeof priceRow.price === 'number' && priceRow.price > 0) {
+    // State 1 — Product Is Available & Verified (genuine price row in DB)
+    if (priceRow && typeof priceRow.price === 'number' && priceRow.price > 0 && priceRow.in_stock) {
       const isStale = priceRow.last_scraped_at
         ? Date.now() - new Date(priceRow.last_scraped_at).getTime() > 72 * 60 * 60 * 1000
         : false;
 
-      if (priceRow.in_stock && !isStale) {
-        return {
-          store,
-          status: 'verified' as const,
-          statusLabel: 'Verified Offer',
-          subtext: `Rs. ${priceRow.price.toLocaleString()}`,
-          priceRow,
-          isStale: false,
-          searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
-        };
-      } else if (priceRow.in_stock && isStale) {
-        return {
-          store,
-          status: 'stale' as const,
-          statusLabel: 'Stale Offer',
-          subtext: `Rs. ${priceRow.price.toLocaleString()}`,
-          priceRow,
-          isStale: true,
-          searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
-        };
-      } else {
-        return {
-          store,
-          status: 'out_of_stock' as const,
-          statusLabel: 'Out of Stock',
-          subtext: 'Currently unavailable',
-          priceRow,
-          isStale,
-          searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
-        };
-      }
+      return {
+        store,
+        status: isStale ? ('stale' as const) : ('verified' as const),
+        statusLabel: isStale ? 'Stale Offer' : 'Verified Offer',
+        subtext: isStale ? `Last verified Rs. ${priceRow.price.toLocaleString()}` : 'Direct in-stock offer',
+        buttonLabel: 'Verified Offer ↗',
+        priceRow,
+        isStale,
+        searchUrl: priceRow.product_url || getStoreSearchUrl(store.slug, productName),
+      };
     }
 
-    // Category specialization note
+    // State 3 — Store Has Anti-Bot / Technical Search Issue (search_restricted / unsupported)
+    if (store.slug === 'daraz') {
+      return {
+        store,
+        status: 'search_restricted' as const,
+        statusLabel: 'Anti-bot Protected',
+        subtext: 'Anti-bot CAPTCHA on auto-search — Product not auto-fetched',
+        buttonLabel: 'Search Manually ↗',
+        priceRow: null,
+        isStale: false,
+        searchUrl: getStoreSearchUrl(store.slug, productName),
+      };
+    }
+
+    if (store.slug === 'homeshopping') {
+      return {
+        store,
+        status: 'search_restricted' as const,
+        statusLabel: 'API Maintenance',
+        subtext: 'Store search API under maintenance',
+        buttonLabel: 'Search Manually ↗',
+        priceRow: null,
+        isStale: false,
+        searchUrl: getStoreSearchUrl(store.slug, productName),
+      };
+    }
+
+    if (store.slug === 'carrefour') {
+      return {
+        store,
+        status: 'search_restricted' as const,
+        statusLabel: 'WAF Protected',
+        subtext: 'WAF protected / Hypermarket catalog — Product not available',
+        buttonLabel: 'Search Manually ↗',
+        priceRow: null,
+        isStale: false,
+        searchUrl: getStoreSearchUrl(store.slug, productName),
+      };
+    }
+
+    if (store.slug === 'metro') {
+      return {
+        store,
+        status: 'search_restricted' as const,
+        statusLabel: 'WAF Protected',
+        subtext: 'HTTP 403 protected / Wholesale catalog — Product not available',
+        buttonLabel: 'Search Manually ↗',
+        priceRow: null,
+        isStale: false,
+        searchUrl: getStoreSearchUrl(store.slug, productName),
+      };
+    }
+
+    // Special category note for paklap when not a laptop
     if (store.slug === 'paklap' && !isLaptopCategory) {
       return {
         store,
-        status: 'specialist' as const,
+        status: 'no_listing' as const,
         statusLabel: 'Laptops Specialist',
-        subtext: 'Search computing catalog',
+        subtext: 'Product not available in this store',
+        buttonLabel: 'Manual Search ↗',
         priceRow: null,
         isStale: false,
         searchUrl: getStoreSearchUrl(store.slug, productName),
       };
     }
 
-    if (store.specialization === 'hypermarket' && (isLaptopCategory || isSmartwatchCategory)) {
-      return {
-        store,
-        status: 'specialist' as const,
-        statusLabel: 'Hypermarket',
-        subtext: 'Search general catalog',
-        priceRow: null,
-        isStale: false,
-        searchUrl: getStoreSearchUrl(store.slug, productName),
-      };
-    }
-
-    // Default: live search link on this store
+    // State 2 — Store Was Checked & Product Is Not Available in That Store (no_listing)
     return {
       store,
-      status: 'live_link' as const,
-      statusLabel: 'Check Live',
-      subtext: 'Search live catalog',
+      status: 'no_listing' as const,
+      statusLabel: 'Not Available',
+      subtext: 'Product not available in this store',
+      buttonLabel: 'Manual Search ↗',
       priceRow: null,
       isStale: false,
       searchUrl: getStoreSearchUrl(store.slug, productName),
@@ -167,19 +189,19 @@ export function StoreOfferMatrix({
   const activeOffers = storeStatuses
     .filter((s) => s.priceRow !== null)
     .sort((a, b) => {
-      const order = { verified: 0, stale: 1, out_of_stock: 2, live_link: 3, specialist: 4 };
-      const diff = order[a.status] - order[b.status];
+      const order = { verified: 0, stale: 1, no_listing: 2, search_restricted: 3 };
+      const diff = (order[a.status] || 0) - (order[b.status] || 0);
       if (diff !== 0) return diff;
       return (a.priceRow?.price || 0) - (b.priceRow?.price || 0);
     });
 
-  const verifiedCount = storeStatuses.filter((s) => s.status === 'verified').length;
+  const verifiedCount = storeStatuses.filter((s) => s.priceRow !== null).length;
   const totalOffersCount = activeOffers.length;
 
   return (
     <div className="flex flex-col gap-6">
       {/* ── Active Offers Section ──────────────────────────────── */}
-      <div>
+      <div data-testid="available-offers-section">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold text-foreground">Available Offers</h2>
@@ -244,15 +266,16 @@ export function StoreOfferMatrix({
             </h3>
           </div>
           <span className="text-[11px] text-muted-foreground font-semibold">
-            {verifiedCount} Direct Prices · All 12 Stores Linked
+            {verifiedCount} Direct {verifiedCount === 1 ? 'Price' : 'Prices'} · {12 - verifiedCount} Monitored / Manual
           </span>
         </div>
 
         {/* 2-Column Spacious Grid — Zero Name Truncation */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {storeStatuses.map(({ store, status, statusLabel, subtext, priceRow, searchUrl }) => {
+          {storeStatuses.map(({ store, status, buttonLabel, subtext, priceRow, searchUrl }) => {
             const isVerified = status === 'verified';
             const isStale = status === 'stale';
+            const isRestricted = status === 'search_restricted';
             const hasDirectOffer = Boolean(priceRow && priceRow.price > 0);
 
             return (
@@ -268,7 +291,9 @@ export function StoreOfferMatrix({
                     ? 'border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/60 hover:bg-emerald-500/10'
                     : isStale
                       ? 'border-amber-500/30 bg-amber-500/5 hover:border-amber-500/50 hover:bg-amber-500/10'
-                      : 'border-border/60 bg-background/50 hover:border-primary/40 hover:bg-muted/30 text-muted-foreground'
+                      : isRestricted
+                        ? 'border-border/70 bg-muted/10 hover:border-primary/40 hover:bg-muted/20 text-muted-foreground'
+                        : 'border-border/50 bg-background/50 hover:border-primary/40 hover:bg-muted/20 text-muted-foreground'
                 )}
               >
                 {/* Store Name & Logo Badge */}
@@ -292,7 +317,10 @@ export function StoreOfferMatrix({
                     )}>
                       {store.name}
                     </span>
-                    <span className="text-[10px] text-muted-foreground/80 truncate">
+                    <span
+                      className="text-[10px] text-muted-foreground/80 truncate"
+                      title={hasDirectOffer ? 'Direct in-stock offer' : subtext}
+                    >
                       {hasDirectOffer ? 'Direct in-stock offer' : subtext}
                     </span>
                   </div>
@@ -313,10 +341,14 @@ export function StoreOfferMatrix({
                         <ExternalLink className="w-2.5 h-2.5 text-muted-foreground/60 group-hover:text-primary transition-colors" />
                       </span>
                     </div>
-                  ) : (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-muted/60 group-hover:bg-primary/10 group-hover:text-primary text-[11px] font-medium text-foreground/75 border border-border/50 group-hover:border-primary/30 transition-all shrink-0 whitespace-nowrap">
+                  ) : isRestricted ? (
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-muted/70 group-hover:bg-primary/10 group-hover:text-primary text-[11px] font-semibold text-foreground/80 border border-border/60 group-hover:border-primary/30 transition-all shrink-0 whitespace-nowrap">
                       <Search className="w-2.5 h-2.5 text-muted-foreground group-hover:text-primary shrink-0" />
-                      Search Store ↗
+                      Search Manually ↗
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-muted/50 group-hover:bg-muted text-[11px] font-medium text-muted-foreground group-hover:text-foreground border border-border/40 transition-all shrink-0 whitespace-nowrap">
+                      Manual Search ↗
                     </span>
                   )}
                 </div>
