@@ -520,7 +520,15 @@ export function isConflictingProductFamily(nameA: string, nameB: string): boolea
   if (sortedA !== sortedB) return true;
 
   const getModelNumbers = (name: string): string[] => {
-    const nums = [...name.matchAll(/\b([a-z]?\d{1,4}[a-z]?)\b/gi)];
+    // Strip known merchandising & technical spec noise before extracting model numbers
+    const cleaned = name
+      .toLowerCase()
+      .replace(/\bipx?\d+\b/gi, ' ')
+      .replace(/\b\d+(?:\.\d+)?\s*(?:w|watt|mah|db|hours?|h|hrs?|meter|m|mm|cm|in|inch|inches)\b/gi, ' ')
+      .replace(/\b\d+\s*(?:day|days|month|months|year|years)\b/gi, ' ')
+      .replace(/\b(?:upto|up to)\s*\d+\b/gi, ' ');
+
+    const nums = [...cleaned.matchAll(/\b([a-z]?\d{1,4}[a-z]?)\b/gi)];
     return nums.map(m => m[1].toLowerCase());
   };
 

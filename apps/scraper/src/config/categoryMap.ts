@@ -73,7 +73,11 @@ export const STORE_CATEGORY_MAP: Record<string, StoreCategoryDefinition[]> = {
     { url: 'https://www.naheed.pk/electronics', categorySlug: 'home-appliances', categoryName: 'Electronics & Appliances' },
   ],
   'al-fatah': [
-    { url: 'https://www.alfatah.com.pk/wp-json/wc/store/v1/products?per_page=20', categorySlug: 'home-appliances', categoryName: 'Appliances & Electronics' },
-    { url: 'https://www.alfatah.com.pk/product-category/geysers-and-heaters/', categorySlug: 'home-appliances', categoryName: 'Geysers & Heaters' },
+    { url: 'https://www.alfatah.com.pk/?s=dawlance&post_type=product', categorySlug: 'home-appliances', categoryName: 'Dawlance Appliances' },
+    { url: 'https://www.alfatah.com.pk/?s=haier&post_type=product', categorySlug: 'home-appliances', categoryName: 'Haier Appliances' },
+    { url: 'https://www.alfatah.com.pk/?s=kenwood&post_type=product', categorySlug: 'home-appliances', categoryName: 'Kenwood Appliances' },
+    { url: 'https://www.alfatah.com.pk/?s=pel&post_type=product', categorySlug: 'home-appliances', categoryName: 'Pel Appliances' },
+    { url: 'https://www.alfatah.com.pk/?s=tcl&post_type=product', categorySlug: 'home-appliances', categoryName: 'TCL Electronics' },
+    { url: 'https://www.alfatah.com.pk/?s=samsung&post_type=product', categorySlug: 'home-appliances', categoryName: 'Samsung Electronics' },
   ],
 };

@@ -1,4 +1,5 @@
 import logger from '../utils/logger';
+
 import { supabase } from '../database/supabase';
 import type { PriceAlert } from '@pakprice/shared';
 

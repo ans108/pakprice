@@ -79,11 +79,14 @@ export class PriceIngestionService {
         // We need to create a new product and/or variant.
         const normalizedName = normalizeProductName(scraped.name);
         
-        // Infer brand from scraped.brand or first word of product name
+        // Infer brand from scraped.brand or words in product name
         let brand = scraped.brand ? await this.productRepo.getBrandByName(scraped.brand) : null;
         if (!brand) {
-          const firstWord = scraped.name.split(' ')[0];
-          brand = await this.productRepo.getBrandByName(firstWord);
+          const words = scraped.name.split(/\s+/);
+          for (const word of words.slice(0, 3)) {
+            brand = await this.productRepo.getBrandByName(word);
+            if (brand) break;
+          }
         }
 
         // Infer category from URL or name keywords
@@ -102,6 +105,30 @@ export class PriceIngestionService {
           categorySlug = 'headphones-audio';
         } else if (urlLower.includes('/power-banks') || nameLower.includes('power bank') || nameLower.includes('charger')) {
           categorySlug = 'computer-accessories';
+        } else if (nameLower.includes('refrigerator') || nameLower.includes('fridge') || nameLower.includes('freezer')) {
+          categorySlug = 'refrigerators';
+        } else if (nameLower.includes('washing machine') || nameLower.includes('washer') || nameLower.includes('dryer')) {
+          categorySlug = 'washing-machines';
+        } else if (nameLower.includes('air conditioner') || nameLower.includes('inverter ac') || /\bac\b/i.test(nameLower)) {
+          categorySlug = 'air-conditioners';
+        } else if (nameLower.includes('microwave') || nameLower.includes('oven') || nameLower.includes('air fryer') || nameLower.includes('toaster') || nameLower.includes('sandwich maker')) {
+          categorySlug = 'microwave-ovens';
+        } else if (nameLower.includes('iron') || nameLower.includes('steamer')) {
+          categorySlug = 'iron-steamers';
+        } else if (nameLower.includes('vacuum')) {
+          categorySlug = 'vacuum-cleaners';
+        } else if (nameLower.includes('water dispenser') || nameLower.includes('dispenser')) {
+          categorySlug = 'water-dispensers';
+        } else if (nameLower.includes('geyser') || nameLower.includes('heater')) {
+          categorySlug = 'home-appliances';
+        } else if (nameLower.includes('blender') || nameLower.includes('juicer') || nameLower.includes('kettle') || nameLower.includes('chopper') || nameLower.includes('grinder') || nameLower.includes('food processor')) {
+          categorySlug = 'kitchen';
+        } else if (nameLower.includes('tv') || nameLower.includes('led') || nameLower.includes('qled') || nameLower.includes('television')) {
+          categorySlug = 'tvs';
+        } else if (nameLower.includes('trimmer') || nameLower.includes('shaver') || nameLower.includes('hair dryer') || nameLower.includes('straightener') || nameLower.includes('grooming')) {
+          categorySlug = 'electronics';
+        } else {
+          categorySlug = 'electronics';
         }
 
         const category = categorySlug ? await this.productRepo.getCategoryBySlug(categorySlug) : null;

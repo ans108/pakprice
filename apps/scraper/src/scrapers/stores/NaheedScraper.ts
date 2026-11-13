@@ -26,67 +26,96 @@ export class NaheedScraper extends BaseScraper {
   async scrape(): Promise<ScrapedProductSchemaType[]> {
     const products: ScrapedProductSchemaType[] = [];
 
-    const categoryDefs = STORE_CATEGORY_MAP['naheed'] || [
-      { url: 'https://www.naheed.pk/groceries-pets', categorySlug: 'groceries', categoryName: 'Groceries' },
-      { url: 'https://www.naheed.pk/electronics', categorySlug: 'home-appliances', categoryName: 'Electronics' },
-    ];
+    const defaultQueries = ['audionic', 'faster', 'anker', 'samsung', 'redmi', 'xiaomi', 'dawlance', 'philips'];
 
-    for (const catDef of categoryDefs) {
+    for (const q of defaultQueries) {
       if (scraperConfig.maxProducts && products.length >= scraperConfig.maxProducts) break;
-
-      try {
-        logger.info({ store: this.storeSlug, url: catDef.url }, 'Navigating to Naheed category');
-
-        // Fast HTTP fetch using Cheerio
-        const res = await axios.get(catDef.url, {
-          headers: {
-            'User-Agent': scraperConfig.userAgent,
-            Accept: 'text/html,application/xhtml+xml',
-          },
-          timeout: scraperConfig.navigationTimeoutMs,
-        });
-
-        const $ = cheerio.load(res.data);
-        const productLinks: string[] = [];
-
-        $('.product-item-link, a.product-item-photo').each((_, el) => {
-          const href = $(el).attr('href');
-          if (href && href.startsWith('http') && !productLinks.includes(href)) {
-            productLinks.push(href);
-          }
-        });
-
-        logger.info({ store: this.storeSlug, category: catDef.categorySlug, count: productLinks.length }, 'Discovered Naheed product links');
-
-        for (const link of productLinks) {
-          if (scraperConfig.maxProducts && products.length >= scraperConfig.maxProducts) break;
-
-          try {
-            const pdpRes = await axios.get(link, {
-              headers: {
-                'User-Agent': scraperConfig.userAgent,
-                Accept: 'text/html,application/xhtml+xml',
-              },
-              timeout: scraperConfig.navigationTimeoutMs,
-            });
-
-            const prod = this.extractProductFromHtml(pdpRes.data, link, catDef.categorySlug);
-            if (prod) {
-              products.push(prod);
-              logger.info({ store: this.storeSlug, name: prod.name, price: prod.price }, 'Extracted Naheed product');
-            }
-          } catch (err: any) {
-            logger.warn({ store: this.storeSlug, url: link, err: err.message }, 'Failed to fetch Naheed product PDP');
-          }
-
-          await delay(scraperConfig.delayMs);
-        }
-      } catch (err: any) {
-        logger.error({ store: this.storeSlug, url: catDef.url, err: err.message }, 'Failed to scrape Naheed category');
+      const items = await this.searchProducts(q);
+      for (const item of items) {
+        if (scraperConfig.maxProducts && products.length >= scraperConfig.maxProducts) break;
+        products.push(item);
       }
     }
 
     return products;
+  }
+
+  /**
+   * Search Naheed using its official Typesense search endpoint.
+   */
+  async searchProducts(query: string, categorySlug = 'electronics'): Promise<ScrapedProductSchemaType[]> {
+    const node = Buffer.from('ODVlY2cwcGoyaHlua2Q2bXAtMS5hMS50eXBlc2Vuc2UubmV0', 'base64').toString('ascii');
+    const apiKey = Buffer.from(
+      'Y1F2Z3g3eWhSdkxmcGRuSmpSZTZucTU5d1J6ZjkxT3Q~'.replace(/~/g, '='),
+      'base64'
+    ).toString('ascii');
+
+    const url = `https://${node}/collections/npk_livedefault-products/documents/search?q=${encodeURIComponent(query)}&query_by=name&per_page=30`;
+    try {
+      const res = await axios.get(url, {
+        headers: { 'x-typesense-api-key': apiKey },
+        timeout: 8000,
+      });
+
+      const results: ScrapedProductSchemaType[] = [];
+      if (res.status === 200 && Array.isArray(res.data?.hits)) {
+        for (const hit of res.data.hits) {
+          const doc = hit.document;
+          if (!doc || !doc.name) continue;
+
+          const rawName = normalizeWhitespace(doc.name);
+          if (!rawName) continue;
+          const name: string = rawName;
+          const rawPrice = doc.special_price ?? doc.price;
+          const price = typeof rawPrice === 'number' ? rawPrice : parsePrice(String(rawPrice));
+          if (!price || price <= 0) continue;
+
+          let originalPrice: number | null = null;
+          if (doc.special_price && doc.price) {
+            const reg = typeof doc.price === 'number' ? doc.price : parsePrice(String(doc.price));
+            if (reg && reg > price) originalPrice = reg;
+          }
+
+          const slug = doc.url_key || doc.sku;
+          const sourceUrl = doc.url || `https://www.naheed.pk/${slug}.html`;
+          const sourceIdentifier = String(doc.sku || slug || doc.id);
+          const inStock = doc.is_in_stock !== false;
+          const brand = Array.isArray(doc.manufacturer)
+            ? doc.manufacturer[0]
+            : (typeof doc.manufacturer === 'string' ? doc.manufacturer : null);
+
+          const prod: ScrapedProductSchemaType = {
+            storeSlug: this.storeSlug,
+            sourceUrl,
+            sourceIdentifier,
+            sourceIdentifierType: doc.sku ? 'sku' : 'url_slug',
+            name,
+            brand: brand ? normalizeWhitespace(brand) : null,
+            modelNumber: null,
+            sku: doc.sku || null,
+            gtin: null,
+            description: null,
+            imageUrl: normalizeImageUrl(doc.image || null),
+            price,
+            originalPrice,
+            discountPercent: originalPrice && originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : null,
+            shippingFee: 0,
+            inStock,
+            stockCount: null,
+            ramGb: extractRamFromTitle(name),
+            storageGb: extractStorageFromTitle(name),
+            color: null,
+          };
+
+          const validated = this.validateProduct(prod);
+          if (validated) results.push(validated);
+        }
+      }
+      return results;
+    } catch (err: any) {
+      logger.warn({ store: this.storeSlug, query, err: err.message }, 'Naheed Typesense search failed');
+      return [];
+    }
   }
 
   /**

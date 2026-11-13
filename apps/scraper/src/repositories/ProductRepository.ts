@@ -90,12 +90,20 @@ export class ProductRepository {
   }
 
   async createProduct(product: Partial<Product>): Promise<Product | null> {
-    const { data, error } = await supabase.from('products').insert(product).select().single();
-    if (error) {
+    let slug = product.slug;
+    let attempt = 0;
+    while (attempt < 5) {
+      const { data, error } = await supabase.from('products').insert({ ...product, slug }).select().single();
+      if (!error && data) return data;
+      if (error && (error.code === '23505' || error.message?.includes('duplicate key') || error.message?.includes('slug'))) {
+        attempt++;
+        slug = `${product.slug}-${Math.random().toString(36).substring(2, 6)}`;
+        continue;
+      }
       console.error('Failed to create product:', error);
       return null;
     }
-    return data;
+    return null;
   }
 
   async createVariant(variant: Partial<ProductVariant>): Promise<ProductVariant | null> {

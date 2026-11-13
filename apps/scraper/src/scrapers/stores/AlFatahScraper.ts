@@ -26,9 +26,8 @@ export class AlFatahScraper extends BaseScraper {
   async scrape(): Promise<ScrapedProductSchemaType[]> {
     const products: ScrapedProductSchemaType[] = [];
 
-    // Al-Fatah provides a public WooCommerce Store REST API
     const categoryDefs = STORE_CATEGORY_MAP['al-fatah'] || [
-      { url: 'https://www.alfatah.com.pk/wp-json/wc/store/v1/products?per_page=20', categorySlug: 'home-appliances', categoryName: 'Appliances & Electronics' },
+      { url: 'https://www.alfatah.com.pk/?s=dawlance&post_type=product', categorySlug: 'home-appliances', categoryName: 'Dawlance' },
     ];
 
     for (const catDef of categoryDefs) {
@@ -39,70 +38,54 @@ export class AlFatahScraper extends BaseScraper {
       try {
         logger.info({ store: this.storeSlug, url: catDef.url }, 'Querying Al-Fatah products');
 
-        if (catDef.url.includes('/wp-json/')) {
+        // Fast Cheerio extraction over HTTP
+        try {
           const res = await axios.get(catDef.url, {
             headers: {
               'User-Agent': scraperConfig.userAgent,
-              Accept: 'application/json',
+              Accept: 'text/html,application/xhtml+xml',
             },
             timeout: scraperConfig.navigationTimeoutMs,
           });
 
-          if (Array.isArray(res.data)) {
-            for (const item of res.data) {
-              if (scraperConfig.maxProducts && products.length >= scraperConfig.maxProducts) {
-                break;
-              }
-              const prod = this.extractProductFromJson(item, catDef.categorySlug);
-              if (prod) {
-                products.push(prod);
-                logger.info({ store: this.storeSlug, name: prod.name, price: prod.price }, 'Extracted Al-Fatah product from API');
-              }
-            }
-          }
-        } else {
-          // Playwright / HTML fallback
-          if (!this.browser) {
-            this.browser = await chromium.launch({ headless: true });
-            this.context = await this.createContext(this.browser);
-          }
-          if (!this.context) {
-            this.context = await this.createContext(this.browser);
-          }
-          const page = await this.context.newPage();
-          try {
-            await withRetry(async () => {
-              await page.goto(catDef.url, {
-                waitUntil: 'domcontentloaded',
-                timeout: scraperConfig.navigationTimeoutMs,
-              });
-            });
-            await this.checkAntiBotBlock(page, catDef.url);
-            const html = await page.content();
-            const $ = cheerio.load(html);
-
-            const links: string[] = [];
-            $('a.woocommerce-LoopProduct-link, .product-element-top a').each((_, el) => {
-              const h = $(el).attr('href');
-              if (h && h.startsWith('http') && !links.includes(h)) links.push(h);
-            });
-
-            for (const link of links) {
+          if (res.status === 200 && typeof res.data === 'string') {
+            const listProds = this.extractProductsFromListingHtml(res.data, catDef.categorySlug);
+            for (const prod of listProds) {
               if (scraperConfig.maxProducts && products.length >= scraperConfig.maxProducts) break;
-              try {
-                await page.goto(link, { waitUntil: 'domcontentloaded', timeout: scraperConfig.navigationTimeoutMs });
-                await this.checkAntiBotBlock(page, link);
-                const pdpHtml = await page.content();
-                const prod = this.extractProductFromHtml(pdpHtml, link, catDef.categorySlug);
-                if (prod) products.push(prod);
-              } catch (err: any) {
-                if (err instanceof StoreAccessBlockedError) throw err;
-                logger.warn({ store: this.storeSlug, url: link, err: err.message }, 'Failed to scrape Al-Fatah product page');
-              }
+              products.push(prod);
+              logger.info({ store: this.storeSlug, name: prod.name, price: prod.price }, 'Extracted Al-Fatah product from search');
             }
-          } finally {
-            await page.close().catch(() => {});
+            continue;
           }
+        } catch (httpErr: any) {
+          logger.warn({ store: this.storeSlug, url: catDef.url, err: httpErr.message }, 'Direct HTTP listing fetch failed, falling back to Playwright');
+        }
+
+        // Playwright fallback
+        if (!this.browser) {
+          this.browser = await chromium.launch({ headless: true });
+          this.context = await this.createContext(this.browser);
+        }
+        if (!this.context) {
+          this.context = await this.createContext(this.browser);
+        }
+        const page = await this.context.newPage();
+        try {
+          await withRetry(async () => {
+            await page.goto(catDef.url, {
+              waitUntil: 'domcontentloaded',
+              timeout: scraperConfig.navigationTimeoutMs,
+            });
+          });
+          await this.checkAntiBotBlock(page, catDef.url);
+          const html = await page.content();
+          const listProds = this.extractProductsFromListingHtml(html, catDef.categorySlug);
+          for (const prod of listProds) {
+            if (scraperConfig.maxProducts && products.length >= scraperConfig.maxProducts) break;
+            products.push(prod);
+          }
+        } finally {
+          await page.close().catch(() => {});
         }
       } catch (err: any) {
         if (err instanceof StoreAccessBlockedError) throw err;
@@ -114,6 +97,103 @@ export class AlFatahScraper extends BaseScraper {
     if (this.browser) await this.browser.close().catch(() => {});
 
     return products;
+  }
+
+  /**
+   * Search Al-Fatah for products matching a specific query string.
+   */
+  async searchProducts(query: string, categorySlug = 'home-appliances'): Promise<ScrapedProductSchemaType[]> {
+    const url = `https://www.alfatah.com.pk/?s=${encodeURIComponent(query)}&post_type=product`;
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          'User-Agent': scraperConfig.userAgent,
+          Accept: 'text/html,application/xhtml+xml',
+        },
+        timeout: 10000,
+      });
+      if (res.status === 200 && typeof res.data === 'string') {
+        return this.extractProductsFromListingHtml(res.data, categorySlug);
+      }
+    } catch (err: any) {
+      logger.warn({ store: this.storeSlug, query, err: err.message }, 'Al-Fatah search request failed');
+    }
+    return [];
+  }
+
+  /**
+   * Pure extraction function from Al-Fatah WooCommerce search / category listing HTML.
+   */
+  public extractProductsFromListingHtml(html: string, categorySlug = 'home-appliances'): ScrapedProductSchemaType[] {
+    const $ = cheerio.load(html);
+    const results: ScrapedProductSchemaType[] = [];
+
+    $('.product, .product-grid-item, .type-product').each((_, el) => {
+      try {
+        const titleEl = $(el).find('.woocommerce-loop-product__title, .product-title, h3, h2').first();
+        const name = normalizeWhitespace(titleEl.text());
+        if (!name) return;
+
+        const href = $(el).find('a.woocommerce-LoopProduct-link, .product-element-top a, a').first().attr('href');
+        if (!href || !href.startsWith('http') || !href.includes('/product/')) return;
+
+        // Parse price: get the lowest price if range or discount
+        let price = 0;
+        let originalPrice: number | null = null;
+
+        const insPrice = $(el).find('.price ins .woocommerce-Price-amount, ins .woocommerce-Price-amount').first().text();
+        const delPrice = $(el).find('.price del .woocommerce-Price-amount, del .woocommerce-Price-amount').first().text();
+        const regPrice = $(el).find('.price .woocommerce-Price-amount, .woocommerce-Price-amount').first().text();
+
+        if (insPrice) {
+          price = parsePrice(insPrice) || 0;
+          if (delPrice) originalPrice = parsePrice(delPrice);
+        } else if (regPrice) {
+          price = parsePrice(regPrice) || 0;
+        }
+
+        if (price <= 0) return;
+
+        const imgEl = $(el).find('img').first();
+        const rawImg = imgEl.attr('src') || imgEl.attr('data-src') || imgEl.attr('data-lazy-src') || null;
+        const imageUrl = normalizeImageUrl(rawImg);
+
+        const urlSlug = href.split('/').filter(Boolean).pop()?.replace('.html', '') || null;
+        const sourceIdentifier = urlSlug || name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        const inStock = !$(el).hasClass('outofstock') && !$(el).find('.out-of-stock').length;
+
+        const ramGb = extractRamFromTitle(name);
+        const storageGb = extractStorageFromTitle(name);
+
+        const prod: ScrapedProductSchemaType = {
+          storeSlug: this.storeSlug,
+          sourceUrl: href,
+          sourceIdentifier: String(sourceIdentifier),
+          sourceIdentifierType: 'url_slug',
+          name,
+          brand: null,
+          modelNumber: null,
+          sku: null,
+          gtin: null,
+          description: null,
+          imageUrl,
+          price,
+          originalPrice,
+          discountPercent: originalPrice && originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : null,
+          shippingFee: 0,
+          inStock,
+          stockCount: null,
+          ramGb,
+          storageGb,
+          color: null,
+        };
+
+        const validated = this.validateProduct(prod);
+        if (validated) results.push(validated);
+      } catch {}
+    });
+
+    return results;
   }
 
   /**

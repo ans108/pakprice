@@ -136,7 +136,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'metro.pk',
       },
-      // Carrefour — store image hostnames
+      // Carrefour — store image hostnames & CDNs
       {
         protocol: 'https',
         hostname: 'www.carrefour.pk',
@@ -144,6 +144,19 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'carrefour.pk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.mafrservices.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdnprod.mafretailproxy.com',
+      },
+      // Metro Online CDNs
+      {
+        protocol: 'https',
+        hostname: 'prodimages.metro-online.pk',
       },
     ],
   },
