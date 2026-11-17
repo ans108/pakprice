@@ -24,7 +24,7 @@ interface StoreOfferMatrixProps {
 }
 
 /**
- * Generates direct search link for each of the 12 monitored stores
+ * Generates direct search link for each of the 11 monitored stores
  */
 export function getStoreSearchUrl(storeSlug: string, productName: string): string {
   const cleaned = (productName || '')
@@ -47,8 +47,6 @@ export function getStoreSearchUrl(storeSlug: string, productName: string): strin
       return `https://www.mega.pk/search/?q=${q}`;
     case 'shophive':
       return `https://www.shophive.com/catalogsearch/result/?q=${q}`;
-    case 'homeshopping':
-      return `https://homeshopping.pk/search.php?search_query=${q}`;
     case 'paklap':
       return `https://www.paklap.pk/catalogsearch/result/?q=${q}`;
     case 'ishopping':
@@ -112,19 +110,6 @@ export function StoreOfferMatrix({
         status: 'search_restricted' as const,
         statusLabel: 'Anti-bot Protected',
         subtext: 'Anti-bot CAPTCHA on auto-search — Product not auto-fetched',
-        buttonLabel: 'Search Manually ↗',
-        priceRow: null,
-        isStale: false,
-        searchUrl: getStoreSearchUrl(store.slug, productName),
-      };
-    }
-
-    if (store.slug === 'homeshopping') {
-      return {
-        store,
-        status: 'search_restricted' as const,
-        statusLabel: 'API Maintenance',
-        subtext: 'Store search API under maintenance',
         buttonLabel: 'Search Manually ↗',
         priceRow: null,
         isStale: false,
@@ -256,17 +241,17 @@ export function StoreOfferMatrix({
         )}
       </div>
 
-      {/* ── 12 Monitored Stores Coverage Bar ───────────────────── */}
+      {/* ── 11 Monitored Stores Coverage Bar ───────────────────── */}
       <div className="rounded-2xl border border-border bg-card/60 p-4">
         <div className="flex items-center justify-between pb-3 border-b border-border/60 mb-3">
           <div className="flex items-center gap-2">
             <Store className="w-4 h-4 text-primary" />
             <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">
-              12 Monitored Stores Coverage Status
+              11 Monitored Stores Coverage Status
             </h3>
           </div>
           <span className="text-[11px] text-muted-foreground font-semibold">
-            {verifiedCount} Direct {verifiedCount === 1 ? 'Price' : 'Prices'} · {12 - verifiedCount} Monitored / Manual
+            {verifiedCount} Direct {verifiedCount === 1 ? 'Price' : 'Prices'} · {CONFIGURED_STORES.length - verifiedCount} Monitored / Manual
           </span>
         </div>
 

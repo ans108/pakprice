@@ -5,6 +5,7 @@ import { PriceRepository } from '../repositories/PriceRepository';
 import { validatePrice, PriceValidationInput } from '../validation/PriceValidator';
 import { scraperConfig } from '../config/scraperConfig';
 import { logger } from '../scrapers/base/BaseScraper';
+import { alertNotificationDispatcher } from './AlertNotificationDispatcher';
 import { 
   normalizeProductName, 
   generateProductSlug, 
@@ -329,19 +330,12 @@ export class PriceIngestionService {
             '🎯 Claimed matching price alerts atomically'
           );
 
-          for (const alert of claimedAlerts) {
-            const productName = `${(alert as any).variant?.product?.name || 'Product'} - ${(alert as any).variant?.name || 'Variant'}`;
-            logger.info(
-              {
-                alertId: alert.id,
-                userId: alert.user_id,
-                targetPrice: alert.target_price,
-                currentPrice: validation.price,
-                productName,
-              },
-              '🔔 [ALERT TRIGGERED] Price drop notification dispatched'
-            );
-          }
+          await alertNotificationDispatcher.dispatchAlerts(
+            claimedAlerts,
+            validation.price,
+            scraped.name,
+            scraped.sourceUrl
+          );
         }
       }
 

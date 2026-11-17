@@ -1,5 +1,5 @@
 /**
- * Authoritative 12 configured stores for PakPrice.
+ * Authoritative 11 active configured stores for PakPrice.
  * Aligned with the database `stores` table sort_order and slugs.
  */
 
@@ -61,19 +61,10 @@ export const CONFIGURED_STORES: readonly ConfiguredStoreDefinition[] = [
     specialization: 'all',
   },
   {
-    name: 'HomeShopping',
-    slug: 'homeshopping',
-    tier: 2,
-    sort_order: 6,
-    base_url: 'https://www.homeshopping.pk',
-    logo_url: null,
-    specialization: 'all',
-  },
-  {
     name: 'Paklap',
     slug: 'paklap',
     tier: 2,
-    sort_order: 7,
+    sort_order: 6,
     base_url: 'https://www.paklap.pk',
     logo_url: null,
     specialization: 'laptops',
@@ -82,7 +73,7 @@ export const CONFIGURED_STORES: readonly ConfiguredStoreDefinition[] = [
     name: 'iShopping',
     slug: 'ishopping',
     tier: 2,
-    sort_order: 8,
+    sort_order: 7,
     base_url: 'https://www.ishopping.pk',
     logo_url: null,
     specialization: 'all',
@@ -91,7 +82,7 @@ export const CONFIGURED_STORES: readonly ConfiguredStoreDefinition[] = [
     name: 'Metro',
     slug: 'metro',
     tier: 3,
-    sort_order: 9,
+    sort_order: 8,
     base_url: 'https://www.metro.pk',
     logo_url: null,
     specialization: 'hypermarket',
@@ -100,7 +91,7 @@ export const CONFIGURED_STORES: readonly ConfiguredStoreDefinition[] = [
     name: 'Carrefour',
     slug: 'carrefour',
     tier: 3,
-    sort_order: 10,
+    sort_order: 9,
     base_url: 'https://www.carrefour.pk',
     logo_url: null,
     specialization: 'hypermarket',
@@ -109,7 +100,7 @@ export const CONFIGURED_STORES: readonly ConfiguredStoreDefinition[] = [
     name: 'Naheed',
     slug: 'naheed',
     tier: 3,
-    sort_order: 11,
+    sort_order: 10,
     base_url: 'https://www.naheed.pk',
     logo_url: null,
     specialization: 'hypermarket',
@@ -118,7 +109,7 @@ export const CONFIGURED_STORES: readonly ConfiguredStoreDefinition[] = [
     name: 'Al-Fatah',
     slug: 'al-fatah',
     tier: 3,
-    sort_order: 12,
+    sort_order: 11,
     base_url: 'https://www.alfatah.com.pk',
     logo_url: null,
     specialization: 'hypermarket',

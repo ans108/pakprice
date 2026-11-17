@@ -43,7 +43,6 @@ const STORES = [
   { name: 'Mega.pk', url: 'https://www.mega.pk', category: 'Electronics' },
   { name: 'Telemart', url: 'https://www.telemart.pk', category: 'Electronics' },
   { name: 'Shophive', url: 'https://www.shophive.com', category: 'Electronics' },
-  { name: 'HomeShopping', url: 'https://www.homeshopping.pk', category: 'General' },
   { name: 'Paklap', url: 'https://www.paklap.pk', category: 'Laptops' },
   { name: 'iShopping', url: 'https://www.ishopping.pk', category: 'Electronics' },
   { name: 'Metro', url: 'https://www.metro.pk', category: 'Retail' },
@@ -153,7 +152,7 @@ const FEATURES = [
     icon: Zap,
     title: 'Instant Comparison',
     description:
-      'Compare prices, specs, and availability across all 12 stores on a single, clutter-free page.',
+      'Compare prices, specs, and availability across all 11 stores on a single, clutter-free page.',
   },
   {
     icon: ShoppingBag,
@@ -271,7 +270,7 @@ export default async function HomePage() {
             {/* Trust indicators */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground animate-fade-in">
               {[
-                { icon: CheckCircle2, text: '12 Stores Tracked' },
+                { icon: CheckCircle2, text: '11 Stores Tracked' },
                 { icon: CheckCircle2, text: 'Real-Time Prices' },
                 { icon: CheckCircle2, text: 'Always Free' },
               ].map(({ icon: Icon, text }) => (
@@ -584,7 +583,7 @@ export default async function HomePage() {
               id="stores-heading"
               className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight"
             >
-              12 Pakistani Stores.
+              11 Pakistani Stores.
               <br />
               One Comparison.
             </h2>

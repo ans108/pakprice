@@ -26,6 +26,10 @@ const envSchema = z.object({
     .string()
     .default('100')
     .transform((v) => parseInt(v, 10)),
+
+  // Email notifications (Resend)
+  RESEND_API_KEY: z.string().optional(),
+  EMAIL_FROM: z.string().default('PakPrice Alerts <alerts@pakprice.pk>'),
 });
 
 const parsed = envSchema.safeParse(process.env);
