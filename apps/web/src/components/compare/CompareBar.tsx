@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { X, Scale } from 'lucide-react';
 import { useCompare } from '@/contexts/CompareContext';
 import { Button } from '@/components/ui/button';
+import ProductImage from '@/components/products/ProductImage';
 
 export function CompareBar() {
   const { compareList, removeFromCompare, clearCompare } = useCompare();
@@ -38,9 +38,8 @@ export function CompareBar() {
                   <X className="w-3 h-3" />
                 </button>
                 <div className="w-8 h-8 relative rounded bg-muted overflow-hidden shrink-0">
-                  <Image
-                    src={product.image_url || '/placeholder.png'}
-                    alt={product.name}
+                  <ProductImage
+                    product={product}
                     fill
                     className="object-contain"
                   />

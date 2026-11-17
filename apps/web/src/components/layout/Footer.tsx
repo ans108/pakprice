@@ -39,8 +39,8 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Pakistan&apos;s smart price comparison platform. Find the best deals across 12+ top
-              stores in one place.
+              Pakistan&apos;s smart price comparison platform. Find the best deals across 11 top
+              Pakistani stores in one place.
             </p>
             {/* Social links (placeholder) */}
             <div className="flex items-center gap-3 mt-6" aria-label="Social media links">

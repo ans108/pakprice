@@ -2,13 +2,13 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import { Search, Loader2, ArrowRight, Tag, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { productService } from '@/services/productService';
 import type { SearchSuggestion } from '@/types';
 import { cn } from '@/utils/cn';
+import ProductImage from '@/components/products/ProductImage';
 
 interface SearchBoxProps {
   className?: string;
@@ -19,12 +19,12 @@ interface SearchBoxProps {
 }
 
 const popularSearches = [
-  'iPhone 17',
-  'Samsung Watch',
-  'MacBook Air',
-  'PlayStation 5',
-  'Power Bank',
-  'Dell',
+  'Samsung Galaxy A07',
+  'iPhone 17 Pro Max',
+  'Galaxy Watch 8',
+  'Audionic Airbud',
+  'Infinix Hot 60 Pro',
+  'MacBook Pro',
 ];
 
 /**
@@ -270,19 +270,11 @@ export default function SearchBox({
                   >
                     {/* Thumbnail */}
                     <div className="relative w-10 h-10 rounded-md bg-muted/60 overflow-hidden flex-shrink-0 border border-border/40">
-                      {item.thumbnail ? (
-                        <Image
-                          src={item.thumbnail}
-                          alt={item.name}
-                          fill
-                          sizes="40px"
-                          className="object-contain p-1"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                          <Tag className="w-4 h-4" />
-                        </div>
-                      )}
+                      <ProductImage
+                        product={{ name: item.name, image_url: item.thumbnail }}
+                        fill
+                        className="object-contain p-1"
+                      />
                     </div>
 
                     {/* Details */}

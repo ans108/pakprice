@@ -272,7 +272,7 @@ export default function SearchPageClient({
               id="search-page-input"
               value={searchInput}
               onChange={(e) => handleSearchInputChange(e.target.value)}
-              placeholder="Search 12+ stores for products, brands, or models..."
+              placeholder="Search across 11 Pakistani stores for products, brands, or models..."
               className="border-0 shadow-none focus-visible:ring-0 bg-transparent text-sm h-8 px-1"
               aria-label="Search catalog"
             />

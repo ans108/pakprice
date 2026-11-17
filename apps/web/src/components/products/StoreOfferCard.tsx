@@ -59,11 +59,18 @@ export function StoreOfferCard({
         : "border-border hover:border-primary/30"
     )}>
       <div className="flex items-center gap-4 w-full sm:w-auto">
-        <div className="w-12 h-12 bg-white rounded-lg border border-border flex items-center justify-center p-1 shrink-0">
+        <div
+          className={cn(
+            "w-12 h-12 rounded-lg flex items-center justify-center p-1 shrink-0",
+            storeLogo
+              ? "bg-white border border-border"
+              : "bg-primary/10 dark:bg-primary/15 border border-primary/20 text-primary"
+          )}
+        >
           {storeLogo ? (
             <img src={storeLogo} alt={storeName} className="max-w-full max-h-full object-contain" />
           ) : (
-            <span className="text-xs font-bold text-muted-foreground uppercase">{storeName.slice(0, 2)}</span>
+            <span className="text-xs font-bold uppercase">{storeName.slice(0, 2)}</span>
           )}
         </div>
         

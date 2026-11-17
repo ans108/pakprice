@@ -38,17 +38,17 @@ export const metadata: Metadata = {
 
 // Pakistani stores listed on the landing page
 const STORES = [
-  { name: 'Daraz', url: 'https://www.daraz.pk', category: 'Marketplace' },
-  { name: 'PriceOye', url: 'https://priceoye.pk', category: 'Electronics' },
-  { name: 'Mega.pk', url: 'https://www.mega.pk', category: 'Electronics' },
-  { name: 'Telemart', url: 'https://www.telemart.pk', category: 'Electronics' },
-  { name: 'Shophive', url: 'https://www.shophive.com', category: 'Electronics' },
-  { name: 'Paklap', url: 'https://www.paklap.pk', category: 'Laptops' },
-  { name: 'iShopping', url: 'https://www.ishopping.pk', category: 'Electronics' },
-  { name: 'Metro', url: 'https://www.metro.pk', category: 'Retail' },
-  { name: 'Carrefour', url: 'https://www.carrefour.pk', category: 'Retail' },
-  { name: 'Naheed', url: 'https://www.naheed.pk', category: 'Supermarket' },
-  { name: 'Al-Fatah', url: 'https://www.alfatah.com.pk', category: 'Supermarket' },
+  { name: 'Daraz', slug: 'daraz', category: 'Marketplace', offers: '75+ Verified' },
+  { name: 'PriceOye', slug: 'priceoye', category: 'Electronics', offers: '315+ Verified' },
+  { name: 'Mega.pk', slug: 'mega-pk', category: 'Electronics', offers: '65+ Verified' },
+  { name: 'Telemart', slug: 'telemart', category: 'Electronics', offers: '550+ Verified' },
+  { name: 'Shophive', slug: 'shophive', category: 'Electronics', offers: '115+ Verified' },
+  { name: 'Paklap', slug: 'paklap', category: 'Laptops', offers: '75+ Verified' },
+  { name: 'iShopping', slug: 'ishopping', category: 'Electronics', offers: '60+ Verified' },
+  { name: 'Metro', slug: 'metro', category: 'Retail', offers: '100+ Verified' },
+  { name: 'Carrefour', slug: 'carrefour', category: 'Retail', offers: '90+ Verified' },
+  { name: 'Naheed', slug: 'naheed', category: 'Supermarket', offers: '75+ Verified' },
+  { name: 'Al-Fatah', slug: 'al-fatah', category: 'Supermarket', offers: '75+ Verified' },
 ];
 
 const CATEGORIES = [
@@ -295,19 +295,17 @@ export default async function HomePage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             {STORES.map((store) => (
-              <a
-                key={store.name}
-                href={store.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background hover:border-primary/40 hover:bg-primary/5 transition-colors text-sm font-medium text-muted-foreground hover:text-foreground"
-                aria-label={`Visit ${store.name}`}
+              <Link
+                key={store.slug}
+                href={`/search?store=${store.slug}`}
+                className="flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background hover:border-primary/40 hover:bg-primary/5 transition-colors text-sm font-medium text-muted-foreground hover:text-foreground group"
+                aria-label={`Browse ${store.name} products on PakPrice`}
               >
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <StoreInitials name={store.name} />
                 </div>
-                {store.name}
-              </a>
+                <span>{store.name}</span>
+              </Link>
             ))}
           </div>
         </div>
@@ -595,26 +593,29 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {STORES.map((store) => (
-              <a
-                key={store.name}
-                href={store.url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                key={store.slug}
+                href={`/search?store=${store.slug}`}
                 className="group flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-md hover:shadow-primary/5 transition-all"
-                aria-label={`Visit ${store.name}`}
+                aria-label={`Browse ${store.name} catalog on PakPrice`}
               >
                 <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   <StoreInitials name={store.name} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-sm text-foreground">{store.name}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{store.category}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="font-semibold text-sm text-foreground">{store.name}</p>
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                      {store.offers}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-0.5">{store.category} · Browse Catalog</p>
                 </div>
                 <ArrowRight
                   className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all flex-shrink-0"
                   aria-hidden="true"
                 />
-              </a>
+              </Link>
             ))}
           </div>
         </div>

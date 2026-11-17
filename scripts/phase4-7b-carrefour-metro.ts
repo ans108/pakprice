@@ -23,18 +23,20 @@ const supabase = createClient(
 
 const priceIngestion = new PriceIngestionService();
 
+const DUMP_DIR = process.env.FIRECRAWL_DUMP_DIR || path.resolve(process.cwd(), 'scripts/data');
+
 // File paths containing Firecrawl scrape outputs
 const CARREFOUR_FILES = [
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8456/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8462/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8464/output.txt',
+  path.join(DUMP_DIR, 'carrefour_step_8456.txt'),
+  path.join(DUMP_DIR, 'carrefour_step_8462.txt'),
+  path.join(DUMP_DIR, 'carrefour_step_8464.txt'),
 ];
 
 const METRO_FILES = [
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8468/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8472/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8482/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8484/output.txt',
+  path.join(DUMP_DIR, 'metro_step_8468.txt'),
+  path.join(DUMP_DIR, 'metro_step_8472.txt'),
+  path.join(DUMP_DIR, 'metro_step_8482.txt'),
+  path.join(DUMP_DIR, 'metro_step_8484.txt'),
 ];
 
 function parseCarrefourMarkdown(md: string): ScrapedProductSchemaType[] {

@@ -18,6 +18,8 @@ import {
   Layers,
   TrendingDown,
   Sparkles,
+  Share2,
+  Check,
 } from 'lucide-react';
 import type { ProductVariantWithPrices, ProductWithRelations } from '@/types';
 import ProductImage from '@/components/products/ProductImage';
@@ -44,8 +46,36 @@ interface ProductDetailClientProps {
 export default function ProductDetailClient({ product, variants }: ProductDetailClientProps) {
   const [selectedId, setSelectedId] = useState<string>(variants[0]?.id ?? '');
   const [alertModalOpen, setAlertModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const selected = variants.find((v) => v.id === selectedId) ?? variants[0] ?? null;
+
+  const handleShare = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const title = `${product.name} Price in Pakistan | PakPrice`;
+    const text = lowestPrice
+      ? `Check out ${product.name} starting at Rs. ${lowestPrice.toLocaleString()} on PakPrice!`
+      : `Check out ${product.name} price comparison on PakPrice!`;
+
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+        return;
+      } catch {
+        // User cancelled or share failed, fallback to clipboard
+      }
+    }
+
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+      } catch {
+        // Clipboard failed fallback
+      }
+    }
+  };
 
   // Best Price selection: strictly fresh eligible in-stock offers with valid product URLs.
   const freshInStockPrices = selected?.prices?.filter((p: any) => {
@@ -380,6 +410,29 @@ export default function ProductDetailClient({ product, variants }: ProductDetail
               >
                 <Bell className="w-3.5 h-3.5 text-primary" />
                 <span className="hidden sm:inline">Price Alert</span>
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleShare}
+                className={cn(
+                  "gap-1.5 text-xs font-semibold h-9 rounded-xl border-border hover:border-primary/50 transition-colors",
+                  copied && "text-emerald-600 border-emerald-500/50 bg-emerald-500/10"
+                )}
+                title={copied ? "Link copied to clipboard!" : "Share deal"}
+                aria-label="Share deal"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-3.5 h-3.5 text-primary" />
+                    <span className="hidden sm:inline">Share</span>
+                  </>
+                )}
               </Button>
               <FavoriteButton variantId={selectedId} />
             </div>

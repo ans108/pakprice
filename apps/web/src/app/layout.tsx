@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | PakPrice',
   },
   description:
-    'PakPrice is Pakistan\'s smart price comparison platform. Compare prices across Daraz, PriceOye, Telemart, Shophive, and 8+ more stores. Find the best deals on electronics, gadgets, and appliances.',
+    'PakPrice is Pakistan\'s smart price comparison platform. Compare prices across Daraz, PriceOye, Telemart, Shophive, and 7 more stores. Find the best deals on electronics, gadgets, and appliances across 11 top Pakistani stores.',
   keywords: [
     'price comparison Pakistan',
     'Pakistan shopping',
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     siteName: 'PakPrice',
     title: 'PakPrice — Compare Prices Across Pakistan\'s Top Stores',
     description:
-      'Find the best deals on electronics, gadgets, and appliances across 12+ Pakistani stores in one place.',
+      'Find the best deals on electronics, gadgets, and appliances across 11 top Pakistani stores in one place.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PakPrice — Compare Prices Across Pakistan\'s Top Stores',
     description:
-      'Find the best deals on electronics, gadgets, and appliances across 12+ Pakistani stores in one place.',
+      'Find the best deals on electronics, gadgets, and appliances across 11 top Pakistani stores in one place.',
   },
   robots: {
     index: true,

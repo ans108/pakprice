@@ -109,15 +109,6 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'media.naheed.pk',
       },
-      // HomeShopping — store image hostnames
-      {
-        protocol: 'https',
-        hostname: 'www.homeshopping.pk',
-      },
-      {
-        protocol: 'https',
-        hostname: 'homeshopping.pk',
-      },
       // iShopping — store image hostnames
       {
         protocol: 'https',

@@ -19,7 +19,7 @@ import fs from 'fs';
 import axios from 'axios';
 import { chromium } from 'playwright';
 
-const ARTIFACT_DIR = 'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445';
+const ARTIFACT_DIR = process.env.ARTIFACT_DIR || 'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445';
 const SCREENSHOTS_DIR = path.resolve(process.cwd(), 'scripts/screenshots');
 
 if (!fs.existsSync(SCREENSHOTS_DIR)) {

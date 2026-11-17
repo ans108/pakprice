@@ -46,10 +46,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     if (supabaseUrl && supabaseKey) {
       const supabase = createClient(supabaseUrl, supabaseKey);
-      const { data: products } = await supabase
-        .from('products')
-        .select('slug, updated_at')
-        .limit(1000);
+      const [{ data: batch1 }, { data: batch2 }] = await Promise.all([
+        supabase
+          .from('products')
+          .select('slug, updated_at')
+          .eq('is_active', true)
+          .order('slug')
+          .range(0, 999),
+        supabase
+          .from('products')
+          .select('slug, updated_at')
+          .eq('is_active', true)
+          .order('slug')
+          .range(1000, 2499),
+      ]);
+
+      const products = [...(batch1 || []), ...(batch2 || [])];
 
       if (products && products.length > 0) {
         const productRoutes: MetadataRoute.Sitemap = products.map((p) => ({

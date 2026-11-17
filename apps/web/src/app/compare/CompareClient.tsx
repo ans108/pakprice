@@ -9,6 +9,7 @@ import { CompareResponse, CompareProduct } from '@/types';
 import { useCompare } from '@/contexts/CompareContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
+import ProductImage from '@/components/products/ProductImage';
 
 export default function CompareClient({ initialData }: { initialData: CompareResponse }) {
   const router = useRouter();
@@ -125,9 +126,8 @@ export default function CompareClient({ initialData }: { initialData: CompareRes
                     </button>
                     <Link href={`/products/${product.slug}`} className="block group">
                       <div className="relative w-full aspect-square bg-muted/30 rounded-lg mb-3 overflow-hidden">
-                        <Image
-                          src={product.image_url || '/placeholder.png'}
-                          alt={product.name}
+                        <ProductImage
+                          product={product}
                           fill
                           className="object-contain p-4 group-hover:scale-105 transition-transform"
                         />

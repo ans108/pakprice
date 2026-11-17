@@ -109,8 +109,45 @@ export default async function ProductPage({ params }: ProductPageProps) {
     similarProducts = [];
   }
 
+  // schema.org/Product + AggregateOffer JSON-LD structured data for Google Search rich snippets
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pakprice.pk';
+  const productUrl = `${siteUrl}/products/${product.slug}`;
+
+  const jsonLd: Record<string, any> = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: product.image_url ? [product.image_url] : [],
+    description: product.description || `Compare prices for ${product.name} across Pakistan's top online stores.`,
+    brand: product.brand?.name
+      ? {
+          '@type': 'Brand',
+          name: product.brand.name,
+        }
+      : undefined,
+    category: product.category?.name,
+    url: productUrl,
+  };
+
+  if (product.lowest_price && product.lowest_price > 0) {
+    jsonLd.offers = {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'PKR',
+      lowPrice: product.lowest_price,
+      highPrice: product.highest_price || product.lowest_price,
+      offerCount: product.store_count || 1,
+      url: productUrl,
+      availability: 'https://schema.org/InStock',
+    };
+  }
+
   return (
-    <div className="container-section py-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="container-section py-8">
       {/* ── Breadcrumb ──────────────────────────────────────── */}
       <nav
         className="flex items-center gap-1 text-xs text-muted-foreground mb-6"
@@ -210,5 +247,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       )}
     </div>
+    </>
   );
 }

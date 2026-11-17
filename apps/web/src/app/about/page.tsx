@@ -79,8 +79,7 @@ export default function AboutPage() {
             clean, easy-to-use interface.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            We&apos;re currently in active development. Phase 1 establishes the foundation, and
-            product search, price comparison, and price alerts are coming very soon.
+            Today, PakPrice tracks over 1,295 products and 1,600+ verified live offers across 11 of Pakistan&apos;s leading online retailers—complete with real-time price comparison, multi-variant spec matching, price intelligence analytics, and instant email price-drop alerts.
           </p>
         </div>
       </div>

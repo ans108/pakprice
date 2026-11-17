@@ -23,12 +23,14 @@ const supabase = createClient(
 
 const priceIngestion = new PriceIngestionService();
 
+const DUMP_DIR = process.env.FIRECRAWL_DUMP_DIR || path.resolve(process.cwd(), 'scripts/data');
+
 const STEP_FILES = [
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8411/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8415/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8417/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8423/output.txt',
-  'C:/Users/anssh/.gemini/antigravity/brain/b0c2912f-436e-4869-abea-6b2dfe2d8445/.system_generated/steps/8425/output.txt',
+  path.join(DUMP_DIR, 'daraz_step_8411.txt'),
+  path.join(DUMP_DIR, 'daraz_step_8415.txt'),
+  path.join(DUMP_DIR, 'daraz_step_8417.txt'),
+  path.join(DUMP_DIR, 'daraz_step_8423.txt'),
+  path.join(DUMP_DIR, 'daraz_step_8425.txt'),
 ];
 
 function extractPriceFromText(desc: string, title: string): { price: number; originalPrice: number | null } | null {
